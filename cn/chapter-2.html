@@ -5,25 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="通过工资分配图和常设机构证据路径，探索跨境远程办公的个人与企业税收分析。"
+      content="分配跨境远程工资，并分别判断员工税收与企业常设机构线索。"
     />
-    <title>跨境远程办公 | 国际税收教学资源</title>
+    <title>远程办公税收判断 | 国际税收</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/learning.css" />
     <link rel="stylesheet" href="../assets/css/chapter-2-layout.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-transactions.css" />
     <link rel="stylesheet" href="../assets/css/bilingual.css" />
-    <script src="chapter-2.js" defer></script>
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-transactions.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-2.js"></script>
     <script defer src="../assets/js/learning.js"></script>
     <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
   </head>
-  <body class="learning chapter-2">
+  <body class="learning chapter-2 simulator-page" data-tool-id="remote">
     <header class="site-header">
       <a class="brand" href="index.html"
-        >International Taxation <span>WebSource</span></a
+        >国际税收 <span>International Taxation</span></a
       >
       <nav class="nav-links" aria-label="网站导航">
-        <a href="index.html">全部章节</a><a href="chapter-1.html">第一章</a
-        ><a href="chapter-2.html" aria-current="page">第二章</a
+        <a href="index.html">课程首页</a
+        ><a href="index.html#chapters">模拟器目录</a
         ><a
           class="language-switch"
           href="../en/chapter-2.html"
@@ -36,9 +43,13 @@
     </header>
     <main class="page-wrap">
       <section class="chapter-hero">
-        <p class="eyebrow">CHAPTER 02 / 国际税收管辖权</p>
-        <h1>跨境远程办公，看懂两条税收路径。</h1>
-        <p>小张在 B 国远程为 A 国公司工作：工资与常设机构分别判断。</p>
+        <div>
+          <p class="eyebrow">综合应用 / 教材第二章</p>
+          <h1>远程办公税收判断</h1>
+        </div>
+        <div>
+          <div class="pixel-scene" data-pixel-scene="remote" data-label-person="小张" data-label-company="公司" data-label-place-a="A 国" data-label-place-b="B 国" data-label-left="远程劳务" data-label-right="报酬" data-label-amount="210 天" role="img" aria-label="小张在 B 国住所通过电脑为 A 国公司工作"></div>
+        </div>
       </section>
       <section class="case-intro" aria-label="案例中的雇佣关系">
         <div
@@ -60,8 +71,13 @@
             ><span class="entity-question">受雇所得路径 ↓</span>
           </a>
         </div>
-        <p class="case-caption">同一案例，两位纳税主体分别判断，结论互不替代。</p>
       </section>
+      <div class="tool-links" role="group" aria-label="载入典型情景">
+        <button type="button" data-scenario="short" aria-pressed="false">短期旅居 · 90 天</button>
+        <button type="button" data-scenario="long" aria-pressed="true">长期远程 · 210 天</button>
+        <button type="button" data-scenario="sales" aria-pressed="false">销售订约 · 240 天</button>
+      </div>
+      <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
       <button
         class="parameter-toggle button"
         type="button"
@@ -180,16 +196,14 @@
               </div>
             </div>
             <div class="check-list">
-              <label class="check-line"
-                ><input id="personalReason" type="checkbox" checked /><span
-                  >因个人或家庭原因选择 B 国</span
-                ></label
-              >
-              <label class="check-line"
-                ><input id="businessReason" type="checkbox" /><span
-                  >企业需利用 B 国客户、供应商或资源</span
-                ></label
-              >
+              <div class="field full">
+                <label for="reason">选择 B 国的主要原因</label>
+                <select id="reason">
+                  <option value="personal" selected>员工个人或家庭原因</option>
+                  <option value="cost">企业单纯节省办公或用工成本</option>
+                  <option value="business">企业需利用当地客户、供应商或资源</option>
+                </select>
+              </div>
               <label class="check-line"
                 ><input id="office" type="checkbox" /><span
                   >A 国不再提供可用办公室</span
@@ -279,6 +293,7 @@
           </p>
         </div>
       </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="学习顺序"></nav>
     </main>
   </body>
 </html>

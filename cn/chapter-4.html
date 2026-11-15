@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="分轨判定中国与美国个人税收居民身份，计算美国实质居留测试，并演练六年规则和中美协定加比路径。"
+    />
+    <title>中美税收居民判定 | 国际税收教学资源</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-4.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-jurisdiction.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-jurisdiction.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-4.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-4" data-tool-id="personal-residence">
+    <header class="site-header">
+      <a class="brand" href="index.html">国际税收 <span>International Taxation</span></a>
+      <nav class="nav-links" aria-label="网站导航">
+        <a href="index.html">首页</a>
+        <a href="index.html#chapters">模拟器目录</a>
+        <a
+          class="language-switch"
+          href="../en/chapter-4.html"
+          lang="en"
+          hreflang="en"
+          aria-label="切换为英文"
+          >English</a
+        >
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">判断基础 / 教材第四章</p>
+          <h1>中美税收居民判定</h1>
+        </div>
+        <div
+          class="pixel-scene"
+          data-pixel-scene="residence"
+          data-label-place-a="中国"
+          data-label-place-b="美国"
+          data-label-person="跨境个人"
+          role="img"
+          aria-label="跨境个人分别连接中国与美国两条居民判定路径"
+        ></div>
+      </section>
+      <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
+      <button
+        class="parameter-toggle button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="scenario"
+      >
+        调整判定事实 <span aria-hidden="true">＋</span>
+      </button>
+      <div class="workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <section class="form-section">
+            <h2>中国 · 国内法</h2>
+            <div class="field">
+              <label for="cnDomicile">境内住所（习惯性居住）</label>
+              <select id="cnDomicile">
+                <option value="no">无住所</option>
+                <option value="yes">因户籍、家庭或经济利益有住所</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cnDays">当年在华天数（满24小时）</label>
+              <input id="cnDays" type="number" min="0" max="366" step="1" value="190" required />
+            </div>
+            <div class="field">
+              <label for="cnYears">此前连续满183天的年度数</label>
+              <input id="cnYears" type="number" min="0" max="15" step="1" value="3" required />
+              <small>自2019年起计算，不含当年</small>
+            </div>
+            <label class="check-line">
+              <input id="cnBreak30" type="checkbox" />
+              <span>连续期间内曾单次离境超过30天</span>
+            </label>
+          </section>
+          <section class="form-section">
+            <h2>美国 · 国内法</h2>
+            <div class="field">
+              <label for="usStatus">公民或绿卡身份</label>
+              <select id="usStatus">
+                <option value="none">均不是，测试实质居留</option>
+                <option value="greencard">合法永久居民（绿卡）</option>
+                <option value="citizen">美国公民</option>
+              </select>
+            </div>
+            <div class="field-grid three-days">
+              <div class="field">
+                <label for="usD0">当年在美</label>
+                <input id="usD0" type="number" min="0" max="366" step="1" value="140" required />
+              </div>
+              <div class="field">
+                <label for="usD1">前一年</label>
+                <input id="usD1" type="number" min="0" max="366" step="1" value="120" required />
+              </div>
+              <div class="field">
+                <label for="usD2">前两年</label>
+                <input id="usD2" type="number" min="0" max="366" step="1" value="60" required />
+              </div>
+            </div>
+            <small>输入已排除豁免个人不计入的天数</small>
+            <label class="check-line">
+              <input id="usCloser" type="checkbox" />
+              <span>有外国税收住所和更密切联系，并按期提交 Form 8840</span>
+            </label>
+          </section>
+          <section class="form-section">
+            <h2>协定 · 加比事实</h2>
+            <div class="field">
+              <label for="tbHome">永久性住所</label>
+              <select id="tbHome">
+                <option value="both">中美两国均有</option>
+                <option value="cn">仅中国有</option>
+                <option value="us">仅美国有</option>
+                <option value="neither">两国均无</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tbVital">重要利益中心</label>
+              <select id="tbVital">
+                <option value="cn">中国更密切</option>
+                <option value="us">美国更密切</option>
+                <option value="unclear">无法确定</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tbAbode">经常居所</label>
+              <select id="tbAbode">
+                <option value="cn">中国</option>
+                <option value="us">美国</option>
+                <option value="both">两国均有或均无</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tbNation">国籍</label>
+              <select id="tbNation">
+                <option value="cn">中国</option>
+                <option value="us">美国</option>
+                <option value="other">第三国或无国籍</option>
+              </select>
+            </div>
+          </section>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row"><button class="button" type="reset">重置事实 ↺</button></div>
+        </form>
+        <div class="results-column">
+          <section class="panel" aria-labelledby="domestic-heading">
+            <div class="section-heading">
+              <h2 id="domestic-heading">国内法双轨</h2>
+              <p>两国分别成立，互不预设</p>
+            </div>
+            <div class="domestic-grid">
+              <article class="domestic-card china-card">
+                <span class="country-code">CN</span>
+                <strong class="domestic-verdict" id="cnResult">—</strong>
+                <span class="sim-status" id="cnBasis">—</span>
+              </article>
+              <article class="domestic-card us-card">
+                <span class="country-code">US</span>
+                <strong class="domestic-verdict" id="usResult">—</strong>
+                <span class="domestic-basis" id="usBasis">—</span>
+              </article>
+            </div>
+            <div class="dual-banner">
+              <span>两国身份叠加</span><strong id="dualResult">—</strong>
+              <p id="dualNote"></p>
+            </div>
+          </section>
+          <section class="panel" aria-labelledby="china-scope-heading">
+            <div class="section-heading">
+              <h2 id="china-scope-heading">中国无住所个人 · 六年规则</h2>
+              <p>只调整所得范围，不改变当年身份</p>
+            </div>
+            <div class="sim-flow scope-flow">
+              <div class="sim-flow-step"><span>当年身份</span><strong id="sixYearIdentity">—</strong></div>
+              <div class="sim-flow-step"><span>连续年限与重置</span><strong id="sixYearCount">—</strong></div>
+              <div class="sim-flow-step"><span>境外来源且境外支付</span><strong id="sixYearScope">—</strong></div>
+            </div>
+            <p class="sim-note" id="cnScopeNote"></p>
+          </section>
+          <section class="panel" aria-labelledby="spt-heading">
+            <div class="section-heading">
+              <h2 id="spt-heading">美国实质居留测试</h2>
+              <p>当年31天 + 三年加权183天</p>
+            </div>
+            <p class="sim-formula" id="sptFormula">—</p>
+            <div
+              class="spt-scale"
+              id="sptMeter"
+              role="meter"
+              aria-label="三年加权天数"
+              aria-valuemin="0"
+              aria-valuemax="250"
+              aria-valuenow="0"
+            >
+              <span class="spt-current" id="sptCurrentSegment"></span>
+              <span class="spt-prior" id="sptPriorSegment"></span>
+              <span class="spt-earlier" id="sptEarlierSegment"></span>
+              <i id="sptThreshold" title="183天门槛"></i>
+            </div>
+            <div class="spt-legend">
+              <span><i class="current-key"></i>当年 × 1</span>
+              <span><i class="prior-key"></i>前一年 × 1/3</span>
+              <span><i class="earlier-key"></i>前两年 × 1/6</span>
+              <span>标尺上限 <strong id="sptScaleMax">250天</strong></span>
+            </div>
+            <div class="spt-checks">
+              <span class="sim-status" id="spt31">—</span>
+              <span class="sim-status" id="spt183">—</span>
+              <span class="sim-status" id="sptResult">—</span>
+              <span class="sim-status neutral" id="closerStatus">—</span>
+            </div>
+          </section>
+          <section class="panel" aria-labelledby="treaty-heading">
+            <div class="section-heading">
+              <h2 id="treaty-heading">中美协定 · 双重居民加比</h2>
+              <p>永久住所 → 重要利益 → 经常居所 → 国籍 → MAP</p>
+            </div>
+            <div class="treaty-path" aria-live="polite">
+              <article class="tie-step" id="tieStepHome" data-state="pending">
+                <span>01</span><h3>永久住所</h3><strong id="tieHomeResult">—</strong>
+              </article>
+              <article class="tie-step" id="tieStepVital" data-state="pending">
+                <span>02</span><h3>重要利益</h3><strong id="tieVitalResult">—</strong>
+              </article>
+              <article class="tie-step" id="tieStepAbode" data-state="pending">
+                <span>03</span><h3>经常居所</h3><strong id="tieAbodeResult">—</strong>
+              </article>
+              <article class="tie-step" id="tieStepNation" data-state="pending">
+                <span>04</span><h3>国籍</h3><strong id="tieNationResult">—</strong>
+              </article>
+              <article class="tie-step" id="tieStepMap" data-state="pending">
+                <span>05</span><h3>主管当局</h3><strong id="tieMapResult">—</strong>
+              </article>
+            </div>
+            <div class="treaty-outcome">
+              <span>协定结果</span><strong id="treatyOutcome">—</strong>
+              <p id="treatyDetail"></p>
+            </div>
+            <p class="special-warning" id="treatyWarning"></p>
+          </section>
+          <p class="learning-note">教学模型不替代申报判断；还需核查首年选择、双重身份年度、州税及信息申报义务。</p>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="学习顺序"></nav>
+    </main>
+  </body>
+</html>

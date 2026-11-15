@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="通过跨境付款流程和税负图，计算利息与股息的来源国预提税、居民国抵免、补征税额及税后所得。"
+    />
+    <title>利息与股息预提税 | 国际税收教学资源</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-7.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-transactions.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <script src="../assets/js/pixel.js" defer></script>
+    <script defer src="../assets/js/pixel-transactions.js"></script>
+    <script src="../assets/js/catalog.js" defer></script>
+    <script src="../assets/js/catalog-view.js" defer></script>
+    <script src="chapter-7.js" defer></script>
+    <script src="../assets/js/learning.js" defer></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-7" data-tool-id="withholding">
+    <header class="site-header">
+      <a class="brand" href="index.html"
+        >国际税收 <span>International Taxation</span></a
+      >
+      <nav class="nav-links" aria-label="网站导航">
+        <a href="index.html">首页</a><a href="index.html#chapters">模拟器目录</a
+        ><a
+          class="language-switch"
+          href="../en/chapter-7.html"
+          lang="en"
+          hreflang="en"
+          aria-label="切换为英文"
+          >English</a
+        >
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">综合应用 / 教材第七章</p>
+          <h1 id="page-title">利息与股息预提税</h1>
+        </div>
+        <div class="hero-scene">
+          <div
+            class="pixel-scene"
+            data-pixel-scene="withholding"
+            data-label-person="收款人"
+            data-label-company="付款方"
+            data-label-place-a="来源国"
+            data-label-place-b="居民国"
+            data-label-left="税前付款"
+            data-label-right="扣缴与补征"
+            data-label-amount="¥100,000"
+            role="img"
+            aria-label="来源国付款方向居民国收款人支付所得，沿途发生源泉扣缴和居民国补征"
+          ></div>
+        </div>
+      </section>
+
+      <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
+
+      <button
+        class="parameter-toggle button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="scenario"
+      >
+        调整计算参数 <span aria-hidden="true">＋</span>
+      </button>
+
+      <div class="workspace chapter-7-workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <p class="eyebrow">计算参数</p>
+          <h2>设定付款与税率</h2>
+          <fieldset class="income-type">
+            <legend>所得类型</legend>
+            <div class="mode-grid">
+              <label class="mode-card" for="interest"
+                ><input
+                  id="interest"
+                  type="radio"
+                  name="incomeType"
+                  value="interest"
+                  checked
+                /><span>利息</span></label
+              >
+              <label class="mode-card" for="dividend"
+                ><input
+                  id="dividend"
+                  type="radio"
+                  name="incomeType"
+                  value="dividend"
+                /><span>股息</span></label
+              >
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="gross">税前所得（元）</label>
+            <input
+              id="gross"
+              type="number"
+              min="0"
+              step="0.01"
+              value="100000"
+              aria-describedby="gross-help form-error"
+              required
+            />
+            <small id="gross-help">来源国付款前的利息或股息总额</small>
+          </div>
+          <div class="field">
+            <label for="domestic">来源国国内税率（%）</label>
+            <input
+              id="domestic"
+              type="number"
+              min="0"
+              max="100"
+              step="0.1"
+              value="20"
+              aria-describedby="domestic-help form-error"
+              required
+            />
+            <small id="domestic-help">不考虑协定优惠时的预提税率</small>
+          </div>
+          <div class="field">
+            <label for="treaty">协定税率上限（%）</label>
+            <input
+              id="treaty"
+              type="number"
+              min="0"
+              max="100"
+              step="0.1"
+              value="10"
+              aria-describedby="treaty-help form-error"
+              required
+            />
+            <small id="treaty-help">仅在符合协定条件时参与比较</small>
+          </div>
+          <div class="field">
+            <label for="residence">居民国税率（%）</label>
+            <input
+              id="residence"
+              type="number"
+              min="0"
+              max="100"
+              step="0.1"
+              value="25"
+              aria-describedby="residence-help form-error"
+              required
+            />
+            <small id="residence-help">用于计算这笔所得的抵免前税额</small>
+          </div>
+          <div class="field">
+            <label for="qualify">是否符合协定待遇条件</label>
+            <select id="qualify" aria-describedby="qualify-help">
+              <option value="yes" selected>符合</option>
+              <option value="no">不符合或尚未取得</option>
+            </select>
+            <small id="qualify-help">不符合时直接采用来源国国内税率</small>
+          </div>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row">
+            <button class="button" type="reset">恢复默认参数 ↺</button>
+          </div>
+          <p class="sim-note">
+            简化模型假设来源国税款可在居民国抵免，且不考虑费用、间接抵免和其他所得。
+          </p>
+        </form>
+
+        <div class="results-column">
+          <section class="panel summary-panel" aria-labelledby="summary-heading">
+            <header class="section-heading">
+              <h2 id="summary-heading">计算结果</h2>
+              <p id="treaty-status" class="sim-status">协定上限降低扣税</p>
+            </header>
+            <div class="sim-metrics" aria-live="polite" aria-atomic="true">
+              <div class="sim-metric">
+                <span>来源国实际预提税</span><strong id="sourceTax">¥10,000</strong>
+              </div>
+              <div class="sim-metric">
+                <span>居民国抵免前税额</span><strong id="residenceTax">¥25,000</strong>
+              </div>
+              <div class="sim-metric">
+                <span>实际抵免</span><strong id="credit">¥10,000</strong>
+              </div>
+              <div class="sim-metric">
+                <span>居民国补征</span><strong id="topup">¥15,000</strong>
+              </div>
+              <div class="sim-metric after-tax-metric">
+                <span>最终税后所得</span><strong id="afterTax">¥75,000</strong>
+              </div>
+            </div>
+            <div class="rate-strip" aria-label="适用税率">
+              <div><span>国内税率</span><strong id="domesticRate">20%</strong></div>
+              <div><span>协定上限</span><strong id="treatyRate">10%</strong></div>
+              <div><span>实际预提率</span><strong id="effectiveRate">10%</strong></div>
+            </div>
+            <p id="summary-note" class="sim-note">
+              符合协定条件，实际预提率取国内税率 20% 与协定上限 10% 的较低值。
+            </p>
+          </section>
+
+          <section class="panel flow-panel" aria-labelledby="flow-heading">
+            <header class="section-heading">
+              <h2 id="flow-heading">付款到补征</h2>
+            </header>
+            <ol class="sim-flow chapter-7-flow">
+              <li class="sim-flow-step payment-step">
+                <span>01 · 付款</span><strong id="flowGross">¥100,000</strong
+                ><small id="flowGrossNote">来源国支付税前利息</small>
+              </li>
+              <li class="sim-flow-step withholding-step">
+                <span>02 · 源泉扣缴</span><strong id="flowSourceTax">¥10,000</strong
+                ><small id="flowRate">实际预提率 10%</small>
+              </li>
+              <li class="sim-flow-step receipt-step">
+                <span>03 · 收款</span><strong id="flowReceipt">¥90,000</strong
+                ><small>税前所得减去来源国税</small>
+              </li>
+              <li class="sim-flow-step topup-step">
+                <span>04 · 居民国补征</span><strong id="flowTopup">¥15,000</strong
+                ><small id="flowCredit">抵免前税额 ¥25,000，已抵免 ¥10,000</small>
+              </li>
+            </ol>
+            <p id="formula" class="sim-formula">
+              预提税 = ¥100,000 × 10% = ¥10,000；补征 = ¥25,000 − ¥10,000 = ¥15,000
+            </p>
+          </section>
+
+          <section class="panel tax-bars" aria-labelledby="bars-heading">
+            <header class="section-heading">
+              <h2 id="bars-heading">税负与所得构成</h2>
+              <p>条宽表示各项所占比例</p>
+            </header>
+            <div class="sim-bars">
+              <div class="sim-bar-row">
+                <div class="sim-bar-label">税前所得的去向<small>来源国税 + 补征 + 税后所得</small></div>
+                <div
+                  class="sim-track gross-track"
+                  id="grossBar"
+                  role="img"
+                  aria-label="税前所得：来源国税 ¥10,000，居民国补征 ¥15,000，税后所得 ¥75,000"
+                >
+                  <span id="grossSourceBar" class="segment-source" style="width: 10%" aria-hidden="true"></span
+                  ><span id="grossTopupBar" class="segment-topup" style="width: 15%" aria-hidden="true"></span
+                  ><span id="grossAfterBar" class="segment-after" style="width: 75%" aria-hidden="true"></span>
+                </div>
+                <strong id="grossBarTotal">¥100,000</strong>
+              </div>
+              <div class="sim-bar-row">
+                <div class="sim-bar-label">居民国税的构成<small>实际抵免 + 居民国补征</small></div>
+                <div
+                  class="sim-track residence-track"
+                  id="residenceBar"
+                  role="img"
+                  aria-label="居民国抵免前税额：实际抵免 ¥10,000，居民国补征 ¥15,000"
+                >
+                  <span id="residenceCreditBar" class="segment-credit" style="width: 40%" aria-hidden="true"></span
+                  ><span id="residenceTopupBar" class="segment-topup" style="width: 60%" aria-hidden="true"></span>
+                </div>
+                <strong id="residenceBarTotal">¥25,000</strong>
+              </div>
+            </div>
+            <div class="sim-key" aria-label="图例">
+              <span><i style="--c: #a96f50"></i>来源国税</span>
+              <span><i style="--c: #5d7d8d"></i>居民国补征</span>
+              <span><i style="--c: #708a70"></i>税后所得</span>
+              <span><i style="--c: #c7b9a7"></i>实际抵免</span>
+            </div>
+          </section>
+
+          <section class="panel check-panel" aria-labelledby="checkTitle">
+            <p class="eyebrow">简要核查</p>
+            <h2 id="checkTitle">利息：债务、来源与受益所有人</h2>
+            <p id="checkText">
+              核实真实债务、利息定性和负担主体；另查受益所有人及来源国免税规定。
+            </p>
+            <p class="sim-note">
+              本页用于教学演算。实际处理还需核对所得定性、国内法、具体协定条款和申报资料。
+            </p>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="学习顺序"></nav>
+    </main>
+  </body>
+</html>

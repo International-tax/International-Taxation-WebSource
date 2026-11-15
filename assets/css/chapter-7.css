@@ -1,0 +1,171 @@
+.chapter-7 .hero-scene {
+  min-width: 0;
+}
+
+.chapter-7 .income-type {
+  margin: 16px 0 8px;
+}
+
+.chapter-7 .income-type .mode-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  margin: 0;
+}
+
+.chapter-7 .income-type .mode-card input {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.chapter-7 .income-type .mode-card span {
+  font-weight: 700;
+}
+
+.chapter-7 .parameter-panel .field small {
+  display: block;
+  line-height: 1.5;
+}
+
+.chapter-7 .parameter-panel [aria-invalid="true"] {
+  border-color: #9b4638;
+  background: #fff8f5;
+}
+
+.chapter-7 .reset-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.chapter-7 .summary-panel {
+  border-top: 3px solid var(--tool-accent);
+}
+
+.chapter-7 .summary-panel .sim-metrics {
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  margin-top: 16px;
+}
+
+.chapter-7 .after-tax-metric {
+  background: #e5ebe1;
+}
+
+.chapter-7 .rate-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--line);
+}
+
+.chapter-7 .rate-strip > div {
+  min-width: 0;
+  padding: 10px 12px;
+  background: #fffdfa;
+}
+
+.chapter-7 .rate-strip span,
+.chapter-7 .rate-strip strong {
+  display: block;
+}
+
+.chapter-7 .rate-strip span {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.chapter-7 .rate-strip strong {
+  margin-top: 3px;
+  font-family: var(--font-ui);
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.chapter-7-flow {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chapter-7 .chapter-7-flow .sim-flow-step {
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid var(--tool-sand);
+}
+
+.chapter-7 .chapter-7-flow .withholding-step {
+  border-top-color: var(--tool-rust);
+}
+
+.chapter-7 .chapter-7-flow .receipt-step {
+  border-top-color: var(--tool-green);
+}
+
+.chapter-7 .chapter-7-flow .topup-step {
+  border-top-color: var(--tool-blue);
+}
+
+.chapter-7 .chapter-7-flow .sim-flow-step strong {
+  font-size: 20px;
+}
+
+.chapter-7 .chapter-7-flow .sim-flow-step small {
+  margin-top: auto;
+  line-height: 1.5;
+}
+
+.chapter-7 .tax-bars .sim-track {
+  height: 24px;
+}
+
+.chapter-7 .tax-bars .sim-track > span {
+  flex-shrink: 0;
+}
+
+.chapter-7 .segment-source {
+  background: var(--tool-rust);
+}
+
+.chapter-7 .segment-topup {
+  background: var(--tool-blue);
+}
+
+.chapter-7 .segment-after {
+  background: var(--tool-green);
+}
+
+.chapter-7 .segment-credit {
+  background: var(--tool-sand);
+}
+
+.chapter-7 .check-panel {
+  border-left: 3px solid var(--tool-blue);
+}
+
+.chapter-7 .check-panel > .eyebrow {
+  margin: 0 0 5px;
+}
+
+.chapter-7 .check-panel > p:not(.eyebrow, .sim-note) {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 520px) {
+  .chapter-7 .rate-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .chapter-7 .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+}

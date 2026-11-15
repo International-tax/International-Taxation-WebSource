@@ -3,6 +3,7 @@
   const fee = get("fee");
   const us = get("us-rate");
   const ao = get("ao-rate");
+  const foreignShare = get("foreign-share");
   const currency = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -21,11 +22,11 @@
   const methodColors = ["#a96f50", "#53788a", "#708a70"];
   let selectedMethod = 2;
 
-  function calculate(amount, usRate, aoRate, mode) {
+  function calculate(amount, usRate, aoRate, foreignShare) {
     const foreignTax = amount * aoRate;
     const usBeforeCredit = amount * usRate;
-    const limit = mode === "jordan" ? 0 : usBeforeCredit;
-    const credit = Math.min(foreignTax, limit);
+    const creditLimit = usBeforeCredit * (foreignShare / 100);
+    const credit = Math.min(foreignTax, creditLimit);
     const rows = [
       { name: "No relief", usTax: usBeforeCredit },
       {
@@ -41,10 +42,10 @@
       total: foreignTax + row.usTax,
       after: amount - foreignTax - row.usTax,
     }));
-    return { foreignTax, usBeforeCredit, limit, credit, rows };
+    return { foreignTax, usBeforeCredit, limit: creditLimit, credit, rows };
   }
 
-  function draw(amount, usRate, aoRate, mode) {
+  function draw(amount, usRate, aoRate, share) {
     const canvas = get("chart");
     const rect = canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
@@ -87,11 +88,11 @@
     ctx.moveTo(x(aoRate), p.t);
     ctx.lineTo(x(aoRate), h - p.b);
     ctx.stroke();
-    const current = calculate(amount, usRate, aoRate, mode);
+    const current = calculate(amount, usRate, aoRate, share);
     methodColors.forEach((color, i) => {
       ctx.beginPath();
       for (let n = 0; n <= 100; n++) {
-        const value = calculate(amount, usRate, n / 100, mode).rows[i].after;
+        const value = calculate(amount, usRate, n / 100, share).rows[i].after;
         if (n) ctx.lineTo(x(n / 100), y(value));
         else ctx.moveTo(x(0), y(value));
       }
@@ -123,13 +124,15 @@
     });
   }
 
-  function renderAssumptions(mode) {
+  function renderAssumptions(mode, share) {
     const panel = get("assumption-panel");
     panel.className = `assumption-panel ${mode}`;
     panel.innerHTML =
       mode === "jordan"
         ? '<div class="assumption-icon" aria-hidden="true">i</div><div><strong>Conditions for the zero limit</strong><div class="assumption-chips"><span>No treaty re-sourcing</span><span>No other foreign-source income in the same category</span></div><p class="assumption-formula">The services are performed in the US and do not enter the foreign-source numerator. Only under these assumptions is the limit <b>$0</b>.</p></div>'
-        : '<div class="assumption-icon" aria-hidden="true">i</div><div><strong>Key assumptions · Teaching comparison only</strong><div class="assumption-chips"><span>Foreign-source taxable income = worldwide taxable income</span><span>All Angolan tax is eligible for credit</span></div><p class="assumption-formula">Limit = US income tax × foreign-source taxable income ÷ worldwide taxable income; this mode assumes <b>100%</b>.</p></div>';
+        : share === 100
+          ? '<div class="assumption-icon" aria-hidden="true">i</div><div><strong>Key assumptions · Teaching comparison only</strong><div class="assumption-chips"><span>Foreign-source taxable income = worldwide taxable income</span><span>All Angolan tax is eligible for credit</span></div><p class="assumption-formula">Limit = US income tax × foreign-source taxable income ÷ worldwide taxable income; this case uses <b>100%</b>.</p></div>'
+          : `<div class="assumption-icon" aria-hidden="true">i</div><div><strong>Custom foreign-source share · ${share}%</strong><div class="assumption-chips"><span>Foreign-source taxable income = worldwide taxable income × ${share}%</span><span>All Angolan tax is eligible for credit</span></div><p class="assumption-formula">Limit = US income tax × foreign-source taxable income ÷ worldwide taxable income; this case uses <b>${share}%</b>.</p></div>`;
   }
 
   function renderComparison(data, amount) {
@@ -186,10 +189,13 @@
     } else if (data.foreignTax === 0) {
       get("flow-insight").textContent = "There is no Angolan tax to credit in this case.";
     } else if (data.limit === 0) {
+      const mode = document.querySelector('input[name="mode"]:checked').value;
       get("flow-insight").textContent =
-        document.querySelector('input[name="mode"]:checked').value === "jordan"
+        mode === "jordan"
           ? "Under this case’s simplified assumptions, the limit is $0 and Angolan tax cannot reduce US tax in this example."
-          : "US tax and the credit limit are both $0 in this case.";
+          : data.usBeforeCredit === 0
+            ? "US tax and the credit limit are both $0 in this case."
+            : "The custom foreign-source share is 0%, so the limit is $0 and Angolan tax cannot reduce US tax in this example.";
     } else if (data.foreignTax <= data.limit) {
       get("flow-insight").textContent = `The full ${money(data.foreignTax)} of Angolan tax is credited, reducing US tax by ${money(data.credit)}.`;
     } else {
@@ -214,6 +220,7 @@
   }
 
   function clearResults() {
+    TaxPixel.clear("consulting");
     get("income-bars").innerHTML = '<div class="empty-state">Enter a fee to see where the income goes.</div>';
     get("comparison-insight").textContent = "";
     get("calculation-steps").replaceChildren();
@@ -249,16 +256,22 @@
     fee.setAttribute("aria-invalid", String(!valid));
     get("us-output").textContent = `${us.value}%`;
     get("ao-output").textContent = `${ao.value}%`;
-    [us, ao].forEach((input) =>
+    get("foreign-share-output").textContent = `${foreignShare.value}%`;
+    [us, ao, foreignShare].forEach((input) =>
       input.style.setProperty("--range-progress", `${input.value}%`),
     );
     document.querySelectorAll("[data-rate]").forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.rate === ao.value));
     });
     const mode = document.querySelector('input[name="mode"]:checked').value;
+    const share = Number(foreignShare.value);
     get("mode-note").textContent =
-      mode === "jordan" ? "US source · $0 in this case" : "100% foreign-source share · Credit up to the limit";
-    renderAssumptions(mode);
+      mode === "jordan"
+        ? "Jordan’s case · 0% foreign-source share"
+        : share === 100
+          ? "100% foreign-source share · Credit up to the limit"
+          : `Custom foreign-source share ${share}% · Limit adjusted accordingly`;
+    renderAssumptions(mode, share);
     syncMethodButtons();
     if (!valid) {
       clearResults();
@@ -267,8 +280,9 @@
     const amount = Number(raw);
     const usRate = Number(us.value) / 100;
     const aoRate = Number(ao.value) / 100;
-    const data = calculate(amount, usRate, aoRate, mode);
+    const data = calculate(amount, usRate, aoRate, share);
     const chosen = data.rows[selectedMethod];
+    TaxPixel.update("consulting", { amount, share, ...data, chosen });
     get("ao-tax").textContent = money(data.foreignTax);
     get("credit-limit").textContent = money(data.limit);
     get("credit").textContent = money(data.credit);
@@ -281,12 +295,20 @@
     renderComparison(data, amount);
     renderFlow(amount, data, chosen);
     renderSteps(amount, data, chosen);
-    draw(amount, usRate, aoRate, mode);
+    draw(amount, usRate, aoRate, share);
   }
 
-  [fee, us, ao, ...document.querySelectorAll('input[name="mode"]')].forEach(
-    (input) => input.addEventListener("input", render),
-  );
+  [fee, us, ao].forEach((input) => input.addEventListener("input", render));
+  foreignShare.addEventListener("input", () => {
+    document.querySelector('input[value="comparison"]').checked = true;
+    render();
+  });
+  document.querySelectorAll('input[name="mode"]').forEach((input) => {
+    input.addEventListener("click", () => {
+      foreignShare.value = input.value === "jordan" ? "0" : "100";
+      render();
+    });
+  });
   document.querySelectorAll("[data-method]").forEach((button) => {
     button.addEventListener("click", () => {
       selectedMethod = Number(button.dataset.method);
@@ -309,6 +331,7 @@
     fee.value = "5000";
     us.value = "50";
     ao.value = "50";
+    foreignShare.value = "100";
     selectedMethod = 2;
     document.querySelector('input[value="comparison"]').checked = true;
     render();

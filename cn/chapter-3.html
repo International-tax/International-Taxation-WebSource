@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="比较扣除、普通抵免与全额免税对单笔境外所得税负的影响，并观察资本输出与资本输入中性。"
+    />
+    <title>境外所得税收减除 | 国际税收教学资源</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-3.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-investment.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-investment.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-3.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-3" data-tool-id="relief">
+    <header class="site-header">
+      <a class="brand" href="index.html">国际税收 <span>International Taxation</span></a>
+      <nav class="nav-links" aria-label="网站导航">
+        <a href="index.html">首页</a>
+        <a href="index.html#chapters">模拟器目录</a>
+        <a
+          class="language-switch"
+          href="../en/chapter-3.html"
+          lang="en"
+          hreflang="en"
+          aria-label="切换为英文"
+          >English</a
+        >
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">基础计算 / 教材第三章</p>
+          <h1>境外所得税收减除</h1>
+        </div>
+        <div
+          class="pixel-scene"
+          data-pixel-scene="relief"
+          data-label-place-a="来源国"
+          data-label-place-b="居民国"
+          data-label-person="投资者"
+          data-amount="¥1,000,000"
+          role="img"
+          aria-label="所得从来源国流向居民国，两国分别征税"
+        ></div>
+      </section>
+      <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
+      <button
+        class="parameter-toggle button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="scenario"
+      >
+        调整计算参数 <span aria-hidden="true">＋</span>
+      </button>
+      <div class="workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <p class="eyebrow">INPUT / 单笔年度所得</p>
+          <h2>计算参数</h2>
+          <div class="field">
+            <label for="foreignIncome">境外税前所得（元）</label>
+            <input
+              id="foreignIncome"
+              type="number"
+              min="0"
+              max="100000000"
+              step="10000"
+              value="1000000"
+              required
+            />
+            <small>0–100,000,000 元</small>
+          </div>
+          <div class="field">
+            <label for="homeRate">居民国税率（%）</label>
+            <input id="homeRate" type="number" min="0" max="60" step="1" value="25" required />
+            <small>0–60%，决定居民国算定税额与抵免限额</small>
+          </div>
+          <div class="field">
+            <label for="sourceRate">来源国税率（%）</label>
+            <input id="sourceRate" type="number" min="0" max="60" step="1" value="15" required />
+            <small>0–60%，决定境外已纳税额</small>
+          </div>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row">
+            <button class="button" type="reset">重置参数 ↺</button>
+          </div>
+          <p class="sim-note">采用单一比例税率和当期抵免口径，不考虑亏损、间接抵免及超限额结转。</p>
+        </form>
+        <div class="results-column">
+          <section class="panel" aria-labelledby="comparison-heading">
+            <div class="section-heading">
+              <h2 id="comparison-heading">四种方法的税额构成</h2>
+              <p>条长按本组最高合计税额缩放</p>
+            </div>
+            <div class="sim-key" aria-label="图例">
+              <span><i style="--c: var(--tool-rust)"></i>来源国税</span>
+              <span><i style="--c: var(--tool-blue)"></i>居民国税</span>
+            </div>
+            <div class="sim-bars" id="method-bars" aria-live="polite"></div>
+            <div class="table-wrap sim-table">
+              <table aria-label="四种双重征税消除方法计算结果">
+                <thead>
+                  <tr>
+                    <th>方法</th>
+                    <th>来源国税</th>
+                    <th>居民国税</th>
+                    <th>合计</th>
+                    <th>税后所得</th>
+                    <th>有效税率</th>
+                  </tr>
+                </thead>
+                <tbody id="methodBody"></tbody>
+              </table>
+            </div>
+            <p class="sim-formula">扣除法：居民国税 =（境外所得 − 来源国税）× 居民国税率</p>
+            <p class="sim-formula">普通抵免：居民国税 = 境外所得 × 居民国税率 − 实际抵免</p>
+          </section>
+          <section class="panel" aria-labelledby="credit-heading">
+            <div class="section-heading">
+              <h2 id="credit-heading">普通抵免的三个关口</h2>
+              <p>外国税 → 限额 → 当期抵免</p>
+            </div>
+            <div class="sim-metrics">
+              <div class="sim-metric"><span>来源国税</span><strong id="sourceTax">—</strong></div>
+              <div class="sim-metric"><span>抵免限额</span><strong id="creditLimit">—</strong></div>
+              <div class="sim-metric"><span>实际抵免</span><strong id="actualCredit">—</strong></div>
+              <div class="sim-metric"><span>超限额</span><strong id="excessCredit">—</strong></div>
+            </div>
+            <p class="sim-formula" id="credit-formula">实际抵免 = min（来源国税，抵免限额）</p>
+          </section>
+          <section class="panel" id="neutrality" aria-labelledby="neutrality-heading">
+            <div class="section-heading">
+              <h2 id="neutrality-heading">两种资本中性</h2>
+            </div>
+            <label for="neutrality-method">A 国对境外所得采用的减除方法</label>
+            <select id="neutrality-method">
+              <option value="0">不予减除</option>
+              <option value="1">扣除法</option>
+              <option value="2" selected>普通抵免</option>
+              <option value="3">全额免税</option>
+            </select>
+            <div id="neutrality-pixels"></div>
+            <p class="sim-note">A 国为本例居民国，B 国为来源国。假定税前收益与税基相同，B 国对本地与境外投资者适用相同税率；展示当前两国情境的税负比较。</p>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="学习顺序"></nav>
+    </main>
+  </body>
+</html>

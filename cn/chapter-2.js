@@ -21,6 +21,7 @@
   const money = (value) => `¥${number.format(value)}`;
 
   function clearResults() {
+    TaxPixel.clear("remote");
     [
       "workday-bar",
       "allocation-formula",
@@ -126,9 +127,12 @@
     ]);
     const activity = byId("activity").value;
     const contract = byId("contract").checked || activity === "sales";
-    const personal = byId("personalReason").checked;
-    const business = byId("businessReason").checked;
+    const reason = byId("reason").value;
+    const personal = reason === "personal";
+    const cost = reason === "cost";
+    const business = reason === "business";
     const office = byId("office").checked;
+    TaxPixel.update("remote", { days, workdays, salary, totalwork, localSalary, employer, borne, exception, remote, months, contract, reason, office, activity });
     const activityLabel = {
       aux: "辅助活动",
       core: "核心业务",
@@ -139,7 +143,7 @@
         <header class="pathway-header"><span class="path-index">01</span><div><h3>住所办公</h3><p>固定营业场所路径</p></div><span class="path-tag ${remote >= 50 ? "review" : "usually-no-place"}">${remote >= 50 ? "继续审查" : "通常不构成场所"}</span></header>
         <div class="use-meter" aria-label="住所工作比例 ${remote}%，50% 为观察点"><span style="width:${remote}%"></span><i aria-hidden="true"></i></div>
         <div class="meter-labels"><strong>住所工作 ${remote}%</strong><span>50% 观察点</span></div>
-        <div class="fact-chips"><span>持续 ${months} 个月</span><span class="${business ? "signal" : ""}">${business ? "有企业商业理由" : "未选企业商业理由"}</span><span>${personal ? "有个人原因" : "未选个人原因"}</span><span class="${office ? "signal" : ""}">${office ? "A 国无可用办公室" : "未显示 A 国办公室停用"}</span></div>
+        <div class="fact-chips"><span>持续 ${months} 个月</span><span class="${business ? "signal" : ""}">${business ? "有企业商业理由" : cost ? "仅节省成本" : "个人或家庭原因"}</span><span class="${office ? "signal" : ""}">${office ? "A 国无可用办公室" : "未显示 A 国办公室停用"}</span></div>
         <p class="path-status">${remote >= 50 ? "达到 50% 不自动形成常设机构；继续考察持续使用、商业理由与办公安排。" : "低于 50%，通常不构成企业营业场所；仍需结合完整事实复核。"}</p>
       </article>
       <article class="pathway contract-pathway">
@@ -149,7 +153,7 @@
       </article>`;
     list("enterprise-results", [
       `住所工作比例为 ${remote}%，持续 ${months} 个月。${remote < 50 ? "比例低于 50%，该住所通常不构成企业营业场所，仍需结合完整事实复核。" : "比例达到 50%，不自动形成常设机构，可继续考察使用是否持续以及企业是否有商业理由。"}`,
-      `${personal ? "员工有个人或家庭原因。" : "未勾选员工的个人或家庭原因。"}${business ? "企业也有利用当地位置开展业务的商业理由。" : "未勾选企业利用当地位置的商业理由。"}${office ? "企业未在 A 国继续提供可使用的办公室。" : "企业是否继续提供办公室，当前未显示否定事实。"}`,
+      `${personal ? "选择 B 国主要出于员工个人或家庭原因。" : cost ? "单纯节省办公或用工成本，本身不等于企业必须在 B 国经营。" : "企业需要利用 B 国客户、供应商或资源开展业务。"}${office ? "企业未在 A 国继续提供可使用的办公室。" : "企业是否继续提供办公室，当前未显示否定事实。"}`,
       activity === "aux"
         ? "所选活动为内部支持或准备性、辅助性活动，需结合实际职能分析。"
         : activity === "core"
@@ -161,8 +165,57 @@
       "如形成常设机构，还需分析归属于该机构的职能、资产、风险及利润。",
     ]);
   }
-  form.addEventListener("input", update);
+  const scenarios = {
+    short: {
+      numbers: { days: 90, workdays: 60, salary: 600000, totalwork: 240, remote: 35, months: 3 },
+      checks: { homeResident: true, hostEmployer: false, borne: false, office: false, contract: false },
+      activity: "aux",
+      reason: "personal",
+    },
+    long: {
+      numbers: { days: 210, workdays: 190, salary: 600000, totalwork: 240, remote: 75, months: 10 },
+      checks: { homeResident: true, hostEmployer: false, borne: false, office: false, contract: false },
+      activity: "core",
+      reason: "personal",
+    },
+    sales: {
+      numbers: { days: 240, workdays: 210, salary: 600000, totalwork: 240, remote: 85, months: 14 },
+      checks: { homeResident: true, hostEmployer: false, borne: true, office: true, contract: true },
+      activity: "sales",
+      reason: "business",
+    },
+  };
+  function markScenario(name) {
+    document.querySelectorAll("[data-scenario]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.scenario === name));
+    });
+  }
+  function applyScenario(name) {
+    const scenario = scenarios[name];
+    Object.entries(scenario.numbers).forEach(([id, value]) => {
+      byId(id).value = value;
+    });
+    Object.entries(scenario.checks).forEach(([id, value]) => {
+      byId(id).checked = value;
+    });
+    byId("activity").value = scenario.activity;
+    byId("reason").value = scenario.reason;
+    markScenario(name);
+    update();
+  }
+  document.querySelectorAll("[data-scenario]").forEach((button) => {
+    button.addEventListener("click", () => applyScenario(button.dataset.scenario));
+  });
+  form.addEventListener("input", () => {
+    markScenario(null);
+    update();
+  });
   form.addEventListener("change", update);
-  form.addEventListener("reset", () => setTimeout(update, 0));
+  form.addEventListener("reset", () =>
+    setTimeout(() => {
+      markScenario("long");
+      update();
+    }, 0),
+  );
   update();
 })();

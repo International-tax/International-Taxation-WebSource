@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Determine cross-border income source under three rule systems and nine income types, with connecting-factor paths and allocation bars." />
+    <title>Cross-border Income Source Determination | International Taxation</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-5.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-jurisdiction.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-jurisdiction.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-5-source.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-5 source-page" data-tool-id="income-source">
+    <header class="site-header">
+      <a class="brand" href="index.html">International Taxation <span>WebSource</span></a>
+      <nav class="nav-links" aria-label="Site navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#chapters">Simulator catalog</a>
+        <a class="language-switch" href="../cn/chapter-5-source.html" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">中文</a>
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">CONNECTING FACTORS / TEXTBOOK CHAPTER 5</p>
+          <h1>Cross-border Income Source Determination</h1>
+        </div>
+        <div>
+          <div id="source-scene" class="pixel-scene" data-pixel-scene="source" data-label-person="Taxpayer" data-label-place-a="China" data-label-place-b="United States" role="img" aria-label="Income flowing through connecting factors to its source"></div>
+        </div>
+      </section>
+
+      <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
+      <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="scenario">Adjust inputs <span aria-hidden="true">＋</span></button>
+
+      <div class="workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <section id="source-controls" aria-labelledby="source-controls-title">
+            <p class="eyebrow">TRANSACTION FACTS</p>
+            <h2 id="source-controls-title">Classify, then connect</h2>
+            <div class="field">
+              <label for="rules">Rule system</label>
+              <select id="rules"><option value="ce">China enterprise income tax</option><option value="ci">China individual income tax</option><option value="us">US federal income tax</option></select>
+            </div>
+            <div class="field">
+              <label for="type">Income type</label>
+              <select id="type">
+                <option value="service">Services</option><option value="interest">Interest</option><option value="dividend">Dividends</option><option value="rent">Tangible property rent</option><option value="royalty">Royalties</option><option value="real">Real property disposal</option><option value="equity">Equity or other movable property</option><option value="purchased">Purchased inventory sale</option><option value="produced">Produced inventory sale</option>
+              </select>
+            </div>
+            <div id="activityField" class="field source-field"><label for="activity">Where services are performed</label><select id="activity"><option value="cn">China</option><option value="us">United States</option><option value="other">Another country</option><option value="mixed">China and the United States</option></select></div>
+            <div id="payerField" class="field source-field"><label for="payer">Payer or economic bearer</label><select id="payer"><option value="cn">China</option><option value="us" selected>United States</option><option value="other">Another country</option></select></div>
+            <div id="useField" class="field source-field"><label for="use">Where property or rights are used</label><select id="use"><option value="cn">China</option><option value="us" selected>United States</option><option value="other">Another country</option></select></div>
+            <div id="propertyField" class="field source-field"><label for="property">Real property location</label><select id="property"><option value="cn">China</option><option value="us" selected>United States</option><option value="other">Another country</option></select></div>
+            <div id="companyField" class="field source-field"><label for="company">Distributing or investee company</label><select id="company"><option value="cn">China</option><option value="us" selected>United States</option><option value="other">Another country</option></select></div>
+            <div id="sellerField" class="field source-field"><label for="seller">Transferor’s residence</label><select id="seller"><option value="cn">China resident</option><option value="us">US resident</option><option value="other">Another country’s resident</option></select></div>
+            <div id="saleField" class="field source-field"><label for="sale">Sale or transaction location</label><select id="sale"><option value="cn">China</option><option value="us" selected>United States</option><option value="other">Another country</option></select></div>
+            <div id="prodField" class="field source-field"><label for="prod">Production in the United States <output id="prodVal" for="prod">0%</output></label><input id="prod" type="range" min="0" max="100" step="1" value="0" /></div>
+            <div id="mixField" class="field source-field"><label for="mix">Share of two-country services performed in China <output id="mixVal" for="mix">50%</output></label><input id="mix" type="range" min="0" max="100" step="1" value="50" /></div>
+            <div class="scenario-buttons" aria-label="Quick scenarios"><button class="button" type="button" id="jordan">Jordan case</button><button class="button" type="button" id="hangzhou">Hangzhou consulting</button></div>
+          </section>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row"><button class="button" type="reset">Reset inputs ↺</button></div>
+        </form>
+
+        <div class="results-column">
+          <section class="panel result-panel" id="source-panel" aria-labelledby="source-title">
+            <div class="section-heading"><div><p class="eyebrow">SOURCE OF INCOME</p><h2 id="source-title">From income type to source</h2></div><p>A payment account alone does not set source</p></div>
+            <div class="sim-metrics source-metrics">
+              <div class="sim-metric"><span>Primary source</span><strong id="source-result" class="wordy">—</strong></div>
+              <div class="sim-metric"><span>Connecting factor</span><strong id="source-connection" class="wordy">—</strong></div>
+            </div>
+            <section class="visual-section" aria-labelledby="path-title">
+              <div class="section-heading"><h3 id="path-title">Connecting-factor path</h3><p id="path-rule">Under the selected rules</p></div>
+              <div class="source-path"><div class="source-step"><small>01 / CLASSIFY</small><strong id="path-type">Services</strong></div><span aria-hidden="true">→</span><div class="source-step"><small>02 / FACT</small><strong id="path-fact">Performance</strong></div><span aria-hidden="true">→</span><div class="source-step result"><small>03 / SOURCE</small><strong id="path-source">China</strong></div></div>
+              <p id="rule-text" class="visual-summary"></p>
+            </section>
+            <section class="visual-section" aria-labelledby="share-title">
+              <div class="section-heading"><h3 id="share-title">Source allocation bar</h3><p>A single source is shown as 100%</p></div>
+              <div id="source-bar" class="source-bar" role="img" aria-label="Source percentages"></div><div id="source-labels" class="source-labels"></div>
+            </section>
+            <details class="number-details"><summary>Review points</summary><ul id="checks" class="result-list"></ul></details>
+            <p class="sim-note">Common general rules only. Real-property-rich shares, fixed places of business, portfolio interest, mixed contracts and treaties may change the analysis.</p>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="Learning sequence"></nav>
+    </main>
+  </body>
+</html>

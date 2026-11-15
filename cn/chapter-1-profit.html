@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="用关联咨询费算例观察利润转移、集团有效税率与15%简化补足税，并对照三项国际税收研究。" />
+    <title>关联费用与利润转移 | 国际税收</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-1-profit.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-investment.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-investment.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="./chapter-1-profit.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-1 chapter-1-profit" data-tool-id="profit">
+    <header class="site-header">
+      <a class="brand" href="./index.html">国际税收 <span>International Taxation</span></a>
+      <nav class="nav-links" aria-label="网站导航">
+        <a href="./index.html">首页</a>
+        <a href="./index.html#chapters">模拟器目录</a>
+        <a class="language-switch" href="../en/chapter-1-profit.html" lang="en" hreflang="en" aria-label="切换为英文">English</a>
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">进阶专题 / 教材第一章</p>
+          <h1>关联费用与利润转移</h1>
+        </div>
+        <div class="pixel-scene" data-pixel-scene="profit" data-label-place-a="甲国" data-label-place-b="低税地" data-label-company="关联公司" data-label-amount="咨询费" role="img" aria-label="甲国公司向低税地关联公司支付咨询费的像素场景"></div>
+      </section>
+      <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
+      <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="parameter-controls">调整算例参数 <span aria-hidden="true">＋</span></button>
+      <div class="workspace">
+        <form class="panel parameter-panel" id="parameter-controls" novalidate>
+          <p class="eyebrow">01 / 算例参数</p>
+          <h2 id="inputs-heading">设定一笔关联费用</h2>
+          <p class="input-help">金额单位：万元。假设费用可扣除，且全部计为低税地利润。</p>
+          <div class="field">
+            <label for="pre-profit">扣费前甲国利润</label>
+            <input id="pre-profit" type="number" min="0" max="100000" step="any" value="40" inputmode="decimal" aria-describedby="pre-profit-error" required />
+            <p class="error" id="pre-profit-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="fee">关联咨询费</label>
+            <input id="fee" type="number" min="0" max="100000" step="any" value="20" inputmode="decimal" aria-describedby="fee-error" required />
+            <p class="error" id="fee-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="high-rate">甲国税率（%）</label>
+            <input id="high-rate" type="number" min="0" max="60" step="any" value="25" inputmode="decimal" aria-describedby="high-rate-error" required />
+            <p class="error" id="high-rate-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="low-rate">低税地有效税率（%）</label>
+            <input id="low-rate" type="number" min="0" max="60" step="any" value="0" inputmode="decimal" aria-describedby="low-rate-error" required />
+            <p class="error" id="low-rate-error" aria-live="polite"></p>
+          </div>
+          <button class="button" type="button" id="reset">重置参数 ↺</button>
+        </form>
+        <div class="results-column">
+          <section class="panel profit-map" aria-labelledby="results-heading">
+            <header class="section-heading">
+              <div><p class="eyebrow">02 / 利润与费用流</p><h2 id="results-heading">关联费用改变利润所在地</h2></div>
+              <p>同一比例尺 · 万元</p>
+            </header>
+            <div class="jurisdiction-grid">
+              <article class="jurisdiction high-jurisdiction">
+                <header><span>甲国 · 高税</span><strong id="high-profit">20 万</strong></header>
+                <div class="jurisdiction-track" aria-hidden="true"><span id="high-remaining-bar"></span><i id="high-fee-bar"></i></div>
+                <p>剩余利润 <span id="high-remaining-label">20 万</span> · 当地税 <strong id="high-tax">5 万</strong></p>
+              </article>
+              <div class="fee-stream" aria-label="关联咨询费流向低税地"><span>关联咨询费</span><strong id="fee-flow">20 万</strong><i aria-hidden="true">→</i></div>
+              <article class="jurisdiction low-jurisdiction">
+                <header><span>低税地 · 关联方</span><strong id="low-profit">20 万</strong></header>
+                <div class="jurisdiction-track" aria-hidden="true"><span id="low-profit-bar"></span></div>
+                <p>转入利润 · 当地税 <strong id="low-tax">0 万</strong></p>
+              </article>
+            </div>
+            <div class="sim-key" aria-label="利润条图例"><span><i style="--c:#617c70"></i>税前利润所在地</span><span><i style="--c:#b77855"></i>费用流对应的甲国税基减少</span></div>
+            <div class="sim-metrics" aria-live="polite">
+              <div class="sim-metric"><span>甲国税基减少</span><strong id="base-reduction">20 万</strong></div>
+              <div class="sim-metric"><span>甲国税收损失</span><strong id="tax-loss">5 万</strong></div>
+              <div class="sim-metric"><span>两地合计税额</span><strong id="total-tax">5 万</strong></div>
+              <div class="sim-metric emphasis"><span>集团 ETR</span><strong id="group-etr">12.5%</strong></div>
+            </div>
+          </section>
+          <section class="panel minimum-panel" aria-labelledby="minimum-heading">
+            <header class="section-heading">
+              <div><p class="eyebrow">03 / 15% 简化标尺</p><h2 id="minimum-heading">低税法域按税率差额计算补足税</h2></div>
+              <span class="sim-status" id="topup-status">需要补足</span>
+            </header>
+            <p>低税法域有效税率</p>
+            <div class="etr-scale" id="etr-gauge" role="img" aria-label="低税法域有效税率 0%，补足基准为 15%">
+              <div class="etr-track"><span id="etr-fill"></span><i class="minimum-tick" aria-hidden="true"></i><b id="etr-marker" aria-hidden="true"></b></div>
+              <div class="etr-labels" aria-hidden="true"><span>0%</span><span>15% 最低税率</span><span>30%+</span></div>
+            </div>
+            <div class="topup-grid">
+              <div><span>低税地简化补足税率</span><strong id="topup-rate">15%</strong></div>
+              <div><span>低税地简化补足税额</span><strong id="topup-tax">3 万</strong></div>
+            </div>
+            <p class="sim-formula" id="topup-formula">20 万 × max(0, 15% − 0%) = 3 万</p>
+            <p class="sim-note" id="sim-explain">这是简化 GloBE 教学口径：仅以转入低税地的利润乘以税率差额，不代表完整应纳税额。</p>
+          </section>
+          <section class="panel evidence-panel" aria-labelledby="research-heading">
+            <header class="section-heading"><div><p class="eyebrow">04 / 三项研究</p><h2 id="research-heading">研究与参考文献</h2></div><p>注意指标与年份不同</p></header>
+            <div class="evidence-list">
+              <article class="evidence-row oecd-evidence">
+                <div class="evidence-copy"><span>OECD · 2015</span><h3>全球年度税收损失</h3><strong>1,000–2,400 亿美元</strong><p>约占全球企业所得税收入 4%–10%，按 2014 年经济规模估算。</p><details class="reference-note"><summary>估算口径</summary><p>第 11 项行动报告估计的是企业所得税收入损失。比较研究结果时，应区分转移利润额与按有效税率折算的税收损失额。</p></details></div>
+                <div class="range-figure" role="img" aria-label="OECD估计税收损失占全球企业所得税收入4%至10%"><div class="range-axis"><i></i></div><div><span>0%</span><span>4%</span><span>10%</span></div></div>
+                <a href="https://doi.org/10.1787/9789264241343-en" target="_blank" rel="noopener">BEPS 第11项行动报告 ↗</a>
+              </article>
+              <article class="evidence-row shifting-evidence">
+                <div class="evidence-copy"><span>García-Bernardo &amp; Janský · 2024</span><h3>两种模型下的全球利润转移</h3><strong>8,540 / 8,620 亿美元</strong><p>2017 年 CbCR 数据；对应税收损失 2,140 / 2,260 亿美元。</p><details class="reference-note"><summary>附表 A.12：两组有效税率口径</summary><p>采用总体有效税率时，两种模型的税收损失分别为 2,140 亿和 2,260 亿美元；采用外国跨国企业有效税率时，在转移利润估计值相同的情况下，税收损失分别为 1,730 亿和 1,770 亿美元。</p></details></div>
+                <div class="model-figure" role="img" aria-label="模型一转移利润8540亿美元、税收损失2140亿美元；模型二转移利润8620亿美元、税收损失2260亿美元"><div><span>模型一</span><i style="--size:99.1%"></i><b>8,540</b></div><div><span>模型二</span><i style="--size:100%"></i><b>8,620</b></div><small>单位：亿美元 · 利润额，不是税收损失</small></div>
+                <a href="https://petrjansky.cz/wp-content/uploads/2024/01/garcia-bernardo-jansky-2024-profit-shifting-of-multinational-corporations-worldwide-1.pdf" target="_blank" rel="noopener">论文及附表 A.12 ↗</a>
+              </article>
+              <article class="evidence-row etr-evidence">
+                <div class="evidence-copy"><span>Bachas et al. · 2026</span><h3>最大规模企业的低 ETR</h3><strong>超过 1/4 的企业 ETR &lt; 15%</strong><p>基于 16 国企业税务申报资料；这是企业数量占比，不是利润占比。</p><details class="reference-note"><summary>样本分母与支柱二口径</summary><p>占比的分母为样本中最大规模组的企业数量。研究测算单家企业的有效税率，低税率主要与大型企业运用税收优惠和制度安排有关；GloBE 补足税使用集团在同一法域汇总的超额利润和有效税率。</p></details></div>
+                <div class="quarter-figure" role="img" aria-label="最大规模企业组中超过四分之一的企业有效税率低于15%"><div><i></i><i></i><i></i><i></i></div><span>每一格约代表 1/4</span></div>
+                <a href="https://doi.org/10.1016/j.jpubeco.2026.105721" target="_blank" rel="noopener">《公共经济学期刊》论文 ↗</a>
+              </article>
+            </div>
+            <p class="sim-note">GloBE 按集团在同一法域的汇总结果计算，不能直接套用单家企业 ETR。实务还须考虑 7.5 亿欧元门槛、基于实质的所得排除额与 QDMTT 征收顺序。</p>
+          </section>
+          <section class="panel literature-panel" aria-labelledby="literature-heading">
+            <header class="section-heading"><div><p class="eyebrow">05 / 可选联网</p><h2 id="literature-heading">近两年研究</h2></div><button class="button" type="button" id="refresh">检索 Crossref</button></header>
+            <p class="input-help">检索题名含 profit shifting 或 global minimum tax 的英文期刊论文；离线不影响核心计算。</p>
+            <p id="status" role="status"></p>
+            <ol class="paper-list" id="papers"></ol>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="学习顺序"></nav>
+    </main>
+  </body>
+</html>

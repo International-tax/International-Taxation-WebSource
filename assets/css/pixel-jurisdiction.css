@@ -1,0 +1,278 @@
+.jurisdiction-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 310px;
+  margin: 0 auto;
+}
+
+.jurisdiction-explanation {
+  margin: 16px 0 0;
+  font-size: 14px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.residence-desk {
+  display: grid;
+  gap: 22px;
+}
+
+.residence-desk section > header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.residence-desk h3,
+.residence-years h3,
+.residence-treaty h3,
+.enterprise-archive h3,
+.enterprise-ownership h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.jurisdiction-code {
+  background: #3b3026;
+  color: #fffdf9;
+  font: 700 13px/1 sans-serif;
+  padding: 8px 10px;
+  letter-spacing: .08em;
+}
+
+.residence-cn {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c9bdad;
+}
+
+.residence-cn-record {
+  display: grid;
+  grid-template-columns: 155px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+}
+
+.residence-calendar {
+  margin: 0;
+  min-width: 0;
+}
+
+.residence-calendar .jurisdiction-art {
+  max-width: 160px;
+}
+
+.residence-calendar figcaption {
+  display: grid;
+  gap: 4px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.residence-calendar figcaption strong {
+  font: 700 22px/1.5 var(--font-ui, sans-serif);
+}
+
+.residence-calendar figcaption small {
+  font-size: 13px;
+  color: #655b50;
+}
+
+.residence-domicile {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px 12px;
+  font-size: 14px;
+}
+
+.residence-domicile > p,
+.residence-domicile > b {
+  grid-column: 1 / -1;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.residence-domicile > b {
+  margin-top: 7px;
+  font-size: 17px;
+}
+
+.residence-domicile > strong {
+  font-size: 13px;
+  border-bottom: 3px double currentColor;
+}
+
+.test-met { color: #48634f; }
+.test-failed { color: #784b38; }
+.test-pending { color: #71685d; }
+
+.residence-calendar-caption {
+  margin: 12px 0 0;
+  color: #655b50;
+  font-size: 12px;
+}
+
+.residence-calendar-trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.residence-sum {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 17px;
+  padding: 12px;
+  background: #e8edf0;
+  color: #354f5b;
+  font: 16px/1.6 var(--font-ui, sans-serif);
+}
+
+.residence-sum small { font-size: 12px; }
+
+.residence-gates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-block: 14px;
+}
+
+.residence-gates span {
+  padding: 8px 10px;
+  border: 2px solid currentColor;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.residence-gates.status-priority {
+  color: #71685d;
+  border-left: 2px solid #c9bdad;
+}
+
+.residence-us-outcome { font-size: 14px; line-height: 1.7; }
+.residence-us-outcome > strong { font-size: 17px; }
+.residence-us-outcome > p { margin: 6px 0 0; }
+.residence-years { margin-top: 24px; border-top: 1px solid #c9bdad; padding-top: 20px; }
+.residence-years ol { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; padding: 0; }
+.residence-years li { position: relative; width: 44px; padding: 9px 3px 6px; text-align: center; background: #dfe6d7; border-top: 5px solid #708a70; }
+.residence-years li::after { content: ""; position: absolute; right: 0; bottom: 0; width: 8px; height: 8px; border-top: 8px solid #c9bdad; border-right: 8px solid #f7f4ee; box-sizing: border-box; }
+.residence-years li span { display: block; font: 700 19px/1.4 var(--font-ui, sans-serif); }
+.residence-years li small { font-size: 10px; }
+.residence-years .year-current { background: #48634f; border-color: #2e4433; color: #fffdf9; }
+.residence-years .year-expired { color: #817466; background: #e8e0d4; border-color: #b5a48e; }
+.residence-years .year-expired span { text-decoration: line-through; }
+.residence-years > p { margin: 0; font-size: 13px; line-height: 1.7; }
+.residence-treaty { margin-top: 24px; padding-top: 20px; border-top: 1px solid #c9bdad; }
+.residence-treaty > header { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: baseline; }
+.residence-treaty > header > strong { font-size: 13px; color: #48634f; }
+.residence-tie-path { list-style: none; margin: 18px 0; padding: 0; display: grid; gap: 0; }
+.residence-tie-path li { display: flex; gap: 12px; align-items: flex-start; position: relative; padding: 0 0 17px; }
+.residence-tie-path li:not(:last-child)::after { content: ""; width: 3px; background: #c9bdad; position: absolute; left: 14px; top: 31px; bottom: 0; }
+.residence-tie-path .tie-stop { flex: 0 0 31px; height: 31px; display: grid; place-items: center; background: #ded3c2; font: 700 14px/1 var(--font-ui, sans-serif); clip-path: polygon(7px 0,24px 0,31px 7px,31px 24px,24px 31px,7px 31px,0 24px,0 7px); }
+.residence-tie-path li > div { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex: 1; min-width: 0; padding-block: 5px; font-size: 13px; line-height: 1.5; }
+.residence-tie-path [data-state="resolved"] .tie-stop { background: #48634f; color: #fffdf9; }
+.residence-tie-path [data-state="resolved"] > div { color: #345239; border-bottom: 2px solid #48634f; }
+.residence-tie-path [data-state="visited"] .tie-stop { background: #648998; color: #fffdf9; }
+.residence-tie-path [data-state="skipped"] .tie-stop { background: transparent; outline: 1px solid #c9bdad; }
+.residence-tie-path [data-state="pending"], .residence-tie-path [data-state="standby"], .residence-tie-path [data-state="skipped"] { color: #71685d; }
+.residence-treaty-outcome { margin: 0; font-size: 16px; font-weight: 700; }
+
+.enterprise-archive { display: grid; grid-template-columns: minmax(140px,.8fr) minmax(0,1.5fr); gap: 20px; align-items: start; }
+.enterprise-certificate { padding: 4px 10px 14px; text-align: center; border-right: 1px solid #c9bdad; }
+.enterprise-certificate .jurisdiction-art { max-width: 170px; }
+.enterprise-certificate h3 { font-size: 14px; }
+.enterprise-certificate > strong { display: block; margin-top: 7px; font-size: 18px; }
+.enterprise-certificate p { font-size: 13px; line-height: 1.6; }
+.enterprise-board { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.enterprise-board > h3, .enterprise-board-art { grid-column: 1 / -1; }
+.enterprise-board > h3 { text-align: center; margin-bottom: 8px; }
+.enterprise-board-art { padding-inline: 15px; }
+.enterprise-board-art .jurisdiction-art { max-height: 170px; }
+.enterprise-evidence { border-top: 3px solid #b5a48e; padding: 8px 0; min-width: 0; }
+.enterprise-evidence small { display: block; font-size: 12px; color: #655b50; }
+.enterprise-evidence strong { display: block; margin-top: 5px; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+.enterprise-strategy, .enterprise-management { border-color: #648998; }
+.enterprise-residence-verdict { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 18px; padding: 14px 0; margin-top: 12px; border-block: 1px solid #c9bdad; font-size: 14px; line-height: 1.7; }
+.enterprise-residence-verdict > strong { color: #48634f; }
+.enterprise-ownership { margin-top: 22px; }
+.enterprise-ownership > header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; }
+.enterprise-ownership > header > strong { font: 700 25px/1.4 var(--font-ui, sans-serif); color: #456675; }
+.ownership-tree { display: grid; grid-template-columns: 1fr .7fr 1fr .7fr 1fr; gap: 8px; align-items: center; margin: 20px 0; }
+.ownership-tree > div { min-width: 0; text-align: center; }
+.ownership-tree .jurisdiction-art { height: 76px; width: 100%; }
+.ownership-tree b { display: block; font-size: 12px; line-height: 1.5; }
+.ownership-link { font-size: 12px; line-height: 1.6; }
+.ownership-link > strong { display: block; font-size: 18px; color: #456675; }
+.ownership-link > span { display: block; overflow-wrap: anywhere; }
+.ownership-link i { display: block; font-style: normal; transform: rotate(-90deg); font-size: 27px; color: #708a70; }
+.ownership-scale { margin: 22px 8px 12px; }
+.ownership-rail { position: relative; height: 12px; background: linear-gradient(to right,#adc2c7 0%,#adc2c7 60%,#c4a365 60%,#c4a365 80%,#a66d50 80%,#a66d50 100%); }
+.ownership-rail > i { position: absolute; width: 12px; height: 32px; background: linear-gradient(to right,transparent 0,transparent 4px,#3b3026 4px,#3b3026 8px,transparent 8px); top: -13px; transform: translateX(-50%); }
+.ownership-rail > i::before { content: ""; position: absolute; top: 0; left: 0; width: 12px; height: 5px; background: #3b3026; }
+.ownership-rail > b { position: absolute; top: 0; height: 12px; width: 2px; background: #fffdf9; }
+.ownership-ticks { height: 24px; position: relative; margin-top: 8px; font-size: 11px; font-family: var(--font-ui,sans-serif); }
+.ownership-ticks span { position: absolute; transform: translateX(-50%); }
+.ownership-ticks span:nth-child(1) { left: 0; transform: none; }
+.ownership-ticks span:nth-child(2) { left: 60%; }
+.ownership-ticks span:nth-child(3) { left: 80%; }
+.ownership-ticks span:nth-child(4) { right: 0; transform: none; }
+.ownership-regimes { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; font-size: 12px; line-height: 1.6; }
+.ownership-regimes > span { padding: 9px; border-bottom: 3px solid #c9bdad; }
+.ownership-regimes b { display: block; font: 700 13px/1.6 var(--font-ui,sans-serif); }
+.ownership-regimes [data-active="true"] { background: #e5ebe0; border-color: #48634f; }
+.enterprise-inversion-result { display: block; margin-top: 14px; font-size: 15px; }
+
+.source-world .jurisdiction-art { max-height: 300px; background: #f0ece4; }
+.source-law { margin: 0 0 13px; font-size: 13px; color: #655b50; }
+.source-scene-caption { margin: 13px 0; font-size: 14px; line-height: 1.6; }
+.source-scene-facts { display: flex; flex-wrap: wrap; gap: 10px; }
+.source-scene-fact { display: flex; align-items: flex-start; flex: 1 1 170px; min-width: 0; gap: 10px; padding: 12px; border: 1px solid #c9bdad; }
+.source-scene-fact > span { flex: 0 0 23px; height: 23px; display: grid; place-items: center; background: #817466; color: #fffdf9; font: 700 12px/1 var(--font-ui,sans-serif); }
+.source-scene-fact > div { min-width: 0; }
+.source-scene-fact small { display: block; font-size: 12px; color: #655b50; }
+.source-scene-fact strong { display: block; font-size: 14px; line-height: 1.5; margin-top: 5px; overflow-wrap: anywhere; }
+.source-scene-fact.is-source-factor { border: 2px solid #a66d50; padding: 11px; background: #f3e9de; }
+.source-scene-fact.is-source-factor > span { background: #784b38; }
+.source-allocation { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; border-top: 1px solid #c9bdad; padding-top: 14px; }
+.source-allocation > span { display: flex; align-items: baseline; gap: 10px; flex: 1 1 160px; border-left: 4px solid #708a70; padding-left: 12px; }
+.source-allocation [data-location="cn"] { border-color: #a66d50; }
+.source-allocation [data-location="us"] { border-color: #648998; }
+.source-allocation b { font-size: 14px; }
+.source-allocation strong { font: 700 23px/1.4 var(--font-ui,sans-serif); }
+
+@media (max-width: 850px) {
+  .enterprise-archive { grid-template-columns: minmax(0,1fr); }
+  .enterprise-certificate { display: grid; grid-template-columns: 110px minmax(0,1fr); text-align: left; border-right: 0; border-bottom: 1px solid #c9bdad; gap: 0 15px; align-items: center; padding: 0 0 16px; }
+  .enterprise-certificate > svg { grid-row: span 3; }
+  .enterprise-certificate > strong, .enterprise-certificate > p { margin: 0; }
+}
+
+@media (max-width: 550px) {
+  .residence-cn-record { grid-template-columns: 110px minmax(0,1fr); gap: 12px; }
+  .residence-domicile { grid-template-columns: minmax(0,1fr); font-size: 13px; }
+  .residence-domicile > strong { width: fit-content; }
+  .residence-domicile > b { font-size: 15px; }
+  .residence-calendar-trio { gap: 6px; }
+  .residence-calendar figcaption strong { font-size: 19px; }
+  .residence-calendar figcaption small { display: block; }
+  .residence-gates { display: grid; grid-template-columns: minmax(0,1fr); text-align: center; }
+  .residence-gates > b { font-size: 14px; line-height: 1; }
+  .residence-tie-path li > div { flex-direction: column; gap: 4px; }
+  .ownership-tree { grid-template-columns: minmax(0,1fr); gap: 5px; }
+  .ownership-tree > .ownership-former, .ownership-tree > .ownership-parent, .ownership-tree > .ownership-business { display: flex; align-items: center; gap: 15px; text-align: left; }
+  .ownership-tree .jurisdiction-art { flex: 0 0 90px; width: 90px; height: 70px; }
+  .ownership-tree b { font-size: 14px; }
+  .ownership-link i { transform: none; }
+  .ownership-regimes { grid-template-columns: minmax(0,1fr); }
+  .ownership-regimes > span { display: flex; gap: 12px; }
+  .ownership-regimes b { flex: 0 0 82px; }
+  .source-world .jurisdiction-art { min-height: 135px; }
+}

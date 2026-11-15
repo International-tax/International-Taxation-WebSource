@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Allocate cross-border service compensation by workdays with a linked calendar and source bar." />
+    <title>Cross-border Service Compensation Allocation | International Taxation</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-6.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-transactions.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-transactions.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-6.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-6" data-tool-id="labor">
+    <header class="site-header">
+      <a class="brand" href="index.html">International Taxation <span>WebSource</span></a>
+      <nav class="nav-links" aria-label="Site navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#chapters">Simulator catalog</a>
+        <a class="language-switch" href="../cn/chapter-6.html" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">中文</a>
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">APPLIED CASES / TEXTBOOK CHAPTER 6</p>
+          <h1>Cross-border Service Compensation Allocation</h1>
+        </div>
+        <div class="pixel-scene" data-pixel-scene="labor" data-label-person="Cross-border worker" data-label-place-a="Home country" data-label-place-b="Abroad" data-label-amount="Service fees" role="img" aria-label="A cross-border worker performing services at home and abroad for pay"></div>
+      </section>
+
+      <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
+      <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="scenario">Adjust inputs <span aria-hidden="true">＋</span></button>
+
+      <div class="workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <section id="controlsWork" aria-labelledby="work-controls-title">
+            <p class="eyebrow">ANNUAL SERVICES</p>
+            <h2 id="work-controls-title">Pay and workdays</h2>
+            <div class="field"><label for="salary">Total compensation (CNY)</label><input id="salary" type="number" min="0" step="1000" value="480000" required /></div>
+            <div class="field"><label for="totalDays">Total service days <output id="totalDaysOut" for="totalDays">240 days</output></label><input id="totalDays" type="range" min="1" max="365" step="1" value="240" /></div>
+            <div class="field"><label for="domesticDays">Home-country service days <output id="domesticDaysOut" for="domesticDays">90 days</output></label><input id="domesticDays" type="range" min="0" max="240" step="1" value="90" /></div>
+            <p class="input-help">“Home” follows the sourcing rule being applied. All remaining service days are foreign.</p>
+          </section>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row"><button class="button" type="reset">Reset inputs ↺</button></div>
+        </form>
+
+        <div class="results-column">
+          <section class="panel result-panel" id="workPanel" aria-labelledby="work-title">
+            <div class="section-heading"><div><p class="eyebrow">WORKDAY ALLOCATION</p><h2 id="work-title">Pay follows where the service days occur</h2></div></div>
+            <div class="sim-metrics work-metrics">
+              <div class="sim-metric"><span>Home-source compensation</span><strong id="domesticIncome">—</strong></div>
+              <div class="sim-metric"><span>Foreign-source compensation</span><strong id="foreignIncome">—</strong></div>
+              <div class="sim-metric"><span>Foreign-source share</span><strong id="foreignPct">—</strong></div>
+            </div>
+            <section class="visual-section" aria-labelledby="calendar-title">
+              <div class="section-heading"><h3 id="calendar-title">Workday calendar band</h3><p id="calendar-summary">—</p></div>
+              <div id="calendar-band" class="calendar-band" role="img" aria-label="Home and foreign workday percentages"></div>
+              <div class="calendar-key"><span><i class="domestic-key"></i>Home services</span><span><i class="foreign-key"></i>Foreign services</span></div>
+            </section>
+            <section class="visual-section" aria-labelledby="work-source-title">
+              <div class="section-heading"><h3 id="work-source-title">Compensation source bar</h3><p>Total × local workdays ÷ all workdays</p></div>
+              <div id="work-source-bar" class="work-source-bar" role="img" aria-label="Home and foreign compensation source percentages"><span id="domesticBar" class="domestic-part"></span><span id="foreignBar" class="foreign-part"></span></div>
+              <div id="work-source-labels" class="work-source-labels"></div>
+              <p id="workFormula" class="sim-formula"></p>
+            </section>
+            <p class="sim-note">This step only allocates source. Final taxation also depends on residence, source-country law, treaty short-term employment rules and the residence country’s credit.</p>
+            <p class="chapter-next"><a href="chapter-1.html">Continue with the Jordan credit calculation →</a></p>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="Learning sequence"></nav>
+    </main>
+  </body>
+</html>

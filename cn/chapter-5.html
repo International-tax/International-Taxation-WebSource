@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="用管理联结图和所有权门槛尺探索企业税收居民与第 7874 条税收倒置规则。" />
+    <title>企业居民与税收倒置 | 国际税收教学资源</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-5.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-jurisdiction.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-jurisdiction.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-5.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-5" data-tool-id="enterprise">
+    <header class="site-header">
+      <a class="brand" href="index.html">国际税收 <span>International Taxation</span></a>
+      <nav class="nav-links" aria-label="网站导航">
+        <a href="index.html">首页</a>
+        <a href="index.html#chapters">模拟器目录</a>
+        <a class="language-switch" href="../en/chapter-5.html" lang="en" hreflang="en" aria-label="切换为英文">English</a>
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">判断基础 / 教材第五章</p>
+          <h1>企业居民与税收倒置</h1>
+        </div>
+        <div>
+          <div id="enterprise-scene" class="pixel-scene" data-pixel-scene="enterprise" data-label-company="跨境企业" data-label-place-a="美国" data-label-place-b="中国" role="img" aria-label="企业跨越美国与中国的管理联结"></div>
+        </div>
+      </section>
+
+      <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
+      <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="scenario">调整参数 <span aria-hidden="true">＋</span></button>
+
+      <div class="workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <section id="enterprise-controls" aria-labelledby="enterprise-controls-title">
+            <p class="eyebrow">企业事实</p>
+            <h2 id="enterprise-controls-title">成立与管理</h2>
+            <div class="field">
+              <label for="incorp">注册成立地</label>
+              <select id="incorp">
+                <option value="us">美国</option>
+                <option value="china">中国内地</option>
+                <option value="singapore">新加坡</option>
+                <option value="other">其他国家或地区</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="strategy">战略决策主要地点</label>
+              <select id="strategy">
+                <option value="us">美国</option>
+                <option value="china">中国内地</option>
+                <option value="singapore">新加坡</option>
+                <option value="other">其他国家或地区</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="management">高管日常履职地点</label>
+              <select id="management">
+                <option value="us">美国</option>
+                <option value="china">中国内地</option>
+                <option value="singapore">新加坡</option>
+                <option value="other">其他国家或地区</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="records">主要账簿、印章和档案地点</label>
+              <select id="records">
+                <option value="us">美国</option>
+                <option value="china">中国内地</option>
+                <option value="singapore">新加坡</option>
+                <option value="other">其他国家或地区</option>
+              </select>
+            </div>
+            <label class="check-line"><input id="rubber" type="checkbox" /><span>注册地董事会主要形式批准，重大事项实际由战略决策地决定</span></label>
+
+            <div class="form-divider"></div>
+            <p class="eyebrow">7874 / 简化交易</p>
+            <h2>延续所有权</h2>
+            <label class="check-line"><input id="acquire" type="checkbox" checked /><span>外国母公司取得原美国公司或合伙企业的绝大部分财产</span></label>
+            <div class="field">
+              <label for="ownership">原美国所有者的延续所有权</label>
+              <div class="range-number">
+                <input id="ownership" type="range" min="0" max="100" step="1" value="70" aria-label="延续所有权比例滑块" />
+                <input id="ownershipNumber" type="number" min="0" max="100" step="1" value="70" required aria-label="延续所有权百分比" />
+              </div>
+            </div>
+            <label class="check-line"><input id="substantial" type="checkbox" /><span>集团在新外国母公司所在国达到实质经营活动条件</span></label>
+          </section>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row"><button class="button" type="reset">重置参数 ↺</button></div>
+        </form>
+
+        <div class="results-column">
+          <section class="panel result-panel" id="enterprise-panel" aria-labelledby="enterprise-title">
+            <div class="section-heading"><div><p class="eyebrow">RESIDENCE + INVERSION</p><h2 id="enterprise-title">居民线索与 7874 门槛</h2></div></div>
+            <div class="sim-metrics enterprise-metrics">
+              <div class="sim-metric"><span>美国国内法</span><strong id="usMetric" class="wordy">—</strong></div>
+              <div class="sim-metric"><span>中国国内法</span><strong id="chinaMetric" class="wordy">—</strong></div>
+              <div class="sim-metric"><span>双重居民</span><strong id="dualMetric" class="wordy">—</strong></div>
+              <div class="sim-metric"><span>7874 简化结果</span><strong id="inversionMetric" class="wordy">—</strong></div>
+            </div>
+
+            <section class="visual-section" aria-labelledby="management-title">
+              <div class="section-heading"><h3 id="management-title">管理联结图</h3><p>中国联结仅作审查线索</p></div>
+              <div id="management-map" class="management-map" role="img" aria-label="企业注册地、战略决策、高管履职和档案地点的管理联结图">
+                <div id="incorp-node" class="map-node incorporation"><small>成立</small><strong>美国</strong></div>
+                <div class="map-company" id="company-node"><span>企业</span><strong>居民身份</strong></div>
+                <div id="strategy-node" class="map-node strategy"><small>战略决策</small><strong>美国</strong></div>
+                <div id="management-node" class="map-node management"><small>高管履职</small><strong>美国</strong></div>
+                <div id="records-node" class="map-node records"><small>账簿档案</small><strong>美国</strong></div>
+                <div id="approval-node" class="map-node approval"><small>董事会</small><strong>实质审批</strong></div>
+              </div>
+              <p id="residence-summary" class="visual-summary"></p>
+            </section>
+
+            <section class="visual-section" aria-labelledby="ownership-title">
+              <div class="section-heading"><h3 id="ownership-title">所有权门槛尺</h3><p id="ownership-status">—</p></div>
+              <div id="ownership-ruler" class="ownership-ruler" role="img" aria-label="延续所有权 70%，位于 60% 至不足 80% 区间">
+                <div class="ownership-zones" aria-hidden="true"><span class="zone-low"></span><span class="zone-mid"></span><span class="zone-high"></span></div>
+                <i class="threshold threshold-60" aria-hidden="true"></i><i class="threshold threshold-80" aria-hidden="true"></i>
+                <span id="ownership-pointer" class="ownership-pointer" aria-hidden="true"></span>
+              </div>
+              <div class="ownership-labels"><span>&lt;60%<small>不触发本门槛后果</small></span><span>60%–&lt;80%<small>特别限制</small></span><span>≥80%<small>仍按美国国内公司</small></span></div>
+              <p id="ownership-formula" class="sim-formula"></p>
+              <p id="inversion-detail" class="visual-summary"></p>
+            </section>
+            <p class="sim-note">实际管理机构须对生产经营、人员、账务和财产作实质、全面管理。本图不是法律评分或最终结论；7874 也未展开股份排除、估值和分步交易规则。</p>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="学习顺序"></nav>
+    </main>
+  </body>
+</html>

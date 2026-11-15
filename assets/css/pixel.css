@@ -1,0 +1,52 @@
+.pixel-scene,
+[data-pixel-scene] {
+  min-width: 0;
+  max-width: 100%;
+  color: var(--ink, #3b3026);
+}
+
+.tax-pixel__label {
+  font-family: "LXGW WenKai", "PingFang SC", "Microsoft YaHei", serif;
+  font-weight: 650;
+  letter-spacing: 0;
+  dominant-baseline: alphabetic;
+  user-select: none;
+}
+
+.tax-pixel__avatar {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.learning .chapter-hero.pixel-heading {
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  padding-block: 20px;
+}
+
+.learning .chapter-hero.pixel-heading > div:empty { display: none; }
+
+.learning .pixel-lesson {
+  height: auto;
+  min-height: 0;
+  padding: clamp(14px, 2vw, 24px);
+  line-height: 1.6;
+  overflow: visible;
+  background: var(--paper, #f7f4ee);
+}
+
+.pixel-lesson h2 { margin: 0 0 18px; font-size: 20px; }
+.pixel-note { margin: 14px 0 0; line-height: 1.7; font-size: 14px; overflow-wrap: anywhere; }
+.pixel-note:empty { display: none; }
+#neutrality-method { width: 100%; margin: 8px 0 20px; min-height: 42px; font: inherit; }
+#neutrality-pixels { line-height: 1.6; }
+.results > .pixel-lesson { margin-bottom: 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-lesson,
+  .pixel-lesson * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
