@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Determine Chinese and US individual tax residence on separate tracks, calculate the substantial presence test, and apply the six-year rule and treaty tie-breakers."
+    />
+    <title>China–US Tax Residence | International Taxation</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-4.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-jurisdiction.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-jurisdiction.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-4.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-4" data-tool-id="personal-residence">
+    <header class="site-header">
+      <a class="brand" href="index.html">International Taxation <span>WebSource</span></a>
+      <nav class="nav-links" aria-label="Site navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#chapters">Simulator catalog</a>
+        <a
+          class="language-switch"
+          href="../cn/chapter-4.html"
+          lang="zh-CN"
+          hreflang="zh-CN"
+          aria-label="Switch to Chinese"
+          >中文</a
+        >
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">Assessment foundations / Textbook Chapter 4</p>
+          <h1>China–US tax residence</h1>
+        </div>
+        <div
+          class="pixel-scene"
+          data-pixel-scene="residence"
+          data-label-place-a="China"
+          data-label-place-b="United States"
+          data-label-person="Individual"
+          role="img"
+          aria-label="An individual connected to separate Chinese and US residence determination paths"
+        ></div>
+      </section>
+      <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
+      <button
+        class="parameter-toggle button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="scenario"
+      >
+        Adjust facts <span aria-hidden="true">＋</span>
+      </button>
+      <div class="workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <section class="form-section">
+            <h2>China · Domestic law</h2>
+            <div class="field">
+              <label for="cnDomicile">Domicile in China (habitual residence)</label>
+              <select id="cnDomicile">
+                <option value="no">No domicile</option>
+                <option value="yes">Domicile through household registration, family or economic interests</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cnDays">Days in China this year (full 24 hours)</label>
+              <input id="cnDays" type="number" min="0" max="366" step="1" value="190" required />
+            </div>
+            <div class="field">
+              <label for="cnYears">Prior consecutive years with at least 183 days</label>
+              <input id="cnYears" type="number" min="0" max="15" step="1" value="3" required />
+              <small>Counted from 2019, excluding the current year</small>
+            </div>
+            <label class="check-line">
+              <input id="cnBreak30" type="checkbox" />
+              <span>A single absence of more than 30 days occurred during the consecutive period</span>
+            </label>
+          </section>
+          <section class="form-section">
+            <h2>United States · Domestic law</h2>
+            <div class="field">
+              <label for="usStatus">Citizenship or green card</label>
+              <select id="usStatus">
+                <option value="none">Neither; apply the substantial presence test</option>
+                <option value="greencard">Lawful permanent resident (green card)</option>
+                <option value="citizen">US citizen</option>
+              </select>
+            </div>
+            <div class="field-grid three-days">
+              <div class="field">
+                <label for="usD0">Current year</label>
+                <input id="usD0" type="number" min="0" max="366" step="1" value="140" required />
+              </div>
+              <div class="field">
+                <label for="usD1">Prior year</label>
+                <input id="usD1" type="number" min="0" max="366" step="1" value="120" required />
+              </div>
+              <div class="field">
+                <label for="usD2">Two years prior</label>
+                <input id="usD2" type="number" min="0" max="366" step="1" value="60" required />
+              </div>
+            </div>
+            <small>Enter countable US days after exclusions for exempt individuals</small>
+            <label class="check-line">
+              <input id="usCloser" type="checkbox" />
+              <span>Foreign tax home and closer ties exist, with timely Form 8840 filing</span>
+            </label>
+          </section>
+          <section class="form-section">
+            <h2>Treaty · Tie-breaker facts</h2>
+            <div class="field">
+              <label for="tbHome">Permanent home</label>
+              <select id="tbHome">
+                <option value="both">Available in both countries</option>
+                <option value="cn">China only</option>
+                <option value="us">United States only</option>
+                <option value="neither">Available in neither country</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tbVital">Centre of vital interests</label>
+              <select id="tbVital">
+                <option value="cn">Closer to China</option>
+                <option value="us">Closer to the United States</option>
+                <option value="unclear">Cannot be determined</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tbAbode">Habitual abode</label>
+              <select id="tbAbode">
+                <option value="cn">China</option>
+                <option value="us">United States</option>
+                <option value="both">Both or neither country</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tbNation">Nationality</label>
+              <select id="tbNation">
+                <option value="cn">China</option>
+                <option value="us">United States</option>
+                <option value="other">Third country or stateless</option>
+              </select>
+            </div>
+          </section>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row"><button class="button" type="reset">Reset facts ↺</button></div>
+        </form>
+        <div class="results-column">
+          <section class="panel" aria-labelledby="domestic-heading">
+            <div class="section-heading">
+              <h2 id="domestic-heading">Two domestic-law tracks</h2>
+              <p>Each country decides independently</p>
+            </div>
+            <div class="domestic-grid">
+              <article class="domestic-card china-card">
+                <span class="country-code">CN</span>
+                <strong class="domestic-verdict" id="cnResult">—</strong>
+                <span class="sim-status" id="cnBasis">—</span>
+              </article>
+              <article class="domestic-card us-card">
+                <span class="country-code">US</span>
+                <strong class="domestic-verdict" id="usResult">—</strong>
+                <span class="domestic-basis" id="usBasis">—</span>
+              </article>
+            </div>
+            <div class="dual-banner">
+              <span>Combined status</span><strong id="dualResult">—</strong>
+              <p id="dualNote"></p>
+            </div>
+          </section>
+          <section class="panel" aria-labelledby="china-scope-heading">
+            <div class="section-heading">
+              <h2 id="china-scope-heading">China · Six-year rule without domicile</h2>
+              <p>Changes income scope, not current-year residence</p>
+            </div>
+            <div class="sim-flow scope-flow">
+              <div class="sim-flow-step"><span>Current-year status</span><strong id="sixYearIdentity">—</strong></div>
+              <div class="sim-flow-step"><span>Consecutive years and reset</span><strong id="sixYearCount">—</strong></div>
+              <div class="sim-flow-step"><span>Foreign-source, foreign-paid income</span><strong id="sixYearScope">—</strong></div>
+            </div>
+            <p class="sim-note" id="cnScopeNote"></p>
+          </section>
+          <section class="panel" aria-labelledby="spt-heading">
+            <div class="section-heading">
+              <h2 id="spt-heading">US substantial presence test</h2>
+              <p>31 current-year days + 183 weighted days</p>
+            </div>
+            <p class="sim-formula" id="sptFormula">—</p>
+            <div
+              class="spt-scale"
+              id="sptMeter"
+              role="meter"
+              aria-label="Three-year weighted days"
+              aria-valuemin="0"
+              aria-valuemax="250"
+              aria-valuenow="0"
+            >
+              <span class="spt-current" id="sptCurrentSegment"></span>
+              <span class="spt-prior" id="sptPriorSegment"></span>
+              <span class="spt-earlier" id="sptEarlierSegment"></span>
+              <i id="sptThreshold" title="183-day threshold"></i>
+            </div>
+            <div class="spt-legend">
+              <span><i class="current-key"></i>Current year × 1</span>
+              <span><i class="prior-key"></i>Prior year × 1/3</span>
+              <span><i class="earlier-key"></i>Two years prior × 1/6</span>
+              <span>Scale maximum <strong id="sptScaleMax">250 days</strong></span>
+            </div>
+            <div class="spt-checks">
+              <span class="sim-status" id="spt31">—</span>
+              <span class="sim-status" id="spt183">—</span>
+              <span class="sim-status" id="sptResult">—</span>
+              <span class="sim-status neutral" id="closerStatus">—</span>
+            </div>
+          </section>
+          <section class="panel" aria-labelledby="treaty-heading">
+            <div class="section-heading">
+              <h2 id="treaty-heading">China–US treaty · Dual-resident tie-breaker</h2>
+              <p>Home → vital interests → habitual abode → nationality → MAP</p>
+            </div>
+            <div class="treaty-path" aria-live="polite">
+              <article class="tie-step" id="tieStepHome" data-state="pending">
+                <span>01</span><h3>Permanent home</h3><strong id="tieHomeResult">—</strong>
+              </article>
+              <article class="tie-step" id="tieStepVital" data-state="pending">
+                <span>02</span><h3>Vital interests</h3><strong id="tieVitalResult">—</strong>
+              </article>
+              <article class="tie-step" id="tieStepAbode" data-state="pending">
+                <span>03</span><h3>Habitual abode</h3><strong id="tieAbodeResult">—</strong>
+              </article>
+              <article class="tie-step" id="tieStepNation" data-state="pending">
+                <span>04</span><h3>Nationality</h3><strong id="tieNationResult">—</strong>
+              </article>
+              <article class="tie-step" id="tieStepMap" data-state="pending">
+                <span>05</span><h3>Competent authorities</h3><strong id="tieMapResult">—</strong>
+              </article>
+            </div>
+            <div class="treaty-outcome">
+              <span>Treaty outcome</span><strong id="treatyOutcome">—</strong>
+              <p id="treatyDetail"></p>
+            </div>
+            <p class="special-warning" id="treatyWarning"></p>
+          </section>
+          <p class="learning-note">This teaching model is not a filing determination. First-year elections, dual-status years, state tax and information returns require separate review.</p>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="Learning sequence"></nav>
+    </main>
+  </body>
+</html>

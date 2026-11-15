@@ -21,6 +21,9 @@
 .nav-links {
   flex-wrap: wrap;
 }
+html[lang="zh-CN"] {
+  --font-ui: var(--font-cn);
+}
 html[lang="en"] body {
   font-family: Georgia, "Times New Roman", serif;
 }

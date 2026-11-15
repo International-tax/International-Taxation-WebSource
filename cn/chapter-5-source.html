@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="按三套规则与九类所得探索跨境所得来源，查看联结路径、分配比例和核查要点。" />
+    <title>跨境所得来源判定 | 国际税收教学资源</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-5.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-jurisdiction.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-jurisdiction.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-5-source.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-5 source-page" data-tool-id="income-source">
+    <header class="site-header">
+      <a class="brand" href="index.html">国际税收 <span>International Taxation</span></a>
+      <nav class="nav-links" aria-label="网站导航">
+        <a href="index.html">首页</a>
+        <a href="index.html#chapters">模拟器目录</a>
+        <a class="language-switch" href="../en/chapter-5-source.html" lang="en" hreflang="en" aria-label="切换为英文">English</a>
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">判断基础 / 教材第五章</p>
+          <h1>跨境所得来源判定</h1>
+        </div>
+        <div>
+          <div id="source-scene" class="pixel-scene" data-pixel-scene="source" data-label-person="纳税人" data-label-place-a="中国" data-label-place-b="美国" role="img" aria-label="所得从交易联结因素流向来源地"></div>
+        </div>
+      </section>
+
+      <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
+      <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="scenario">调整参数 <span aria-hidden="true">＋</span></button>
+
+      <div class="workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <section id="source-controls" aria-labelledby="source-controls-title">
+            <p class="eyebrow">交易事实</p>
+            <h2 id="source-controls-title">先分类，再找联结</h2>
+            <div class="field">
+              <label for="rules">规则体系</label>
+              <select id="rules">
+                <option value="ce">中国企业所得税</option>
+                <option value="ci">中国个人所得税</option>
+                <option value="us">美国联邦所得税</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="type">所得类型</label>
+              <select id="type">
+                <option value="service">劳务或服务所得</option>
+                <option value="interest">利息</option>
+                <option value="dividend">股息、红利</option>
+                <option value="rent">有形财产租金</option>
+                <option value="royalty">特许权使用费</option>
+                <option value="real">不动产转让</option>
+                <option value="equity">股权或一般动产转让</option>
+                <option value="purchased">购入存货销售</option>
+                <option value="produced">自产存货销售</option>
+              </select>
+            </div>
+            <div id="activityField" class="field source-field">
+              <label for="activity">服务实际履行地</label>
+              <select id="activity"><option value="cn">中国</option><option value="us">美国</option><option value="other">其他国家</option><option value="mixed">中国与美国两地</option></select>
+            </div>
+            <div id="payerField" class="field source-field">
+              <label for="payer">付款、负担主体所在地</label>
+              <select id="payer"><option value="cn">中国</option><option value="us" selected>美国</option><option value="other">其他国家</option></select>
+            </div>
+            <div id="useField" class="field source-field">
+              <label for="use">财产或权利使用地</label>
+              <select id="use"><option value="cn">中国</option><option value="us" selected>美国</option><option value="other">其他国家</option></select>
+            </div>
+            <div id="propertyField" class="field source-field">
+              <label for="property">不动产所在地</label>
+              <select id="property"><option value="cn">中国</option><option value="us" selected>美国</option><option value="other">其他国家</option></select>
+            </div>
+            <div id="companyField" class="field source-field">
+              <label for="company">分配企业或被投资企业所在地</label>
+              <select id="company"><option value="cn">中国</option><option value="us" selected>美国</option><option value="other">其他国家</option></select>
+            </div>
+            <div id="sellerField" class="field source-field">
+              <label for="seller">转让人居民身份</label>
+              <select id="seller"><option value="cn">中国居民</option><option value="us">美国居民</option><option value="other">其他国家居民</option></select>
+            </div>
+            <div id="saleField" class="field source-field">
+              <label for="sale">销售或交易活动发生地</label>
+              <select id="sale"><option value="cn">中国</option><option value="us" selected>美国</option><option value="other">其他国家</option></select>
+            </div>
+            <div id="prodField" class="field source-field">
+              <label for="prod">美国境内生产比例 <output id="prodVal" for="prod">0%</output></label>
+              <input id="prod" type="range" min="0" max="100" step="1" value="0" />
+            </div>
+            <div id="mixField" class="field source-field">
+              <label for="mix">两地服务中在中国完成的比例 <output id="mixVal" for="mix">50%</output></label>
+              <input id="mix" type="range" min="0" max="100" step="1" value="50" />
+            </div>
+            <div class="scenario-buttons" aria-label="快捷情景">
+              <button class="button" type="button" id="jordan">乔丹情形</button>
+              <button class="button" type="button" id="hangzhou">杭州咨询</button>
+            </div>
+          </section>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row"><button class="button" type="reset">重置参数 ↺</button></div>
+        </form>
+
+        <div class="results-column">
+          <section class="panel result-panel" id="source-panel" aria-labelledby="source-title">
+            <div class="section-heading"><div><p class="eyebrow">SOURCE OF INCOME</p><h2 id="source-title">从所得分类到来源地</h2></div><p>付款账户不单独决定来源</p></div>
+            <div class="sim-metrics source-metrics">
+              <div class="sim-metric"><span>主要来源判定</span><strong id="source-result" class="wordy">—</strong></div>
+              <div class="sim-metric"><span>当前联结因素</span><strong id="source-connection" class="wordy">—</strong></div>
+            </div>
+            <section class="visual-section" aria-labelledby="path-title">
+              <div class="section-heading"><h3 id="path-title">联结因素路径</h3><p id="path-rule">按所选规则体系</p></div>
+              <div class="source-path">
+                <div class="source-step"><small>01 / 分类</small><strong id="path-type">劳务</strong></div>
+                <span aria-hidden="true">→</span>
+                <div class="source-step"><small>02 / 事实</small><strong id="path-fact">履行地</strong></div>
+                <span aria-hidden="true">→</span>
+                <div class="source-step result"><small>03 / 来源</small><strong id="path-source">中国</strong></div>
+              </div>
+              <p id="rule-text" class="visual-summary"></p>
+            </section>
+            <section class="visual-section" aria-labelledby="share-title">
+              <div class="section-heading"><h3 id="share-title">来源比例条</h3><p>单一来源显示 100%</p></div>
+              <div id="source-bar" class="source-bar" role="img" aria-label="来源比例"></div>
+              <div id="source-labels" class="source-labels"></div>
+            </section>
+            <details class="number-details"><summary>查看核查要点</summary><ul id="checks" class="result-list"></ul></details>
+            <p class="sim-note">展示常见一般规则。不动产公司股权、固定营业场所、证券组合利息、混合合同与协定条款可能改变后续分析。</p>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="学习顺序"></nav>
+    </main>
+  </body>
+</html>

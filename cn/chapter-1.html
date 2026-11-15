@@ -5,26 +5,32 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="通过动态资金流和分步计算，比较国际双重征税的三种处理方式。"
+      content="比较乔丹咨询费在不予减除、扣除和抵免下的收入去向，并调整境外来源比例。"
     />
-    <title>乔丹咨询费模拟器 | 国际税收</title>
+    <title>咨询费税负对比 | 国际税收</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/learning.css" />
     <link rel="stylesheet" href="../assets/css/chapter-1.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-investment.css" />
     <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-investment.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
     <script defer src="./chapter-1.js"></script>
     <script defer src="../assets/js/learning.js"></script>
     <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
   </head>
-  <body class="learning chapter-1">
+  <body class="learning chapter-1 simulator-page" data-tool-id="jordan">
     <header class="site-header">
       <a class="brand" href="./index.html"
         >国际税收 <span>International Taxation</span></a
       >
       <nav class="nav-links" aria-label="网站导航">
         <a href="./index.html">课程首页</a
-        ><a href="./chapter-1.html" aria-current="page">第一章</a
-        ><a href="./chapter-2.html">第二章</a
+        ><a href="./index.html#chapters">模拟器目录</a
         ><a
           class="language-switch"
           href="../en/chapter-1.html"
@@ -37,10 +43,21 @@
     </header>
     <main class="page-wrap">
       <section class="chapter-hero">
-        <p class="eyebrow">CHAPTER 01 / 国际税收的概念</p>
-        <h1>一笔咨询费，看懂三种税收处理。</h1>
-        <p>沿着资金流，比较不予减除、税收扣除与外国税收抵免。</p>
+        <div>
+          <p class="eyebrow">基础计算 / 教材第一章</p>
+          <h1>咨询费税负对比</h1>
+        </div>
+        <div>
+          <div class="pixel-scene" data-pixel-scene="consulting" data-label-person="乔丹" data-label-company="安哥拉客户" data-label-place-a="纽约" data-label-place-b="安哥拉" data-label-left="咨询服务" data-label-right="咨询费" data-label-amount="咨询费" role="img" aria-label="乔丹在纽约提供咨询服务，安哥拉客户支付咨询费"></div>
+        </div>
       </section>
+      <nav class="tool-links" aria-label="本章工具">
+        <a href="chapter-1.html" aria-current="page">咨询费税负</a>
+        <a href="chapter-1-profit.html">利润转移</a>
+        <a href="chapter-1-cases.html">判例练习</a>
+      </nav>
+      <p class="chapter-context"><a href="chapter-3.html#neutrality">免税法与资本中性 →</a></p>
+      <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
       <button
         class="parameter-toggle button"
         type="button"
@@ -101,12 +118,26 @@
           </div>
           <div class="rate-presets" role="group" aria-label="快速设置安哥拉税率">
             <span>试试</span>
+            <button type="button" data-rate="20" aria-pressed="false">20%</button>
             <button type="button" data-rate="30" aria-pressed="false">30%</button>
             <button type="button" data-rate="50" aria-pressed="true">50%</button>
             <button type="button" data-rate="70" aria-pressed="false">70%</button>
           </div>
+          <div class="field">
+            <label class="range-label" for="foreign-share"
+              ><span>境外来源比例</span
+              ><output id="foreign-share-output" for="foreign-share">100%</output></label
+            ><input
+              id="foreign-share"
+              type="range"
+              min="0"
+              max="100"
+              value="100"
+              step="1"
+            />
+          </div>
           <fieldset class="field">
-            <legend>所得来源假设</legend>
+            <legend>来源比例预设</legend>
             <div class="scenario-grid">
               <label class="scenario"
                 ><input
@@ -115,13 +146,13 @@
                   value="comparison"
                   checked
                 /><span
-                  ><strong>境外来源 · 教学比较</strong
-                  ><small>假设境外来源占比 100%</small></span
+                  ><strong>教学比较</strong
+                  ><small>预设：境外来源比例 100%</small></span
                 ></label
               ><label class="scenario"
                 ><input type="radio" name="mode" value="jordan" /><span
-                  ><strong>美国来源 · 乔丹案例</strong
-                  ><small>满足简化假设时，限额为 $0</small></span
+                  ><strong>乔丹案例</strong
+                  ><small>美国来源预设 · 设为 0%</small></span
                 ></label
               >
             </div>
@@ -132,7 +163,7 @@
           <header class="results-heading">
             <div>
               <p class="eyebrow">02 / 图像化计算</p>
-              <h2 id="results-heading">收入最后流向哪里？</h2>
+              <h2 id="results-heading">收入分配为两国税款与税后所得</h2>
             </div>
             <p id="mode-note" class="mode-badge"></p>
           </header>
@@ -153,7 +184,6 @@
           <section class="worked-example" aria-labelledby="worked-heading">
             <div class="process-heading">
               <div>
-                <p>选择一种方式</p>
                 <h3 id="worked-heading">跟着资金流算一遍</h3>
               </div>
               <div class="method-tabs" role="group" aria-label="选择计算方式">
@@ -251,6 +281,7 @@
           </details>
         </section>
       </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="学习顺序"></nav>
     </main>
   </body>
 </html>

@@ -76,15 +76,9 @@
   text-align: center;
 }
 .chapter-2 .relation-arrow {
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 27px;
   line-height: 1.1;
-}
-.chapter-2 .case-caption {
-  margin: 14px 0 0;
-  color: var(--muted);
-  font-size: 11px;
-  text-align: center;
 }
 .chapter-2 .chapter-layout.simulator {
   display: grid;
@@ -140,7 +134,7 @@
   border-radius: 7px;
   background: #fffefa;
   color: var(--ink);
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 12px !important;
   font-variant-numeric: tabular-nums;
 }
@@ -263,7 +257,7 @@
 }
 .chapter-2 .result-card strong {
   display: block;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 24px;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
@@ -296,7 +290,7 @@
   font-size: 11px;
 }
 .chapter-2 .allocation-row > strong {
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
   text-align: right;
@@ -354,7 +348,7 @@
 }
 .chapter-2 .allocation-formula {
   margin: 12px 0 0;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 17px;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
@@ -399,7 +393,7 @@
   border-radius: 50%;
   background: #eee4d7;
   color: #96633f;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 10px;
 }
 .chapter-2 .condition.pass .condition-icon {
@@ -461,7 +455,7 @@
   border: 1px solid #d2c3b2;
   border-radius: 50%;
   color: #8b6a4e;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 9px;
 }
 .chapter-2 .pathway-header h3 {
@@ -520,7 +514,7 @@
 }
 .chapter-2 .meter-labels strong {
   color: #6b513d;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 11px;
   font-variant-numeric: tabular-nums;
 }
@@ -582,7 +576,7 @@
 }
 .chapter-2 .route-arrow {
   color: #a18e7b;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 13px;
   font-style: normal;
 }
@@ -606,7 +600,7 @@
 }
 .chapter-2 .number-details summary::after {
   content: "+";
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 16px;
 }
 .chapter-2 .number-details[open] summary {
@@ -695,9 +689,6 @@
   }
   .chapter-2 .relation-link > span:last-child {
     display: none;
-  }
-  .chapter-2 .case-caption {
-    margin-top: 10px;
   }
   .chapter-2 .analysis-column .result-section {
     padding: 20px 17px;

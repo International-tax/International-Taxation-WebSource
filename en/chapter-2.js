@@ -21,6 +21,7 @@
   const money = (value) => `¥${number.format(value)}`;
 
   function clearResults() {
+    TaxPixel.clear("remote");
     [
       "workday-bar",
       "allocation-formula",
@@ -128,9 +129,12 @@
     ]);
     const activity = byId("activity").value;
     const contract = byId("contract").checked || activity === "sales";
-    const personal = byId("personalReason").checked;
-    const business = byId("businessReason").checked;
+    const reason = byId("reason").value;
+    const personal = reason === "personal";
+    const cost = reason === "cost";
+    const business = reason === "business";
     const office = byId("office").checked;
+    TaxPixel.update("remote", { days, workdays, salary, totalwork, localSalary, employer, borne, exception, remote, months, contract, reason, office, activity });
     const activityLabel = {
       aux: "Auxiliary activities",
       core: "Core business",
@@ -141,7 +145,7 @@
         <header class="pathway-header"><span class="path-index">01</span><div><h3>Home office</h3><p>Fixed-place-of-business path</p></div><span class="path-tag ${remote >= 50 ? "review" : "usually-no-place"}">${remote >= 50 ? "Examine further" : "Usually not a place of business"}</span></header>
         <div class="use-meter" aria-label="Work at home: ${remote}%; 50% observation point"><span style="width:${remote}%"></span><i aria-hidden="true"></i></div>
         <div class="meter-labels"><strong>Work at home ${remote}%</strong><span>50% observation point</span></div>
-        <div class="fact-chips"><span>${months} months</span><span class="${business ? "signal" : ""}">${business ? "Business reason present" : "No business reason selected"}</span><span>${personal ? "Personal reasons present" : "No personal reasons selected"}</span><span class="${office ? "signal" : ""}">${office ? "No available office in A" : "No office closure indicated"}</span></div>
+        <div class="fact-chips"><span>${months} months</span><span class="${business ? "signal" : ""}">${business ? "Business reason present" : cost ? "Cost savings only" : "Personal or family reasons"}</span><span class="${office ? "signal" : ""}">${office ? "No available office in A" : "No office closure indicated"}</span></div>
         <p class="path-status">${remote >= 50 ? "Reaching 50% does not automatically create a PE; examine continuity, business reasons, and office arrangements." : "Below 50%, the home usually is not a place of business; review the complete facts nevertheless."}</p>
       </article>
       <article class="pathway contract-pathway">
@@ -151,7 +155,7 @@
       </article>`;
     list("enterprise-results", [
       `Work at home accounts for ${remote}% over ${months} months. ${remote < 50 ? "The share is below 50%, so the home usually is not a place of business; review the complete facts nevertheless." : "The share reaches 50%, which does not automatically create a PE. Examine continuity of use and the company’s business reasons."}`,
-      `${personal ? "The employee has personal or family reasons. " : "No personal or family reasons selected. "}${business ? "The company also has a business reason to use the location. " : "No business reason to use the location selected. "}${office ? "The company no longer provides an available office in Country A." : "The inputs do not indicate that the company has stopped providing an office."}`,
+      `${personal ? "The location is chosen mainly for the employee’s personal or family reasons. " : cost ? "Saving office or labor costs alone does not mean the business must operate in Country B. " : "The business needs Country B for local clients, suppliers or resources. "}${office ? "The company no longer provides an available office in Country A." : "The inputs do not indicate that the company has stopped providing an office."}`,
       activity === "aux"
         ? "Internal support or preparatory / auxiliary activities selected. Assess the actual functions."
         : activity === "core"
@@ -163,8 +167,57 @@
       "If a permanent establishment exists, assess the functions, assets, risks and profits attributable to it.",
     ]);
   }
-  form.addEventListener("input", update);
+  const scenarios = {
+    short: {
+      numbers: { days: 90, workdays: 60, salary: 600000, totalwork: 240, remote: 35, months: 3 },
+      checks: { homeResident: true, hostEmployer: false, borne: false, office: false, contract: false },
+      activity: "aux",
+      reason: "personal",
+    },
+    long: {
+      numbers: { days: 210, workdays: 190, salary: 600000, totalwork: 240, remote: 75, months: 10 },
+      checks: { homeResident: true, hostEmployer: false, borne: false, office: false, contract: false },
+      activity: "core",
+      reason: "personal",
+    },
+    sales: {
+      numbers: { days: 240, workdays: 210, salary: 600000, totalwork: 240, remote: 85, months: 14 },
+      checks: { homeResident: true, hostEmployer: false, borne: true, office: true, contract: true },
+      activity: "sales",
+      reason: "business",
+    },
+  };
+  function markScenario(name) {
+    document.querySelectorAll("[data-scenario]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.scenario === name));
+    });
+  }
+  function applyScenario(name) {
+    const scenario = scenarios[name];
+    Object.entries(scenario.numbers).forEach(([id, value]) => {
+      byId(id).value = value;
+    });
+    Object.entries(scenario.checks).forEach(([id, value]) => {
+      byId(id).checked = value;
+    });
+    byId("activity").value = scenario.activity;
+    byId("reason").value = scenario.reason;
+    markScenario(name);
+    update();
+  }
+  document.querySelectorAll("[data-scenario]").forEach((button) => {
+    button.addEventListener("click", () => applyScenario(button.dataset.scenario));
+  });
+  form.addEventListener("input", () => {
+    markScenario(null);
+    update();
+  });
   form.addEventListener("change", update);
-  form.addEventListener("reset", () => setTimeout(update, 0));
+  form.addEventListener("reset", () =>
+    setTimeout(() => {
+      markScenario("long");
+      update();
+    }, 0),
+  );
   update();
 })();

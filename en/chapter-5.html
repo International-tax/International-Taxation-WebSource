@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore corporate residence and section 7874 tax inversions through management maps and ownership thresholds." />
+    <title>Corporate Residence and Tax Inversions | International Taxation</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-5.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-jurisdiction.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-jurisdiction.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-5.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-5" data-tool-id="enterprise">
+    <header class="site-header">
+      <a class="brand" href="index.html">International Taxation <span>WebSource</span></a>
+      <nav class="nav-links" aria-label="Site navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#chapters">Simulator catalog</a>
+        <a class="language-switch" href="../cn/chapter-5.html" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">中文</a>
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">CONNECTING FACTORS / TEXTBOOK CHAPTER 5</p>
+          <h1>Corporate Residence and Tax Inversions</h1>
+        </div>
+        <div>
+          <div id="enterprise-scene" class="pixel-scene" data-pixel-scene="enterprise" data-label-company="Global company" data-label-place-a="United States" data-label-place-b="China" role="img" aria-label="Management links between a company in the United States and China"></div>
+        </div>
+      </section>
+
+      <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
+      <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="scenario">Adjust inputs <span aria-hidden="true">＋</span></button>
+
+      <div class="workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <section id="enterprise-controls" aria-labelledby="enterprise-controls-title">
+            <p class="eyebrow">COMPANY FACTS</p>
+            <h2 id="enterprise-controls-title">Formation and management</h2>
+            <div class="field">
+              <label for="incorp">Place of incorporation</label>
+              <select id="incorp"><option value="us">United States</option><option value="china">Mainland China</option><option value="singapore">Singapore</option><option value="other">Another country or region</option></select>
+            </div>
+            <div class="field">
+              <label for="strategy">Main strategic decision location</label>
+              <select id="strategy"><option value="us">United States</option><option value="china">Mainland China</option><option value="singapore">Singapore</option><option value="other">Another country or region</option></select>
+            </div>
+            <div class="field">
+              <label for="management">Where executives perform daily duties</label>
+              <select id="management"><option value="us">United States</option><option value="china">Mainland China</option><option value="singapore">Singapore</option><option value="other">Another country or region</option></select>
+            </div>
+            <div class="field">
+              <label for="records">Main books, seals and records</label>
+              <select id="records"><option value="us">United States</option><option value="china">Mainland China</option><option value="singapore">Singapore</option><option value="other">Another country or region</option></select>
+            </div>
+            <label class="check-line"><input id="rubber" type="checkbox" /><span>The local board mainly gives formal approval; strategic decisions are made elsewhere</span></label>
+
+            <div class="form-divider"></div>
+            <p class="eyebrow">SECTION 7874 / SIMPLIFIED DEAL</p>
+            <h2>Continuing ownership</h2>
+            <label class="check-line"><input id="acquire" type="checkbox" checked /><span>A foreign parent acquires substantially all property of the former US company or partnership</span></label>
+            <div class="field">
+              <label for="ownership">Former US owners’ continuing ownership</label>
+              <div class="range-number">
+                <input id="ownership" type="range" min="0" max="100" step="1" value="70" aria-label="Continuing ownership slider" />
+                <input id="ownershipNumber" type="number" min="0" max="100" step="1" value="70" required aria-label="Continuing ownership percentage" />
+              </div>
+            </div>
+            <label class="check-line"><input id="substantial" type="checkbox" /><span>The group meets the substantial business activities test in the new foreign parent’s country</span></label>
+          </section>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row"><button class="button" type="reset">Reset inputs ↺</button></div>
+        </form>
+
+        <div class="results-column">
+          <section class="panel result-panel" id="enterprise-panel" aria-labelledby="enterprise-title">
+            <div class="section-heading"><div><p class="eyebrow">RESIDENCE + INVERSION</p><h2 id="enterprise-title">Residence indicators and section 7874</h2></div></div>
+            <div class="sim-metrics enterprise-metrics">
+              <div class="sim-metric"><span>US domestic law</span><strong id="usMetric" class="wordy">—</strong></div>
+              <div class="sim-metric"><span>China domestic law</span><strong id="chinaMetric" class="wordy">—</strong></div>
+              <div class="sim-metric"><span>Dual residence</span><strong id="dualMetric" class="wordy">—</strong></div>
+              <div class="sim-metric"><span>Simplified 7874 result</span><strong id="inversionMetric" class="wordy">—</strong></div>
+            </div>
+            <section class="visual-section" aria-labelledby="management-title">
+              <div class="section-heading"><h3 id="management-title">Management connection map</h3><p>China links are review indicators</p></div>
+              <div id="management-map" class="management-map" role="img" aria-label="Map of incorporation, strategy, executive and records connections">
+                <div id="incorp-node" class="map-node incorporation"><small>Formation</small><strong>United States</strong></div>
+                <div class="map-company" id="company-node"><span>Company</span><strong>Residence</strong></div>
+                <div id="strategy-node" class="map-node strategy"><small>Strategy</small><strong>United States</strong></div>
+                <div id="management-node" class="map-node management"><small>Executives</small><strong>United States</strong></div>
+                <div id="records-node" class="map-node records"><small>Books and records</small><strong>United States</strong></div>
+                <div id="approval-node" class="map-node approval"><small>Board</small><strong>Substantive approval</strong></div>
+              </div>
+              <p id="residence-summary" class="visual-summary"></p>
+            </section>
+            <section class="visual-section" aria-labelledby="ownership-title">
+              <div class="section-heading"><h3 id="ownership-title">Ownership threshold ruler</h3><p id="ownership-status">—</p></div>
+              <div id="ownership-ruler" class="ownership-ruler" role="img" aria-label="Continuing ownership is 70%, in the 60% to under 80% band">
+                <div class="ownership-zones" aria-hidden="true"><span class="zone-low"></span><span class="zone-mid"></span><span class="zone-high"></span></div>
+                <i class="threshold threshold-60" aria-hidden="true"></i><i class="threshold threshold-80" aria-hidden="true"></i><span id="ownership-pointer" class="ownership-pointer" aria-hidden="true"></span>
+              </div>
+              <div class="ownership-labels"><span>&lt;60%<small>Below these consequences</small></span><span>60%–&lt;80%<small>Special limits</small></span><span>≥80%<small>Treated as US domestic</small></span></div>
+              <p id="ownership-formula" class="sim-formula"></p><p id="inversion-detail" class="visual-summary"></p>
+            </section>
+            <p class="sim-note">Effective management requires substantial, overall management of operations, personnel, accounts and property. This map is not a legal score or conclusion; stock exclusions, valuation and step transactions are outside the simplified 7874 model.</p>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="Learning sequence"></nav>
+    </main>
+  </body>
+</html>

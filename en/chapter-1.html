@@ -5,26 +5,32 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="Compare three treatments of international double taxation through an interactive money flow and guided calculations."
+      content="Compare Jordan’s consulting fee under no relief, deduction, and credit, with an adjustable foreign-source share."
     />
-    <title>Jordan’s Consulting Fee | International Taxation</title>
+    <title>Consulting Fee Tax Comparison | International Taxation</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/learning.css" />
     <link rel="stylesheet" href="../assets/css/chapter-1.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-investment.css" />
     <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-investment.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
     <script defer src="./chapter-1.js"></script>
     <script defer src="../assets/js/learning.js"></script>
     <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
   </head>
-  <body class="learning chapter-1">
+  <body class="learning chapter-1 simulator-page" data-tool-id="jordan">
     <header class="site-header">
       <a class="brand" href="./index.html"
         >International Taxation <span>WebSource</span></a
       >
       <nav class="nav-links" aria-label="Site navigation">
         <a href="./index.html">Home</a
-        ><a href="./chapter-1.html" aria-current="page">Chapter 1</a
-        ><a href="./chapter-2.html">Chapter 2</a
+        ><a href="./index.html#chapters">Simulator catalog</a
         ><a
           class="language-switch"
           href="../cn/chapter-1.html"
@@ -37,10 +43,21 @@
     </header>
     <main class="page-wrap">
       <section class="chapter-hero">
-        <p class="eyebrow">CHAPTER 01 / Concepts of international taxation</p>
-        <h1>One consulting fee, three tax treatments.</h1>
-        <p>Follow the money to compare no relief, a tax deduction, and a foreign tax credit.</p>
+        <div>
+          <p class="eyebrow">CORE CALCULATIONS / TEXTBOOK CHAPTER 1</p>
+          <h1>Consulting fee tax comparison</h1>
+        </div>
+        <div>
+          <div class="pixel-scene" data-pixel-scene="consulting" data-label-person="Jordan" data-label-company="Angolan client" data-label-place-a="New York" data-label-place-b="Angola" data-label-left="Services" data-label-right="Consulting fee" data-label-amount="Fee" role="img" aria-label="Jordan works in New York for a client paying a consulting fee from Angola"></div>
+        </div>
       </section>
+      <nav class="tool-links" aria-label="Tools in this chapter">
+        <a href="chapter-1.html" aria-current="page">Consulting fee</a>
+        <a href="chapter-1-profit.html">Profit shifting</a>
+        <a href="chapter-1-cases.html">Treaty cases</a>
+      </nav>
+      <p class="chapter-context"><a href="chapter-3.html#neutrality">Exemption and capital neutrality →</a></p>
+      <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
       <button
         class="parameter-toggle button"
         type="button"
@@ -101,12 +118,26 @@
           </div>
           <div class="rate-presets" role="group" aria-label="Set the Angolan tax rate quickly">
             <span>Try</span>
+            <button type="button" data-rate="20" aria-pressed="false">20%</button>
             <button type="button" data-rate="30" aria-pressed="false">30%</button>
             <button type="button" data-rate="50" aria-pressed="true">50%</button>
             <button type="button" data-rate="70" aria-pressed="false">70%</button>
           </div>
+          <div class="field">
+            <label class="range-label" for="foreign-share"
+              ><span>Foreign-source share</span
+              ><output id="foreign-share-output" for="foreign-share">100%</output></label
+            ><input
+              id="foreign-share"
+              type="range"
+              min="0"
+              max="100"
+              value="100"
+              step="1"
+            />
+          </div>
           <fieldset class="field">
-            <legend>Source-of-income assumption</legend>
+            <legend>Foreign-source share presets</legend>
             <div class="scenario-grid">
               <label class="scenario"
                 ><input
@@ -115,13 +146,13 @@
                   value="comparison"
                   checked
                 /><span
-                  ><strong>Foreign source · Comparison</strong
-                  ><small>Assumes a 100% foreign-source share</small></span
+                  ><strong>Teaching comparison</strong
+                  ><small>Preset: 100% foreign-source share</small></span
                 ></label
               ><label class="scenario"
                 ><input type="radio" name="mode" value="jordan" /><span
-                  ><strong>US source · Jordan’s case</strong
-                  ><small>$0 only under the simplified assumptions</small></span
+                  ><strong>Jordan’s case</strong
+                  ><small>US-source preset · Set to 0%</small></span
                 ></label
               >
             </div>
@@ -132,14 +163,14 @@
           <header class="results-heading">
             <div>
               <p class="eyebrow">02 / Visual calculation</p>
-              <h2 id="results-heading">Where does the income go?</h2>
+              <h2 id="results-heading">Income is divided into taxes and after-tax earnings</h2>
             </div>
             <p id="mode-note" class="mode-badge"></p>
           </header>
           <aside id="assumption-panel" class="assumption-panel" aria-label="Key assumptions for the current mode"></aside>
           <section class="comparison" aria-labelledby="comparison-heading">
             <div class="comparison-heading">
-              <h3 id="comparison-heading">Compare the three methods</h3>
+              <h3 id="comparison-heading">Compare three methods</h3>
               <p id="comparison-insight" class="comparison-insight" aria-live="polite"></p>
             </div>
             <div class="bar-legend" aria-label="Stacked bar legend">
@@ -153,7 +184,6 @@
           <section class="worked-example" aria-labelledby="worked-heading">
             <div class="process-heading">
               <div>
-                <p>Choose a method</p>
                 <h3 id="worked-heading">Follow the money, step by step</h3>
               </div>
               <div class="method-tabs" role="group" aria-label="Choose a calculation method">
@@ -251,6 +281,7 @@
           </details>
         </section>
       </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="Learning sequence"></nav>
     </main>
   </body>
 </html>

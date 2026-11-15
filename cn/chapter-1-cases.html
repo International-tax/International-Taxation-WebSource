@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="通过 Crown Forest、Prévost Car 与 Thiel 三案，练习国内法、税收协定条件与裁判结果的查法顺序。" />
+    <title>协定判例练习 | 国际税收</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-1-cases.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-transactions.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-transactions.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="./chapter-1-cases.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-1 chapter-1-cases" data-tool-id="treaty-cases">
+    <header class="site-header">
+      <a class="brand" href="./index.html">国际税收 <span>International Taxation</span></a>
+      <nav class="nav-links" aria-label="网站导航">
+        <a href="./index.html">首页</a>
+        <a href="./index.html#chapters">模拟器目录</a>
+        <a class="language-switch" href="../en/chapter-1-cases.html" lang="en" hreflang="en" aria-label="切换为英文">English</a>
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div><p class="eyebrow">进阶专题 / 教材第一章</p><h1>协定判例练习</h1></div>
+        <div class="pixel-scene" data-pixel-scene="cases" data-label-person="纳税人" data-label-company="法院" data-label-place-a="来源国" data-label-place-b="居民国" role="img" aria-label="纳税人与法院讨论跨境税收协定的像素场景"></div>
+      </section>
+      <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
+      <div class="case-picker" role="group" aria-label="选择判例">
+        <button type="button" data-case="0" aria-pressed="true"><span>01</span><strong>Crown Forest</strong><small>租金 · 协定居民</small></button>
+        <button type="button" data-case="1" aria-pressed="false"><span>02</span><strong>Prévost Car</strong><small>股息 · 受益所有人</small></button>
+        <button type="button" data-case="2" aria-pressed="false"><span>03</span><strong>Thiel</strong><small>营业利润 · 无常设机构</small></button>
+      </div>
+      <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="parameter-controls">调整金额 <span aria-hidden="true">＋</span></button>
+      <div class="workspace cases-workspace">
+        <aside class="panel parameter-panel" id="parameter-controls" aria-labelledby="inputs-heading">
+          <p class="eyebrow">01 / 金额验算</p><h2 id="inputs-heading">国内法与协定对照</h2>
+          <div id="amount-wrap" class="field">
+            <label for="amount">模拟支付金额（加元）</label>
+            <input id="amount" type="number" min="0" max="1000000000" step="0.01" value="10000" inputmode="decimal" aria-describedby="amount-note amount-error" required />
+            <small id="amount-note">0 至 10 亿，最多两位小数。</small>
+            <p class="error" id="amount-error" aria-live="polite"></p>
+          </div>
+          <p class="input-help" id="no-amount-note" hidden>Thiel 案比较征税权路径，不硬算金额。</p>
+          <p class="input-help" id="rate-guide">25% 国内法基准 · 假设已扣 10%</p>
+          <div class="case-metrics" id="calculation-panel" aria-live="polite">
+            <div><span id="metric-a-label">25% 应扣</span><strong id="metric-a">C$2,500.00</strong></div>
+            <div><span id="metric-b-label">假设已扣 10%</span><strong id="metric-b">C$1,000.00</strong></div>
+            <div class="highlight"><span id="metric-c-label">应补差额</span><strong id="metric-c">C$1,500.00</strong></div>
+          </div>
+          <button class="button" type="button" id="reset">重置本例 ↺</button>
+        </aside>
+        <div class="results-column">
+          <section class="panel case-file" aria-label="判例场景">
+            <article class="case-story" data-case-panel="0">
+              <header><p class="eyebrow">加拿大最高法院 · 1995</p><h2>驳船租金：办事处不等于协定居民</h2><p>加拿大公司跨境租用驳船。收款公司在巴哈马注册，仅在美国设有管理办事处。</p></header>
+            </article>
+            <article class="case-story" data-case-panel="1" hidden>
+              <header><p class="eyebrow">加拿大联邦上诉法院 · 2009</p><h2>荷兰公司自主支配股息，满足受益所有人条件</h2><p>加拿大子公司向荷兰母公司派息，后者再向瑞典和英国股东分配利润。</p></header>
+            </article>
+            <article class="case-story" data-case-panel="2" hidden>
+              <header><p class="eyebrow">澳大利亚高等法院 · 1990</p><h2>单次商业活动也可构成协定中的企业</h2><p>瑞士居民买入澳大利亚信托权益，转换为股票后短期出售获利；澳方无常设机构。</p></header>
+            </article>
+          </section>
+          <section class="panel rule-panel" aria-labelledby="step-title">
+            <nav class="case-steps" aria-label="国内法到裁判的查阅顺序">
+              <button type="button" data-step="0" aria-pressed="true"><span>1</span><strong>国内法</strong></button>
+              <button type="button" data-step="1" aria-pressed="false"><span>2</span><strong>协定条件</strong></button>
+              <button type="button" data-step="2" aria-pressed="false"><span>3</span><strong>裁判</strong></button>
+            </nav>
+            <div class="rule-reading" aria-live="polite"><p class="eyebrow">02 / 当前规则</p><h2 id="step-title"></h2><p id="rule"></p><div class="case-result" id="result"></div><p class="case-reason" id="reason"></p></div>
+            <div class="no-pe-path" id="thiel-path" hidden aria-label="Thiel案征税权路径"><span>瑞士企业利润</span><i aria-hidden="true">→</i><span>澳瑞协定第 7 条</span><i aria-hidden="true">→</i><span>澳方无常设机构</span><i aria-hidden="true">→</i><strong>澳大利亚不征税</strong></div>
+          </section>
+          <section class="panel practice-panel" aria-labelledby="question">
+            <div class="practice-heading"><p class="eyebrow">03 / 二选一</p><h2 id="question"></h2></div>
+            <div class="quiz-options" id="options" role="group" aria-label="选择答案"></div>
+            <p class="quiz-feedback" id="feedback" role="status"></p>
+            <details class="case-detail" id="case-detail"><summary>裁判说理与引用段落</summary><p id="detail-text"></p></details>
+            <section class="case-references" aria-labelledby="sources-heading">
+              <h3 id="sources-heading">原始判决与参考材料</h3>
+              <div class="source-links" id="sources"></div>
+            </section>
+          </section>
+          <p class="case-takeaway" id="takeaway"></p>
+          <details class="panel comparison-panel" id="comparison"><summary><span>三案对照</span><small>国内法起点相同，协定条件与结果不同</small></summary><div class="table-wrap"><table><thead><tr><th scope="col">判例</th><th scope="col">国内法起点</th><th scope="col">协定关键条件</th><th scope="col">裁判结果</th></tr></thead><tbody><tr><th scope="row">Crown Forest</th><td>非居民租金扣缴 25%</td><td>收款人不是美国协定居民</td><td>维持 25%，补足与已扣 10% 的差额</td></tr><tr><th scope="row">Prévost Car</th><td>非居民股息扣缴 25%</td><td>荷兰公司是股息受益所有人</td><td>协定限制至 5%</td></tr><tr><th scope="row">Thiel</th><td>短期转让利润纳入应税所得</td><td>第 7 条适用，且澳方无常设机构</td><td>澳大利亚不得征税</td></tr></tbody></table></div></details>
+          <p class="sim-note">教学说明：三案按案涉年度规则讨论。OECD 范本、评注与外国判例用于解释，不脱离生效协定独立创设或免除税负。</p>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="学习顺序"></nav>
+    </main>
+  </body>
+</html>

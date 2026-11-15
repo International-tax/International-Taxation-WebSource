@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Explore related-party fees, profit shifting, group effective tax rates and a simplified 15% top-up through an interactive example and three studies." />
+    <title>Related-Party Fees &amp; Profit Shifting | International Taxation</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-1-profit.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-investment.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-investment.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="./chapter-1-profit.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-1 chapter-1-profit" data-tool-id="profit">
+    <header class="site-header">
+      <a class="brand" href="./index.html">International Taxation <span>WebSource</span></a>
+      <nav class="nav-links" aria-label="Site navigation">
+        <a href="./index.html">Home</a>
+        <a href="./index.html#chapters">Simulator catalog</a>
+        <a class="language-switch" href="../cn/chapter-1-profit.html" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">中文</a>
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div>
+          <p class="eyebrow">Advanced topic / Textbook Chapter 1</p>
+          <h1>Related-party fees and profit shifting</h1>
+        </div>
+        <div class="pixel-scene" data-pixel-scene="profit" data-label-place-a="Country A" data-label-place-b="Low-tax hub" data-label-company="Affiliate" data-label-amount="Fee" role="img" aria-label="Pixel scene of a Country A company paying a consulting fee to an affiliate in a low-tax jurisdiction"></div>
+      </section>
+      <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
+      <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="parameter-controls">Adjust example <span aria-hidden="true">＋</span></button>
+      <div class="workspace">
+        <form class="panel parameter-panel" id="parameter-controls" novalidate>
+          <p class="eyebrow">01 / Example inputs</p>
+          <h2 id="inputs-heading">Set a related-party fee</h2>
+          <p class="input-help">Amounts in 10,000 currency units. Assume the fee is deductible and wholly included in low-tax profit.</p>
+          <div class="field">
+            <label for="pre-profit">Country A profit before fee</label>
+            <input id="pre-profit" type="number" min="0" max="100000" step="any" value="40" inputmode="decimal" aria-describedby="pre-profit-error" required />
+            <p class="error" id="pre-profit-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="fee">Related-party consulting fee</label>
+            <input id="fee" type="number" min="0" max="100000" step="any" value="20" inputmode="decimal" aria-describedby="fee-error" required />
+            <p class="error" id="fee-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="high-rate">Country A tax rate (%)</label>
+            <input id="high-rate" type="number" min="0" max="60" step="any" value="25" inputmode="decimal" aria-describedby="high-rate-error" required />
+            <p class="error" id="high-rate-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="low-rate">Low-tax jurisdiction ETR (%)</label>
+            <input id="low-rate" type="number" min="0" max="60" step="any" value="0" inputmode="decimal" aria-describedby="low-rate-error" required />
+            <p class="error" id="low-rate-error" aria-live="polite"></p>
+          </div>
+          <button class="button" type="button" id="reset">Reset inputs ↺</button>
+        </form>
+        <div class="results-column">
+          <section class="panel profit-map" aria-labelledby="results-heading">
+            <header class="section-heading">
+              <div><p class="eyebrow">02 / Profit &amp; fee flow</p><h2 id="results-heading">Related-party fees change where profit is recorded</h2></div>
+              <p>Common scale · 10,000 currency units</p>
+            </header>
+            <div class="jurisdiction-grid">
+              <article class="jurisdiction high-jurisdiction">
+                <header><span>Country A · Higher tax</span><strong id="high-profit">20</strong></header>
+                <div class="jurisdiction-track" aria-hidden="true"><span id="high-remaining-bar"></span><i id="high-fee-bar"></i></div>
+                <p>Remaining profit <span id="high-remaining-label">20</span> · Local tax <strong id="high-tax">5</strong></p>
+              </article>
+              <div class="fee-stream" aria-label="Related-party consulting fee flowing to the low-tax jurisdiction"><span>Related-party fee</span><strong id="fee-flow">20</strong><i aria-hidden="true">→</i></div>
+              <article class="jurisdiction low-jurisdiction">
+                <header><span>Low-tax hub · Affiliate</span><strong id="low-profit">20</strong></header>
+                <div class="jurisdiction-track" aria-hidden="true"><span id="low-profit-bar"></span></div>
+                <p>Shifted profit · Local tax <strong id="low-tax">0</strong></p>
+              </article>
+            </div>
+            <div class="sim-key" aria-label="Profit bar legend"><span><i style="--c:#617c70"></i>Where profit remains</span><span><i style="--c:#b77855"></i>Country A base erosion from the fee</span></div>
+            <div class="sim-metrics" aria-live="polite">
+              <div class="sim-metric"><span>Country A base reduction</span><strong id="base-reduction">20</strong></div>
+              <div class="sim-metric"><span>Country A revenue loss</span><strong id="tax-loss">5</strong></div>
+              <div class="sim-metric"><span>Combined tax</span><strong id="total-tax">5</strong></div>
+              <div class="sim-metric emphasis"><span>Group ETR</span><strong id="group-etr">12.5%</strong></div>
+            </div>
+          </section>
+          <section class="panel minimum-panel" aria-labelledby="minimum-heading">
+            <header class="section-heading">
+              <div><p class="eyebrow">03 / Simplified 15% scale</p><h2 id="minimum-heading">The jurisdictional rate gap determines the top-up</h2></div>
+              <span class="sim-status" id="topup-status">Top-up due</span>
+            </header>
+            <p>Low-tax jurisdiction effective tax rate</p>
+            <div class="etr-scale" id="etr-gauge" role="img" aria-label="Low-tax jurisdiction ETR: 0%; top-up benchmark: 15%">
+              <div class="etr-track"><span id="etr-fill"></span><i class="minimum-tick" aria-hidden="true"></i><b id="etr-marker" aria-hidden="true"></b></div>
+              <div class="etr-labels" aria-hidden="true"><span>0%</span><span>15% minimum</span><span>30%+</span></div>
+            </div>
+            <div class="topup-grid">
+              <div><span>Simplified low-tax top-up rate</span><strong id="topup-rate">15%</strong></div>
+              <div><span>Simplified low-tax top-up</span><strong id="topup-tax">3</strong></div>
+            </div>
+            <p class="sim-formula" id="topup-formula">20 × max(0, 15% − 0%) = 3</p>
+            <p class="sim-note" id="sim-explain">Simplified GloBE teaching model: apply only the rate gap to shifted low-tax profit. This is not a full tax liability calculation.</p>
+          </section>
+          <section class="panel evidence-panel" aria-labelledby="research-heading">
+            <header class="section-heading"><div><p class="eyebrow">04 / Three studies</p><h2 id="research-heading">Research and references</h2></div><p>Different measures and years</p></header>
+            <div class="evidence-list">
+              <article class="evidence-row oecd-evidence">
+                <div class="evidence-copy"><span>OECD · 2015</span><h3>Annual global revenue loss</h3><strong>US$100–240 billion</strong><p>About 4%–10% of global corporate income tax revenue, estimated at 2014 economic scale.</p><details class="reference-note"><summary>Estimation basis</summary><p>The Action 11 report estimates corporate income tax revenue losses. Comparisons should distinguish shifted profit from the revenue loss calculated using effective tax rates.</p></details></div>
+                <div class="range-figure" role="img" aria-label="OECD estimated revenue loss at 4 to 10 percent of global corporate income tax revenue"><div class="range-axis"><i></i></div><div><span>0%</span><span>4%</span><span>10%</span></div></div>
+                <a href="https://doi.org/10.1787/9789264241343-en" target="_blank" rel="noopener">BEPS Action 11 report ↗</a>
+              </article>
+              <article class="evidence-row shifting-evidence">
+                <div class="evidence-copy"><span>García-Bernardo &amp; Janský · 2024</span><h3>Global shifted profit in two models</h3><strong>US$854 / 862 billion</strong><p>2017 CbCR data; corresponding revenue losses are US$214 / 226 billion.</p><details class="reference-note"><summary>Appendix A.12: two effective-tax-rate measures</summary><p>Overall effective tax rates imply revenue losses of US$214 billion and US$226 billion. Using foreign multinational enterprises’ effective tax rates, the same shifted-profit estimates imply losses of US$173 billion and US$177 billion.</p></details></div>
+                <div class="model-figure" role="img" aria-label="Model one: 854 billion dollars shifted and 214 billion lost; model two: 862 billion shifted and 226 billion lost"><div><span>Model 1</span><i style="--size:99.1%"></i><b>854</b></div><div><span>Model 2</span><i style="--size:100%"></i><b>862</b></div><small>US$ billions · shifted profit, not revenue loss</small></div>
+                <a href="https://petrjansky.cz/wp-content/uploads/2024/01/garcia-bernardo-jansky-2024-profit-shifting-of-multinational-corporations-worldwide-1.pdf" target="_blank" rel="noopener">Paper and Appendix A.12 ↗</a>
+              </article>
+              <article class="evidence-row etr-evidence">
+                <div class="evidence-copy"><span>Bachas et al. · 2026</span><h3>Low ETRs among the largest firms</h3><strong>More than 1 in 4 firms have an ETR below 15%</strong><p>Tax-return data from 16 countries; this is a share of firms, not of profit.</p><details class="reference-note"><summary>Sample denominator and Pillar Two</summary><p>The denominator is the number of firms in the sample’s largest size group. The study measures individual firms’ effective tax rates and associates low rates with larger firms’ use of tax incentives and institutional arrangements. GloBE top-up tax uses the group’s aggregated excess profit and effective tax rate in each jurisdiction.</p></details></div>
+                <div class="quarter-figure" role="img" aria-label="More than one quarter of firms in the largest size group have an effective tax rate below 15 percent"><div><i></i><i></i><i></i><i></i></div><span>Each block is about 1/4</span></div>
+                <a href="https://doi.org/10.1016/j.jpubeco.2026.105721" target="_blank" rel="noopener">Journal of Public Economics paper ↗</a>
+              </article>
+            </div>
+            <p class="sim-note">GloBE uses a group’s aggregated results in each jurisdiction, not a single firm’s ETR. Practice also involves the €750 million threshold, substance-based income exclusion and QDMTT ordering.</p>
+          </section>
+          <section class="panel literature-panel" aria-labelledby="literature-heading">
+            <header class="section-heading"><div><p class="eyebrow">05 / Optional online search</p><h2 id="literature-heading">Research from the past two years</h2></div><button class="button" type="button" id="refresh">Search Crossref</button></header>
+            <p class="input-help">Find English journal articles with profit shifting or global minimum tax in the title. Core calculations work offline.</p>
+            <p id="status" role="status"></p>
+            <ol class="paper-list" id="papers"></ol>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="Learning sequence"></nav>
+    </main>
+  </body>
+</html>

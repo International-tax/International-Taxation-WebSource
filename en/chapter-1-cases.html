@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Practise the path from domestic law to treaty conditions and judgments through Crown Forest, Prévost Car and Thiel." />
+    <title>Treaty Case Practice | International Taxation</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-1-cases.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-transactions.css" />
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-transactions.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="./chapter-1-cases.js"></script>
+    <script defer src="../assets/js/learning.js"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-1 chapter-1-cases" data-tool-id="treaty-cases">
+    <header class="site-header">
+      <a class="brand" href="./index.html">International Taxation <span>WebSource</span></a>
+      <nav class="nav-links" aria-label="Site navigation"><a href="./index.html">Home</a><a href="./index.html#chapters">Simulator catalog</a><a class="language-switch" href="../cn/chapter-1-cases.html" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">中文</a></nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero">
+        <div><p class="eyebrow">Advanced topic / Textbook Chapter 1</p><h1>Treaty case practice</h1></div>
+        <div class="pixel-scene" data-pixel-scene="cases" data-label-person="Taxpayer" data-label-company="Court" data-label-place-a="Source state" data-label-place-b="Residence state" role="img" aria-label="Pixel scene of a taxpayer and a court discussing a cross-border tax treaty"></div>
+      </section>
+      <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
+      <div class="case-picker" role="group" aria-label="Choose a case">
+        <button type="button" data-case="0" aria-pressed="true"><span>01</span><strong>Crown Forest</strong><small>Rent · Treaty residence</small></button>
+        <button type="button" data-case="1" aria-pressed="false"><span>02</span><strong>Prévost Car</strong><small>Dividends · Beneficial ownership</small></button>
+        <button type="button" data-case="2" aria-pressed="false"><span>03</span><strong>Thiel</strong><small>Business profits · No PE</small></button>
+      </div>
+      <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="parameter-controls">Adjust amount <span aria-hidden="true">＋</span></button>
+      <div class="workspace cases-workspace">
+        <aside class="panel parameter-panel" id="parameter-controls" aria-labelledby="inputs-heading">
+          <p class="eyebrow">01 / Amount check</p><h2 id="inputs-heading">Domestic law versus treaty</h2>
+          <div id="amount-wrap" class="field">
+            <label for="amount">Simulated payment (CAD)</label>
+            <input id="amount" type="number" min="0" max="1000000000" step="0.01" value="10000" inputmode="decimal" aria-describedby="amount-note amount-error" required />
+            <small id="amount-note">From 0 to 1 billion, with up to two decimals.</small>
+            <p class="error" id="amount-error" aria-live="polite"></p>
+          </div>
+          <p class="input-help" id="no-amount-note" hidden>Thiel is a taxing-rights path, not an amount calculation.</p>
+          <p class="input-help" id="rate-guide">25% domestic baseline · Assume 10% already withheld</p>
+          <div class="case-metrics" id="calculation-panel" aria-live="polite">
+            <div><span id="metric-a-label">25% required</span><strong id="metric-a">C$2,500.00</strong></div>
+            <div><span id="metric-b-label">10% assumed withheld</span><strong id="metric-b">C$1,000.00</strong></div>
+            <div class="highlight"><span id="metric-c-label">Shortfall</span><strong id="metric-c">C$1,500.00</strong></div>
+          </div>
+          <button class="button" type="button" id="reset">Reset this example ↺</button>
+        </aside>
+        <div class="results-column">
+          <section class="panel case-file" aria-label="Case scene">
+            <article class="case-story" data-case-panel="0">
+              <header><p class="eyebrow">Supreme Court of Canada · 1995</p><h2>Barge rent: an office is not treaty residence</h2><p>A Canadian company rents barges cross-border. The recipient is incorporated in the Bahamas and has only a US management office.</p></header>
+            </article>
+            <article class="case-story" data-case-panel="1" hidden>
+              <header><p class="eyebrow">Federal Court of Appeal · 2009</p><h2>The Dutch company controls the dividend and qualifies as its beneficial owner</h2><p>A Canadian subsidiary pays dividends to its Dutch parent, which later distributes profits to Swedish and UK shareholders.</p></header>
+            </article>
+            <article class="case-story" data-case-panel="2" hidden>
+              <header><p class="eyebrow">High Court of Australia · 1990</p><h2>A single commercial venture can constitute a treaty enterprise</h2><p>A Swiss resident converts an Australian trust interest into shares and sells shortly after. There is no Australian permanent establishment.</p></header>
+            </article>
+          </section>
+          <section class="panel rule-panel" aria-labelledby="step-title">
+            <nav class="case-steps" aria-label="Sequence from domestic law to judgment">
+              <button type="button" data-step="0" aria-pressed="true"><span>1</span><strong>Domestic law</strong></button>
+              <button type="button" data-step="1" aria-pressed="false"><span>2</span><strong>Treaty conditions</strong></button>
+              <button type="button" data-step="2" aria-pressed="false"><span>3</span><strong>Judgment</strong></button>
+            </nav>
+            <div class="rule-reading" aria-live="polite"><p class="eyebrow">02 / Current rule</p><h2 id="step-title"></h2><p id="rule"></p><div class="case-result" id="result"></div><p class="case-reason" id="reason"></p></div>
+            <div class="no-pe-path" id="thiel-path" hidden aria-label="Thiel taxing-rights path"><span>Swiss enterprise profit</span><i aria-hidden="true">→</i><span>Australia–Switzerland treaty, Art. 7</span><i aria-hidden="true">→</i><span>No Australian PE</span><i aria-hidden="true">→</i><strong>No Australian tax</strong></div>
+          </section>
+          <section class="panel practice-panel" aria-labelledby="question">
+            <div class="practice-heading"><p class="eyebrow">03 / Choose one</p><h2 id="question"></h2></div>
+            <div class="quiz-options" id="options" role="group" aria-label="Answer choices"></div>
+            <p class="quiz-feedback" id="feedback" role="status"></p>
+            <details class="case-detail" id="case-detail"><summary>Reasoning and cited paragraphs</summary><p id="detail-text"></p></details>
+            <section class="case-references" aria-labelledby="sources-heading">
+              <h3 id="sources-heading">Original judgments and references</h3>
+              <div class="source-links" id="sources"></div>
+            </section>
+          </section>
+          <p class="case-takeaway" id="takeaway"></p>
+          <details class="panel comparison-panel" id="comparison"><summary><span>Compare the three cases</span><small>Different treaty conditions and outcomes</small></summary><div class="table-wrap"><table><thead><tr><th scope="col">Case</th><th scope="col">Domestic starting point</th><th scope="col">Key treaty condition</th><th scope="col">Judgment</th></tr></thead><tbody><tr><th scope="row">Crown Forest</th><td>25% withholding on non-resident rent</td><td>Recipient is not a US treaty resident</td><td>25% applies; collect the gap above the 10% withheld</td></tr><tr><th scope="row">Prévost Car</th><td>25% withholding on non-resident dividends</td><td>Dutch company beneficially owns the dividends</td><td>Treaty caps the rate at 5%</td></tr><tr><th scope="row">Thiel</th><td>Short-term gain included in taxable income</td><td>Article 7 applies and there is no Australian PE</td><td>Australia may not tax the profit</td></tr></tbody></table></div></details>
+          <p class="sim-note">Teaching note: each case is discussed under the rules for its relevant years. OECD materials and foreign cases aid interpretation; they do not independently create or remove tax outside an operative treaty.</p>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="Learning sequence"></nav>
+    </main>
+  </body>
+</html>

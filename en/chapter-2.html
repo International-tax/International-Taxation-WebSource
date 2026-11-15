@@ -5,26 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Explore cross-border remote work through salary-allocation graphics and permanent-establishment evidence pathways."
+      content="Allocate cross-border salary and assess employee tax and permanent-establishment indicators separately."
     />
-    <title>Cross-border Remote Work | International Taxation</title>
+    <title>Remote Work Tax Assessment | International Taxation</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/learning.css" />
     <link rel="stylesheet" href="../assets/css/chapter-2-layout.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-transactions.css" />
     <link rel="stylesheet" href="../assets/css/bilingual.css" />
-    <script src="chapter-2.js" defer></script>
+    <script defer src="../assets/js/pixel.js"></script>
+    <script defer src="../assets/js/pixel-transactions.js"></script>
+    <script defer src="../assets/js/catalog.js"></script>
+    <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="chapter-2.js"></script>
     <script defer src="../assets/js/learning.js"></script>
     <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
   </head>
-  <body class="learning chapter-2">
+  <body class="learning chapter-2 simulator-page" data-tool-id="remote">
     <header class="site-header">
       <a class="brand" href="index.html"
         >International Taxation <span>WebSource</span></a
       >
       <nav class="nav-links" aria-label="Site navigation">
-        <a href="index.html">All chapters</a
-        ><a href="chapter-1.html">Chapter 1</a
-        ><a href="chapter-2.html" aria-current="page">Chapter 2</a
+        <a href="index.html">Home</a
+        ><a href="index.html#chapters">Simulator catalog</a
         ><a
           class="language-switch"
           href="../cn/chapter-2.html"
@@ -37,9 +43,13 @@
     </header>
     <main class="page-wrap">
       <section class="chapter-hero">
-        <p class="eyebrow">CHAPTER 02 / International tax jurisdiction</p>
-        <h1>Cross-border remote work: follow two tax pathways.</h1>
-        <p>Zhang works in Country B for a company in Country A. Assess salary and permanent establishments separately.</p>
+        <div>
+          <p class="eyebrow">Integrated application / Textbook Chapter 2</p>
+          <h1>Remote work tax assessment</h1>
+        </div>
+        <div>
+          <div class="pixel-scene" data-pixel-scene="remote" data-label-person="Zhang" data-label-company="Company" data-label-place-a="Country A" data-label-place-b="Country B" data-label-left="Remote work" data-label-right="Salary" data-label-amount="210 days" role="img" aria-label="Zhang works on a laptop at home in Country B for a company in Country A"></div>
+        </div>
       </section>
       <section class="case-intro" aria-label="Employment relationship in the case">
         <div
@@ -61,8 +71,13 @@
             ><span class="entity-question">Employment income path ↓</span>
           </a>
         </div>
-        <p class="case-caption">One case, two taxpayers. Each conclusion stands on its own analysis.</p>
       </section>
+      <div class="tool-links" role="group" aria-label="Load a typical scenario">
+        <button type="button" data-scenario="short" aria-pressed="false">Short stay · 90 days</button>
+        <button type="button" data-scenario="long" aria-pressed="true">Long-term remote · 210 days</button>
+        <button type="button" data-scenario="sales" aria-pressed="false">Sales contracts · 240 days</button>
+      </div>
+      <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
       <button
         class="parameter-toggle button"
         type="button"
@@ -181,16 +196,14 @@
               </div>
             </div>
             <div class="check-list">
-              <label class="check-line"
-                ><input id="personalReason" type="checkbox" checked /><span
-                  >Location chosen for personal or family reasons</span
-                ></label
-              >
-              <label class="check-line"
-                ><input id="businessReason" type="checkbox" /><span
-                  >The business needs B for clients, suppliers or resources</span
-                ></label
-              >
+              <div class="field full">
+                <label for="reason">Main reason for working in Country B</label>
+                <select id="reason">
+                  <option value="personal" selected>Employee’s personal or family reasons</option>
+                  <option value="cost">The business only wants to save office or labor costs</option>
+                  <option value="business">The business needs local clients, suppliers or resources</option>
+                </select>
+              </div>
               <label class="check-line"
                 ><input id="office" type="checkbox" /><span
                   >No available office is still provided in A</span
@@ -280,6 +293,7 @@
           </p>
         </div>
       </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="Learning sequence"></nav>
     </main>
   </body>
 </html>

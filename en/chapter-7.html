@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Follow cross-border payments and tax charts to calculate withholding, residence-country credits, top-up tax and net income for interest and dividends."
+    />
+    <title>Interest and Dividend Withholding Tax | International Taxation</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/learning.css" />
+    <link rel="stylesheet" href="../assets/css/simulator.css" />
+    <link rel="stylesheet" href="../assets/css/chapter-7.css" />
+    <link rel="stylesheet" href="../assets/css/pixel.css" />
+    <link rel="stylesheet" href="../assets/css/pixel-transactions.css" />
+    <link rel="stylesheet" href="../assets/css/bilingual.css" />
+    <script src="../assets/js/pixel.js" defer></script>
+    <script defer src="../assets/js/pixel-transactions.js"></script>
+    <script src="../assets/js/catalog.js" defer></script>
+    <script src="../assets/js/catalog-view.js" defer></script>
+    <script src="chapter-7.js" defer></script>
+    <script src="../assets/js/learning.js" defer></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
+  </head>
+  <body class="learning simulator-page chapter-7" data-tool-id="withholding">
+    <header class="site-header">
+      <a class="brand" href="index.html"
+        >International Taxation <span>WebSource</span></a
+      >
+      <nav class="nav-links" aria-label="Site navigation">
+        <a href="index.html">Home</a><a href="index.html#chapters">Simulator catalog</a
+        ><a
+          class="language-switch"
+          href="../cn/chapter-7.html"
+          lang="zh-CN"
+          hreflang="zh-CN"
+          aria-label="Switch to Chinese"
+          >中文</a
+        >
+      </nav>
+    </header>
+    <main class="page-wrap">
+      <section class="chapter-hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Integrated application / Textbook Chapter 7</p>
+          <h1 id="page-title">Interest and Dividend Withholding Tax</h1>
+        </div>
+        <div class="hero-scene">
+          <div
+            class="pixel-scene"
+            data-pixel-scene="withholding"
+            data-label-person="Recipient"
+            data-label-company="Payer"
+            data-label-place-a="Source country"
+            data-label-place-b="Residence country"
+            data-label-left="Gross payment"
+            data-label-right="Withholding and top-up"
+            data-label-amount="¥100,000"
+            role="img"
+            aria-label="A source-country payer sends income to a residence-country recipient, with source withholding and residence-country top-up tax"
+          ></div>
+        </div>
+      </section>
+
+      <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
+
+      <button
+        class="parameter-toggle button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="scenario"
+      >
+        Adjust calculation inputs <span aria-hidden="true">＋</span>
+      </button>
+
+      <div class="workspace chapter-7-workspace">
+        <form class="panel parameter-panel" id="scenario" novalidate>
+          <p class="eyebrow">Calculation inputs</p>
+          <h2>Set the payment and rates</h2>
+          <fieldset class="income-type">
+            <legend>Income type</legend>
+            <div class="mode-grid">
+              <label class="mode-card" for="interest"
+                ><input
+                  id="interest"
+                  type="radio"
+                  name="incomeType"
+                  value="interest"
+                  checked
+                /><span>Interest</span></label
+              >
+              <label class="mode-card" for="dividend"
+                ><input
+                  id="dividend"
+                  type="radio"
+                  name="incomeType"
+                  value="dividend"
+                /><span>Dividend</span></label
+              >
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="gross">Gross income</label>
+            <input
+              id="gross"
+              type="number"
+              min="0"
+              step="0.01"
+              value="100000"
+              aria-describedby="gross-help form-error"
+              required
+            />
+            <small id="gross-help">Total interest or dividends before source withholding</small>
+          </div>
+          <div class="field">
+            <label for="domestic">Source domestic rate (%)</label>
+            <input
+              id="domestic"
+              type="number"
+              min="0"
+              max="100"
+              step="0.1"
+              value="20"
+              aria-describedby="domestic-help form-error"
+              required
+            />
+            <small id="domestic-help">Withholding rate before any treaty relief</small>
+          </div>
+          <div class="field">
+            <label for="treaty">Treaty rate cap (%)</label>
+            <input
+              id="treaty"
+              type="number"
+              min="0"
+              max="100"
+              step="0.1"
+              value="10"
+              aria-describedby="treaty-help form-error"
+              required
+            />
+            <small id="treaty-help">Used only when treaty conditions are met</small>
+          </div>
+          <div class="field">
+            <label for="residence">Residence-country rate (%)</label>
+            <input
+              id="residence"
+              type="number"
+              min="0"
+              max="100"
+              step="0.1"
+              value="25"
+              aria-describedby="residence-help form-error"
+              required
+            />
+            <small id="residence-help">Applied to this income before the foreign tax credit</small>
+          </div>
+          <div class="field">
+            <label for="qualify">Treaty eligibility</label>
+            <select id="qualify" aria-describedby="qualify-help">
+              <option value="yes" selected>Yes</option>
+              <option value="no">No or relief not yet obtained</option>
+            </select>
+            <small id="qualify-help">If not, the source domestic rate applies</small>
+          </div>
+          <p id="form-error" class="sim-error" role="alert" hidden></p>
+          <div class="reset-row">
+            <button class="button" type="reset">Restore defaults ↺</button>
+          </div>
+          <p class="sim-note">
+            This simplified model assumes source tax is creditable in the residence country and excludes expenses, indirect credits and other income.
+          </p>
+        </form>
+
+        <div class="results-column">
+          <section class="panel summary-panel" aria-labelledby="summary-heading">
+            <header class="section-heading">
+              <h2 id="summary-heading">Results</h2>
+              <p id="treaty-status" class="sim-status">Treaty cap reduces withholding</p>
+            </header>
+            <div class="sim-metrics" aria-live="polite" aria-atomic="true">
+              <div class="sim-metric">
+                <span>Actual source withholding</span><strong id="sourceTax">¥10,000</strong>
+              </div>
+              <div class="sim-metric">
+                <span>Residence tax before credit</span><strong id="residenceTax">¥25,000</strong>
+              </div>
+              <div class="sim-metric">
+                <span>Actual credit</span><strong id="credit">¥10,000</strong>
+              </div>
+              <div class="sim-metric">
+                <span>Residence top-up tax</span><strong id="topup">¥15,000</strong>
+              </div>
+              <div class="sim-metric after-tax-metric">
+                <span>Final after-tax income</span><strong id="afterTax">¥75,000</strong>
+              </div>
+            </div>
+            <div class="rate-strip" aria-label="Applicable rates">
+              <div><span>Domestic rate</span><strong id="domesticRate">20%</strong></div>
+              <div><span>Treaty cap</span><strong id="treatyRate">10%</strong></div>
+              <div><span>Effective withholding rate</span><strong id="effectiveRate">10%</strong></div>
+            </div>
+            <p id="summary-note" class="sim-note">
+              Treaty conditions are met, so the lower of the 20% domestic rate and the 10% treaty cap applies.
+            </p>
+          </section>
+
+          <section class="panel flow-panel" aria-labelledby="flow-heading">
+            <header class="section-heading">
+              <h2 id="flow-heading">From payment to top-up</h2>
+            </header>
+            <ol class="sim-flow chapter-7-flow">
+              <li class="sim-flow-step payment-step">
+                <span>01 · Payment</span><strong id="flowGross">¥100,000</strong
+                ><small id="flowGrossNote">Source country pays gross interest</small>
+              </li>
+              <li class="sim-flow-step withholding-step">
+                <span>02 · Source withholding</span><strong id="flowSourceTax">¥10,000</strong
+                ><small id="flowRate">Effective withholding rate: 10%</small>
+              </li>
+              <li class="sim-flow-step receipt-step">
+                <span>03 · Receipt</span><strong id="flowReceipt">¥90,000</strong
+                ><small>Gross income less source tax</small>
+              </li>
+              <li class="sim-flow-step topup-step">
+                <span>04 · Residence top-up</span><strong id="flowTopup">¥15,000</strong
+                ><small id="flowCredit">Tax before credit: ¥25,000; credit used: ¥10,000</small>
+              </li>
+            </ol>
+            <p id="formula" class="sim-formula">
+              Withholding = ¥100,000 × 10% = ¥10,000; top-up = ¥25,000 − ¥10,000 = ¥15,000
+            </p>
+          </section>
+
+          <section class="panel tax-bars" aria-labelledby="bars-heading">
+            <header class="section-heading">
+              <h2 id="bars-heading">Tax and income composition</h2>
+              <p>Segment widths show each share</p>
+            </header>
+            <div class="sim-bars">
+              <div class="sim-bar-row">
+                <div class="sim-bar-label">Use of gross income<small>Source tax + top-up + after-tax income</small></div>
+                <div
+                  class="sim-track gross-track"
+                  id="grossBar"
+                  role="img"
+                  aria-label="Gross income: source tax ¥10,000, residence top-up ¥15,000, after-tax income ¥75,000"
+                >
+                  <span id="grossSourceBar" class="segment-source" style="width: 10%" aria-hidden="true"></span
+                  ><span id="grossTopupBar" class="segment-topup" style="width: 15%" aria-hidden="true"></span
+                  ><span id="grossAfterBar" class="segment-after" style="width: 75%" aria-hidden="true"></span>
+                </div>
+                <strong id="grossBarTotal">¥100,000</strong>
+              </div>
+              <div class="sim-bar-row">
+                <div class="sim-bar-label">Residence tax composition<small>Actual credit + residence top-up</small></div>
+                <div
+                  class="sim-track residence-track"
+                  id="residenceBar"
+                  role="img"
+                  aria-label="Residence tax before credit: actual credit ¥10,000 and residence top-up ¥15,000"
+                >
+                  <span id="residenceCreditBar" class="segment-credit" style="width: 40%" aria-hidden="true"></span
+                  ><span id="residenceTopupBar" class="segment-topup" style="width: 60%" aria-hidden="true"></span>
+                </div>
+                <strong id="residenceBarTotal">¥25,000</strong>
+              </div>
+            </div>
+            <div class="sim-key" aria-label="Legend">
+              <span><i style="--c: #a96f50"></i>Source tax</span>
+              <span><i style="--c: #5d7d8d"></i>Residence top-up</span>
+              <span><i style="--c: #708a70"></i>After-tax income</span>
+              <span><i style="--c: #c7b9a7"></i>Actual credit</span>
+            </div>
+          </section>
+
+          <section class="panel check-panel" aria-labelledby="checkTitle">
+            <p class="eyebrow">Quick checks</p>
+            <h2 id="checkTitle">Interest: debt, source and beneficial ownership</h2>
+            <p id="checkText">
+              Confirm genuine debt, interest character and who bears the cost; also check beneficial ownership and source-country exemptions.
+            </p>
+            <p class="sim-note">
+              This page is for teaching calculations. Actual cases also require a review of income character, domestic law, the relevant treaty articles and filing evidence.
+            </p>
+          </section>
+        </div>
+      </div>
+      <nav class="sequence-nav" data-sequence-nav aria-label="Learning sequence"></nav>
+    </main>
+  </body>
+</html>

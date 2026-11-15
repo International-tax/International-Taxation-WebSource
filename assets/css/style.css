@@ -9,6 +9,8 @@
   --white: #fffdf9;
   --accent: #a65a3b;
   --shadow: 0 22px 55px rgba(70, 54, 40, 0.12);
+  --font-cn: "LXGW WenKai", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-ui: system-ui, sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -20,13 +22,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family:
-    "LXGW WenKai",
-    -apple-system,
-    BlinkMacSystemFont,
-    "PingFang SC",
-    "Microsoft YaHei",
-    sans-serif;
+  font-family: var(--font-cn);
   line-height: 1.65;
 }
 a {
@@ -121,12 +117,6 @@ select:focus-visible {
   letter-spacing: -0.055em;
   margin: 20px 0 25px;
   font-weight: 800;
-}
-.hero-copy {
-  color: #73695f;
-  font-size: 18px;
-  line-height: 1.9;
-  margin: 0 0 30px;
 }
 .button {
   border: 0;

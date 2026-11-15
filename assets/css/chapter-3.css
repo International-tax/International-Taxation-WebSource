@@ -1,0 +1,140 @@
+.chapter-3 .parameter-panel .field {
+  margin: 16px 0;
+}
+
+.chapter-3 .sim-track .source-segment {
+  background: var(--tool-rust);
+}
+
+.chapter-3 .sim-track .home-segment {
+  background: var(--tool-blue);
+}
+
+.chapter-3 .sim-bar-row {
+  padding: 10px 0;
+  border-bottom: 1px solid #e4dbcf;
+}
+
+.chapter-3 .sim-bar-row:last-child {
+  border-bottom: 0;
+}
+
+.chapter-3 .sim-bar-row > strong small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.chapter-3 .sim-table table {
+  min-width: 720px;
+}
+
+.chapter-3 .sim-table td:first-child {
+  font-weight: 700;
+}
+
+.chapter-3 .sim-table td:nth-child(4),
+.chapter-3 .sim-table td:last-child {
+  font-weight: 700;
+}
+
+.chapter-3 .neutrality-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.chapter-3 .neutrality-card {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #ddd2c4;
+  border-radius: 10px;
+  background: #f4eee5;
+}
+
+.chapter-3 .neutrality-card header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.chapter-3 .neutrality-card h3 {
+  margin: 0 !important;
+}
+
+.chapter-3 .neutrality-card > p {
+  min-height: 2.8em;
+  margin: 5px 0 14px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.chapter-3 .neutral-row + .neutral-row {
+  margin-top: 12px;
+}
+
+.chapter-3 .neutral-row > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.chapter-3 .neutral-row strong {
+  font-family: var(--font-ui);
+  font-variant-numeric: tabular-nums;
+}
+
+.chapter-3 .neutral-track {
+  height: 9px;
+  margin-top: 5px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #ded5c9;
+}
+
+.chapter-3 .neutral-track i {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.25s;
+}
+
+.chapter-3 .home-benchmark {
+  background: #9c8b79;
+}
+
+.chapter-3 .ordinary {
+  background: var(--tool-blue);
+}
+
+.chapter-3 .source-benchmark {
+  background: #c29a79;
+}
+
+.chapter-3 .exemption {
+  background: var(--tool-green);
+}
+
+.chapter-3 [aria-invalid="true"] {
+  border-color: #a54f3f !important;
+}
+
+@media (max-width: 1050px) {
+  .chapter-3 .neutrality-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chapter-3 .neutrality-card > p {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .chapter-3 .neutrality-card header {
+    flex-direction: column;
+  }
+}

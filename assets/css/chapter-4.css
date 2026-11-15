@@ -1,0 +1,373 @@
+.chapter-4 .parameter-panel .form-section:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.chapter-4 .parameter-panel .form-section + .form-section {
+  border-top: 1px solid #cfc3b5;
+}
+
+.chapter-4 .three-days {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.chapter-4 .three-days .field {
+  min-width: 0;
+}
+
+.chapter-4 .three-days input {
+  padding-right: 5px !important;
+  padding-left: 7px !important;
+}
+
+.chapter-4 .check-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.chapter-4 .check-line input {
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+
+.chapter-4 [aria-invalid="true"] {
+  border-color: #a54f3f !important;
+}
+
+.chapter-4 .domestic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.chapter-4 .domestic-card {
+  position: relative;
+  min-width: 0;
+  min-height: 128px;
+  padding: 16px;
+  overflow: hidden;
+  border: 1px solid #ddd2c4;
+  border-radius: 11px;
+  background: #f5efe6;
+}
+
+.chapter-4 .domestic-card::after {
+  content: "";
+  position: absolute;
+  right: -22px;
+  bottom: -30px;
+  width: 100px;
+  height: 100px;
+  border: 16px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.055;
+}
+
+.chapter-4 .china-card {
+  color: #855334;
+}
+
+.chapter-4 .us-card {
+  color: #486b7c;
+}
+
+.chapter-4 .country-code {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.chapter-4 .domestic-verdict {
+  display: block;
+  margin: 10px 0 12px;
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.chapter-4 .domestic-card .sim-status {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  line-height: 1.45;
+}
+
+.chapter-4 .domestic-basis {
+  position: relative;
+  z-index: 1;
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.chapter-4 .dual-banner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 14px;
+  align-items: baseline;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-left: 3px solid #9b7657;
+  border-radius: 0 8px 8px 0;
+  background: #eae1d5;
+}
+
+.chapter-4 .dual-banner > span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.chapter-4 .dual-banner > strong {
+  font-size: 16px;
+}
+
+.chapter-4 .dual-banner p {
+  grid-column: 1 / -1;
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.chapter-4 .scope-flow .sim-flow-step strong {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.chapter-4 .spt-scale {
+  position: relative;
+  display: flex;
+  height: 24px;
+  margin: 24px 0 10px;
+  overflow: visible;
+  border-radius: 5px;
+  background: #e1d7c9;
+}
+
+.chapter-4 .spt-scale > span {
+  display: block;
+  height: 100%;
+  transition: width 0.25s;
+}
+
+.chapter-4 .spt-scale > span:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.chapter-4 .spt-current {
+  background: #5d7d8d;
+}
+
+.chapter-4 .spt-prior {
+  background: #86a0aa;
+}
+
+.chapter-4 .spt-earlier {
+  background: #b1c0c2;
+}
+
+.chapter-4 .spt-scale > i {
+  position: absolute;
+  top: -7px;
+  bottom: -7px;
+  left: 73.2%;
+  border-left: 2px dashed #9b4638;
+}
+
+.chapter-4 .spt-scale > i::after {
+  content: "183";
+  position: absolute;
+  top: -18px;
+  left: -9px;
+  color: #8c4438;
+  font: 700 10px var(--font-ui);
+}
+
+.chapter-4 .spt-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.chapter-4 .spt-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chapter-4 .spt-legend i {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+.chapter-4 .current-key {
+  background: #5d7d8d;
+}
+
+.chapter-4 .prior-key {
+  background: #86a0aa;
+}
+
+.chapter-4 .earlier-key {
+  background: #b1c0c2;
+}
+
+.chapter-4 .spt-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 16px;
+}
+
+.chapter-4 .spt-checks .sim-status {
+  line-height: 1.45;
+}
+
+.chapter-4 .treaty-path {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.chapter-4 .tie-step {
+  position: relative;
+  min-width: 0;
+  min-height: 116px;
+  padding: 12px 10px;
+  border: 1px solid #ded4c7;
+  border-radius: 9px;
+  background: #eee8de;
+  transition: border-color 0.2s, background 0.2s, opacity 0.2s;
+}
+
+.chapter-4 .tie-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 45%;
+  right: -15px;
+  color: #9a8a79;
+}
+
+.chapter-4 .tie-step > span {
+  color: #9b8a78;
+  font: 700 10px var(--font-ui);
+}
+
+.chapter-4 .tie-step h3 {
+  margin: 7px 0 10px !important;
+  font-size: 13px !important;
+  line-height: 1.35;
+}
+
+.chapter-4 .tie-step strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.chapter-4 .tie-step[data-state="visited"] {
+  border-color: #93a9b1;
+  background: #e7edef;
+}
+
+.chapter-4 .tie-step[data-state="resolved"] {
+  border-color: #748e75;
+  background: #e5ece2;
+  box-shadow: inset 0 3px #748e75;
+}
+
+.chapter-4 .tie-step[data-state="skipped"],
+.chapter-4 .tie-step[data-state="standby"] {
+  opacity: 0.58;
+}
+
+.chapter-4 .tie-step[data-state="pending"] {
+  opacity: 0.72;
+}
+
+.chapter-4 .treaty-outcome {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 15px;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.chapter-4 .treaty-outcome > span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.chapter-4 .treaty-outcome > strong {
+  font-size: 18px;
+}
+
+.chapter-4 .treaty-outcome p {
+  grid-column: 1 / -1;
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.chapter-4 .special-warning {
+  margin: 12px 0 0;
+  padding: 11px 13px;
+  border-left: 3px solid #aa6c48;
+  border-radius: 0 7px 7px 0;
+  background: #f0e3d6;
+  color: #7b4a31;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.chapter-4 .special-warning:empty {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .chapter-4 .treaty-path {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .chapter-4 .tie-step {
+    min-height: 0;
+  }
+
+  .chapter-4 .tie-step:not(:last-child)::after {
+    content: "↓";
+    top: auto;
+    right: 50%;
+    bottom: -20px;
+    transform: translateX(50%);
+  }
+}
+
+@media (max-width: 760px) {
+  .chapter-4 .domestic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chapter-4 .domestic-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .chapter-4 .three-days {
+    grid-template-columns: 1fr;
+  }
+}
