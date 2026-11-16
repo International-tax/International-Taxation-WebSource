@@ -2,10 +2,10 @@
   "use strict";
 
   const C = {
-    ink: "#3b3026", muted: "#817466", line: "#c9bdad", paper: "#f7f4ee",
-    sand: "#ded3c2", sandDark: "#b5a48e", green: "#708a70", greenDark: "#48634f",
-    greenLight: "#adbaa4", blue: "#648998", blueDark: "#456675", blueLight: "#adc2c7",
-    rust: "#a66d50", rustDark: "#784b38", gold: "#c4a365", cream: "#f2e5c9", white: "#fffdf9",
+    ink: "#30343b", muted: "#626d79", line: "#e1d3c9", paper: "#ffffff",
+    sand: "#e5ddd4", sandDark: "#b7a99a", green: "#c28d71", greenDark: "#a65d3d",
+    greenLight: "#e6d0c2", blue: "#cba28a", blueDark: "#a77c63", blueLight: "#e6d0c2",
+    rust: "#88715f", rustDark: "#695343", gold: "#c4a365", cream: "#f3e9dc", white: "#ffffff",
   };
   const skins = { light: "#f0cfad", warm: "#ddb18a", tan: "#c18e67", brown: "#98664d", deep: "#69483a" };
   const hairs = { ink: "#383a37", brown: "#674b39", gold: "#b48c52", silver: "#a3aaa5" };
@@ -142,11 +142,7 @@
       const hero = element.closest(".chapter-hero");
       if (hero) {
         const results = document.querySelector(".results-column, .analysis-column, .workspace > .results");
-        if (type === "relief") {
-          const neutrality = document.getElementById("neutrality");
-          results.prepend(neutrality);
-          neutrality.after(element);
-        } else results.prepend(element);
+        results.prepend(element);
         hero.classList.add("pixel-heading");
       }
       element.classList.add("pixel-lesson", "panel");

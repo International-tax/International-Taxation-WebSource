@@ -19,6 +19,7 @@
     <script defer src="../assets/js/pixel-investment.js"></script>
     <script defer src="../assets/js/catalog.js"></script>
     <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="../assets/js/chapter-3-tabs.js"></script>
     <script defer src="chapter-3.js"></script>
     <script defer src="../assets/js/learning.js"></script>
     <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
@@ -40,23 +41,17 @@
       </nav>
     </header>
     <main class="page-wrap">
-      <section class="chapter-hero">
+      <section class="chapter-hero pixel-heading">
         <div>
           <p class="eyebrow">CORE CALCULATIONS / TEXTBOOK CHAPTER 3</p>
           <h1>Foreign income tax relief</h1>
         </div>
-        <div
-          class="pixel-scene"
-          data-pixel-scene="relief"
-          data-label-place-a="Source country"
-          data-label-place-b="Residence country"
-          data-label-person="Investor"
-          data-amount="CNY 1,000,000"
-          role="img"
-          aria-label="Income flows from the source country to the residence country, with tax in both"
-        ></div>
       </section>
       <nav class="tool-context" data-tool-context aria-label="Related foundations"></nav>
+      <div class="lesson-tabs" role="tablist" aria-label="Learning topics">
+        <button id="methods-tab" type="button" role="tab" aria-selected="true" aria-controls="relief-methods" tabindex="0">Four relief methods</button>
+        <button id="neutrality-tab" type="button" role="tab" aria-selected="false" aria-controls="neutrality" tabindex="-1">Two capital neutrality tests</button>
+      </div>
       <button
         class="parameter-toggle button"
         type="button"
@@ -99,6 +94,7 @@
           <p class="sim-note">Single flat rates and current-year relief only. Losses, indirect credits and excess-credit carryovers are excluded.</p>
         </form>
         <div class="results-column">
+          <div class="lesson-panel" id="relief-methods" role="tabpanel" aria-labelledby="methods-tab" tabindex="0">
           <section class="panel" aria-labelledby="comparison-heading">
             <div class="section-heading">
               <h2 id="comparison-heading">Tax composition under four methods</h2>
@@ -127,6 +123,7 @@
             <p class="sim-formula">Deduction: residence tax = (foreign income − source tax) × residence rate</p>
             <p class="sim-formula">Ordinary credit: residence tax = foreign income × residence rate − actual credit</p>
           </section>
+          <div class="pixel-scene" data-pixel-scene="relief"></div>
           <section class="panel" aria-labelledby="credit-heading">
             <div class="section-heading">
               <h2 id="credit-heading">Three credit checkpoints</h2>
@@ -140,7 +137,8 @@
             </div>
             <p class="sim-formula" id="credit-formula">Actual credit = min(source tax, credit limit)</p>
           </section>
-          <section class="panel" id="neutrality" aria-labelledby="neutrality-heading">
+          </div>
+          <section class="panel lesson-panel" id="neutrality" role="tabpanel" aria-labelledby="neutrality-tab" tabindex="0" hidden>
             <div class="section-heading">
               <h2 id="neutrality-heading">Two capital neutrality tests</h2>
             </div>

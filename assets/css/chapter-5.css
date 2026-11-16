@@ -1,8 +1,8 @@
 .chapter-5 {
-  --tool-accent: #8f6047;
-  --tool-green: #668273;
-  --tool-blue: #5c7f91;
-  --tool-rust: #ae7050;
+  --tool-accent: var(--primary);
+  --tool-green: var(--primary-muted);
+  --tool-blue: var(--primary);
+  --tool-rust: var(--accent);
 }
 
 .chapter-5 [hidden] {
@@ -221,7 +221,7 @@
 
 .map-node.china-link {
   border-color: var(--tool-green);
-  background: #e5ece5;
+  background: var(--primary-soft);
 }
 
 .map-node.china-link::after {
@@ -253,7 +253,7 @@
 
 .zone-low {
   width: 60%;
-  background: #9caf9e;
+  background: var(--primary-light);
 }
 
 .zone-mid {
@@ -362,8 +362,8 @@
 }
 
 .source-step.result {
-  border-color: #9caa9b;
-  background: #e5ebe3;
+  border-color: var(--primary-light);
+  background: var(--primary-soft);
 }
 
 .source-bar {

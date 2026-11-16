@@ -1,8 +1,8 @@
 .chapter-1-cases {
-  --tool-accent: #8f6047;
-  --case-green: #365f54;
-  --case-soft: #e4ebe4;
-  --case-gold: #b68954;
+  --tool-accent: var(--primary);
+  --case-green: var(--primary);
+  --case-soft: var(--primary-soft);
+  --case-gold: var(--accent);
 }
 
 .chapter-1-cases .chapter-hero h1 {
@@ -12,7 +12,7 @@
 
 .chapter-1-cases .chapter-hero .pixel-scene {
   min-height: 154px;
-  background: #e2e4d9;
+  background: var(--primary-soft);
 }
 
 .case-picker {
@@ -31,7 +31,7 @@
   padding: 13px 15px;
   border: 1px solid #cec5b8;
   border-radius: 10px;
-  background: #eee8de;
+  background: var(--paper);
   color: var(--ink);
   text-align: left;
   cursor: pointer;
@@ -75,12 +75,12 @@
 }
 
 .case-picker button[aria-pressed="true"] > span {
-  border-color: #9db2a6;
+  border-color: var(--primary-light);
   color: #fffdf7;
 }
 
 .case-picker button[aria-pressed="true"] small {
-  color: #d8e1d8;
+  color: #fff4ed;
 }
 
 .cases-workspace {
@@ -123,7 +123,7 @@
 }
 
 .case-metrics .highlight {
-  border-color: #a9b8aa;
+  border-color: var(--primary-light);
   background: var(--case-soft);
 }
 
@@ -132,22 +132,16 @@
 }
 
 .case-file {
-  padding: 0;
-  overflow: hidden;
-  background: #f8f4ec;
+  margin-bottom: 22px;
+  background: var(--paper);
 }
 
 .case-story {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
-  min-height: 260px;
+  min-width: 0;
 }
 
 .case-story > header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 26px;
+  margin-bottom: 16px;
 }
 
 .case-story > header .eyebrow {
@@ -160,26 +154,32 @@
   line-height: 1.35;
 }
 
-.case-story > header > p:last-child {
+.case-background {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
   margin: 0;
-  color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.7;
 }
+
+.case-background > div { min-width: 0; }
+.case-background dt { margin-bottom: 6px; color: var(--primary); font-weight: 700; }
+.case-background dd { margin: 0; }
 
 .story-visual {
   display: flex;
   flex-direction: column;
   min-width: 0;
   padding: 16px;
-  background: #e8e7dc;
+  background: var(--primary-soft);
 }
 
 .story-visual .pixel-scene {
   flex: 1;
   min-height: 178px;
-  border-color: #c5c9ba;
-  background: #dfe4d8;
+  border-color: var(--line);
+  background: var(--primary-soft);
 }
 
 .scene-tags {
@@ -279,7 +279,7 @@
 }
 
 .case-steps button[aria-pressed="true"] > span {
-  border-color: #a9bcb0;
+  border-color: var(--primary-light);
   color: #fffdf7;
 }
 
@@ -333,7 +333,7 @@
   gap: 8px;
   margin: 0 24px 22px;
   padding: 12px;
-  border: 1px dashed #aebbad;
+  border: 1px dashed var(--primary-light);
   border-radius: 8px;
   background: var(--case-soft);
   font-size: 10px;
@@ -347,7 +347,7 @@
 }
 
 .no-pe-path i {
-  color: #728477;
+  color: var(--primary-muted);
   font-style: normal;
 }
 
@@ -394,7 +394,7 @@
 
 .quiz-options button:hover {
   border-color: var(--case-green);
-  background: #f0f3eb;
+  background: var(--primary-soft);
 }
 
 .quiz-options button[aria-pressed="true"] {
@@ -415,7 +415,7 @@
 }
 
 .quiz-feedback.correct {
-  color: #3f6b55;
+  color: var(--primary);
 }
 
 .quiz-feedback.review {
@@ -430,7 +430,7 @@
 
 .case-detail summary,
 .comparison-panel summary {
-  color: #5d675d;
+  color: var(--primary);
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
@@ -469,7 +469,7 @@
 }
 
 .source-links a {
-  color: #4c675f;
+  color: var(--primary);
   font-size: 11px;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -481,8 +481,8 @@
   padding: 15px 19px;
   border-left: 4px solid var(--case-green);
   border-radius: 0 9px 9px 0;
-  background: #e1e8df;
-  color: #345449;
+  background: var(--primary-soft);
+  color: var(--primary);
   font-size: 13px;
   font-weight: 700;
   line-height: 1.65;
@@ -529,12 +529,6 @@
 }
 
 @media (max-width: 1050px) {
-  .case-story {
-    grid-template-columns: 1fr;
-  }
-  .case-story > header {
-    padding: 22px;
-  }
   .story-visual .pixel-scene {
     min-height: 190px;
   }
@@ -571,8 +565,9 @@
   .case-picker button small {
     font-size: 9px;
   }
-  .case-story {
-    grid-template-columns: minmax(0, 0.9fr) minmax(250px, 1.1fr);
+  .case-background {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
   }
   .story-visual .pixel-scene {
     min-height: 180px;
@@ -580,9 +575,6 @@
 }
 
 @media (max-width: 620px) {
-  .case-story {
-    grid-template-columns: 1fr;
-  }
   .quiz-options {
     grid-template-columns: 1fr;
   }

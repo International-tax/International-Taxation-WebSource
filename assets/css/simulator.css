@@ -3,10 +3,10 @@
   display: none !important;
 }
 .simulator-page {
-  --tool-accent: #8f6047;
-  --tool-green: #708a70;
-  --tool-blue: #5d7d8d;
-  --tool-rust: #a96f50;
+  --tool-accent: var(--primary);
+  --tool-green: var(--primary-muted);
+  --tool-blue: var(--primary);
+  --tool-rust: var(--accent);
   --tool-sand: #c7b9a7;
 }
 .simulator-page .chapter-hero {
@@ -55,8 +55,8 @@
 }
 .tool-links a[aria-current="page"],
 .tool-links button[aria-pressed="true"] {
-  border-color: #3c3025;
-  background: #3c3025;
+  border-color: var(--primary);
+  background: var(--primary);
   color: #fffaf2;
 }
 .simulator-page .workspace {
@@ -251,8 +251,8 @@
   gap: 6px;
   padding: 4px 8px;
   border-radius: 5px;
-  background: #e7ece3;
-  color: #4f694f;
+  background: var(--primary-soft);
+  color: var(--primary);
   font-size: 11px;
   font-weight: 700;
 }

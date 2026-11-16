@@ -1,8 +1,8 @@
 .chapter-1-profit {
-  --tool-accent: #9b6549;
-  --profit-green: #617c70;
-  --profit-rust: #b77855;
-  --profit-night: #293d38;
+  --tool-accent: var(--primary);
+  --profit-green: var(--primary-muted);
+  --profit-rust: var(--accent);
+  --profit-night: var(--primary);
 }
 
 .chapter-1-profit .chapter-hero h1 {
@@ -12,7 +12,7 @@
 
 .chapter-1-profit .chapter-hero .pixel-scene {
   min-height: 154px;
-  background: #dfe5dc;
+  background: var(--primary-soft);
 }
 
 .chapter-1-profit .parameter-panel .input-help {
@@ -36,7 +36,7 @@
 
 .chapter-1-profit .profit-map {
   overflow: hidden;
-  background: linear-gradient(145deg, #f8f5ee 45%, #edf0e9);
+  background: linear-gradient(145deg, var(--paper) 45%, var(--primary-soft));
 }
 
 .chapter-1-profit .section-heading > div > .eyebrow {
@@ -76,7 +76,7 @@
   height: 48px;
   margin: 10px 0 8px;
   overflow: hidden;
-  border: 1px solid #c9d0c6;
+  border: 1px solid var(--line);
   border-radius: 7px;
   background: #e4ded2;
 }
@@ -95,12 +95,12 @@
 }
 
 .low-jurisdiction .jurisdiction-track {
-  border-color: #b9c8ba;
-  background: #e4e9df;
+  border-color: var(--primary-light);
+  background: var(--primary-soft);
 }
 
 .low-jurisdiction .jurisdiction-track span {
-  background: linear-gradient(90deg, #779080, var(--profit-green));
+  background: linear-gradient(90deg, var(--secondary), var(--profit-green));
 }
 
 .jurisdiction > p {
@@ -174,11 +174,11 @@
 }
 
 .chapter-1-profit .sim-metric.emphasis span {
-  color: #d7e0d7;
+  color: #fff4ed;
 }
 
 .minimum-panel {
-  border-top: 3px solid #a8b3a4;
+  border-top: 3px solid var(--primary-light);
 }
 
 .etr-scale {
@@ -189,7 +189,7 @@
   position: relative;
   height: 20px;
   border-radius: 4px;
-  background: linear-gradient(90deg, #e5ddd0 0 50%, #e0e6dc 50%);
+  background: linear-gradient(90deg, #e5ddd0 0 50%, var(--primary-soft) 50%);
 }
 
 .etr-track > span {
@@ -282,7 +282,7 @@
 }
 .reference-note summary {
   cursor: pointer;
-  color: #35574d;
+  color: var(--primary);
 }
 .reference-note summary:focus-visible {
   outline: 3px solid var(--tool-accent);
@@ -354,7 +354,7 @@
   position: absolute;
   top: -5px;
   bottom: -5px;
-  border-left: 1px solid #5e6f65;
+  border-left: 1px solid var(--primary-muted);
 }
 
 .range-axis::before { left: 40%; }
@@ -366,7 +366,7 @@
   width: 60%;
   height: 100%;
   border-radius: 0 3px 3px 0;
-  background: repeating-linear-gradient(135deg, #789080 0 6px, #698271 6px 9px);
+  background: repeating-linear-gradient(135deg, var(--secondary) 0 6px, var(--primary-muted) 6px 9px);
 }
 
 .range-figure > div:last-child {
@@ -410,7 +410,7 @@
 }
 
 .model-figure > div:nth-child(2) i {
-  background: #829785;
+  background: var(--primary-muted);
 }
 
 .model-figure b {

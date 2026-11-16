@@ -1,7 +1,7 @@
 .chapter-2 {
-  --employee: #6f896f;
-  --employee-soft: #e7ece3;
-  --company: #a47552;
+  --employee: var(--primary-muted);
+  --employee-soft: var(--primary-soft);
+  --company: var(--accent);
   --company-soft: #f0e5d8;
 }
 .chapter-2 .chapter-hero {
@@ -44,7 +44,7 @@
   box-shadow: 0 6px 16px #6d5a3f14;
 }
 .chapter-2 .relation-node.employee-node {
-  border-color: #cbd4c6;
+  border-color: var(--line);
   background: var(--employee-soft);
 }
 .chapter-2 .relation-node .entity-place {
@@ -213,7 +213,7 @@
   height: 44px;
   border-radius: 11px;
   background: var(--employee-soft);
-  color: #576e5d;
+  color: var(--primary);
   font-size: 13px;
   font-weight: 700;
 }
@@ -397,8 +397,8 @@
   font-size: 10px;
 }
 .chapter-2 .condition.pass .condition-icon {
-  background: #e2e9de;
-  color: #587052;
+  background: var(--primary-soft);
+  color: var(--primary);
 }
 .chapter-2 .condition > span:last-child {
   display: block;
@@ -481,8 +481,8 @@
   color: #855334;
 }
 .chapter-2 .path-tag.usually-no-place {
-  background: #e1e9dc;
-  color: #4f6e4e;
+  background: var(--primary-soft);
+  color: var(--primary);
 }
 .chapter-2 .use-meter {
   position: relative;
@@ -633,14 +633,14 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #8b9a7e;
+  background: var(--primary-muted);
 }
 .chapter-2 .company-analysis .result-list li::before {
   background: #ad8969;
 }
 .chapter-2 .learning-note {
   margin: 0 3px;
-  color: #687067;
+  color: var(--muted);
   font-size: 10px;
   line-height: 1.7;
 }

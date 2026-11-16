@@ -8,3 +8,8 @@ node_modules/
 .playwright-mcp/
 output/
 __pycache__/
+.comment-work/
+.cloudflare/
+.wrangler/
+.dev.vars*
+dist/

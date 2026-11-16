@@ -40,6 +40,29 @@
         <button type="button" data-case="1" aria-pressed="false"><span>02</span><strong>Prévost Car</strong><small>股息 · 受益所有人</small></button>
         <button type="button" data-case="2" aria-pressed="false"><span>03</span><strong>Thiel</strong><small>营业利润 · 无常设机构</small></button>
       </div>
+      <section class="panel case-file" aria-label="案例基本情况">
+        <article class="case-story" data-case-panel="0">
+          <header><p class="eyebrow">案例基本情况 / 加拿大最高法院 · 1995</p><h2>Crown Forest：跨境驳船租金</h2></header>
+          <dl class="case-background">
+            <div><dt>当事人与交易</dt><dd>加拿大公司 Crown Forest 向 Norsk 租用驳船并支付租金。Norsk 在巴哈马注册，办事处和经营场所在美国。Crown Forest 将 Norsk 视为美国协定居民，按《加美协定》扣缴了 10% 的税款。</dd></div>
+            <div><dt>核心争议</dt><dd>加拿大税务机关认为 Norsk 不具备美国协定居民资格，应按国内法扣缴 25%。在美国经营，是否足以取得协定居民资格并享受较低税率？</dd></div>
+          </dl>
+        </article>
+        <article class="case-story" data-case-panel="1" hidden>
+          <header><p class="eyebrow">案例基本情况 / 加拿大联邦上诉法院 · 2009</p><h2>Prévost Car：经荷兰公司分配的股息</h2></header>
+          <dl class="case-background">
+            <div><dt>当事人与交易</dt><dd>加拿大公司 Prévost Car 向荷兰母公司 Prévost Holding 支付股息，按《加荷协定》适用 5% 税率。荷兰公司随后向其瑞典股东 Volvo 和英国股东 Henlys 分配利润。</dd></div>
+            <div><dt>核心争议</dt><dd>加拿大税务机关主张将瑞典、英国股东视为股息受益所有人，分别适用 15% 和 10% 的协定税率。荷兰公司是否拥有对股息的自主支配权，能够以受益所有人身份享受 5% 税率？</dd></div>
+          </dl>
+        </article>
+        <article class="case-story" data-case-panel="2" hidden>
+          <header><p class="eyebrow">案例基本情况 / 澳大利亚高等法院 · 1990</p><h2>Thiel：瑞士居民的澳大利亚投资收益</h2></header>
+          <dl class="case-background">
+            <div><dt>当事人与交易</dt><dd>瑞士居民 Thiel 买入澳大利亚信托权益，随后换取公司股票，并在公司上市后出售获利。澳大利亚税务机关对这笔利润作出征税核定；双方确认 Thiel 在澳大利亚没有常设机构。</dd></div>
+            <div><dt>核心争议</dt><dd>这项商业活动能否构成《澳瑞协定》第 7 条所说的“企业”，使其利润适用营业利润条款，并因澳方没有常设机构而限制澳大利亚的征税权？</dd></div>
+          </dl>
+        </article>
+      </section>
       <button class="parameter-toggle button" type="button" aria-expanded="false" aria-controls="parameter-controls">调整金额 <span aria-hidden="true">＋</span></button>
       <div class="workspace cases-workspace">
         <aside class="panel parameter-panel" id="parameter-controls" aria-labelledby="inputs-heading">
@@ -60,17 +83,6 @@
           <button class="button" type="button" id="reset">重置本例 ↺</button>
         </aside>
         <div class="results-column">
-          <section class="panel case-file" aria-label="判例场景">
-            <article class="case-story" data-case-panel="0">
-              <header><p class="eyebrow">加拿大最高法院 · 1995</p><h2>驳船租金：办事处不等于协定居民</h2><p>加拿大公司跨境租用驳船。收款公司在巴哈马注册，仅在美国设有管理办事处。</p></header>
-            </article>
-            <article class="case-story" data-case-panel="1" hidden>
-              <header><p class="eyebrow">加拿大联邦上诉法院 · 2009</p><h2>荷兰公司自主支配股息，满足受益所有人条件</h2><p>加拿大子公司向荷兰母公司派息，后者再向瑞典和英国股东分配利润。</p></header>
-            </article>
-            <article class="case-story" data-case-panel="2" hidden>
-              <header><p class="eyebrow">澳大利亚高等法院 · 1990</p><h2>单次商业活动也可构成协定中的企业</h2><p>瑞士居民买入澳大利亚信托权益，转换为股票后短期出售获利；澳方无常设机构。</p></header>
-            </article>
-          </section>
           <section class="panel rule-panel" aria-labelledby="step-title">
             <nav class="case-steps" aria-label="国内法到裁判的查阅顺序">
               <button type="button" data-step="0" aria-pressed="true"><span>1</span><strong>国内法</strong></button>
