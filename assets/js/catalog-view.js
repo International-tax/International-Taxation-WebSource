@@ -1,4 +1,8 @@
 (() => {
+  const comments = document.createElement('script');
+  comments.type = 'module';
+  comments.src = new URL('comments.js', document.currentScript.src).href;
+  document.head.append(comments);
   const catalog = window.TaxCatalog;
   if (!catalog) return;
 

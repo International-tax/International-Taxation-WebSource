@@ -3,9 +3,9 @@
   <g transform="rotate(-6 115 82)">
     <rect x="61" y="39" width="110" height="95" rx="9" fill="#D5CCBC"/>
     <rect x="65" y="31" width="110" height="95" rx="9" fill="#FAF7ED" stroke="#D8D1C1"/>
-    <path d="M65 40a9 9 0 0 1 9-9h92a9 9 0 0 1 9 9v16H65Z" fill="#35574D"/>
-    <path d="M87 25v15m66-15v15" stroke="#A6B69C" stroke-width="4" stroke-linecap="round"/>
-    <g fill="#C4D1BA">
+    <path d="M65 40a9 9 0 0 1 9-9h92a9 9 0 0 1 9 9v16H65Z" fill="#A65D3D"/>
+    <path d="M87 25v15m66-15v15" stroke="#C28D71" stroke-width="4" stroke-linecap="round"/>
+    <g fill="#E6D0C2">
       <rect x="80" y="68" width="14" height="14" rx="3"/><rect x="101" y="68" width="14" height="14" rx="3"/>
       <rect x="80" y="90" width="14" height="14" rx="3"/><rect x="101" y="90" width="14" height="14" rx="3"/>
     </g>

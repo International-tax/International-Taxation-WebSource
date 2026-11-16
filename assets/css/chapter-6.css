@@ -1,8 +1,8 @@
 .chapter-6 {
-  --tool-accent: #8f6047;
-  --tool-green: #668273;
-  --tool-blue: #5c7f91;
-  --tool-rust: #ae7050;
+  --tool-accent: var(--primary);
+  --tool-green: var(--primary-muted);
+  --tool-blue: var(--primary);
+  --tool-rust: var(--accent);
 }
 
 .chapter-6 [hidden] {

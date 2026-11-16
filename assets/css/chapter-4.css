@@ -73,7 +73,7 @@
 }
 
 .chapter-4 .us-card {
-  color: #486b7c;
+  color: var(--primary);
 }
 
 .chapter-4 .country-code {
@@ -163,15 +163,15 @@
 }
 
 .chapter-4 .spt-current {
-  background: #5d7d8d;
+  background: var(--primary);
 }
 
 .chapter-4 .spt-prior {
-  background: #86a0aa;
+  background: var(--primary-muted);
 }
 
 .chapter-4 .spt-earlier {
-  background: #b1c0c2;
+  background: var(--primary-light);
 }
 
 .chapter-4 .spt-scale > i {
@@ -212,15 +212,15 @@
 }
 
 .chapter-4 .current-key {
-  background: #5d7d8d;
+  background: var(--primary);
 }
 
 .chapter-4 .prior-key {
-  background: #86a0aa;
+  background: var(--primary-muted);
 }
 
 .chapter-4 .earlier-key {
-  background: #b1c0c2;
+  background: var(--primary-light);
 }
 
 .chapter-4 .spt-checks {
@@ -278,14 +278,14 @@
 }
 
 .chapter-4 .tie-step[data-state="visited"] {
-  border-color: #93a9b1;
-  background: #e7edef;
+  border-color: var(--primary-muted);
+  background: var(--primary-soft);
 }
 
 .chapter-4 .tie-step[data-state="resolved"] {
-  border-color: #748e75;
-  background: #e5ece2;
-  box-shadow: inset 0 3px #748e75;
+  border-color: var(--primary-muted);
+  background: var(--primary-soft);
+  box-shadow: inset 0 3px var(--primary-muted);
 }
 
 .chapter-4 .tie-step[data-state="skipped"],

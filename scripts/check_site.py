@@ -38,7 +38,8 @@ class Page(HTMLParser):
 
 def main():
     errors = []
-    pages = {path.resolve(): Page(path) for path in ROOT.rglob("*.html")}
+    html_paths = [*ROOT.glob("*.html"), *(ROOT / "cn").glob("*.html"), *(ROOT / "en").glob("*.html")]
+    pages = {path.resolve(): Page(path) for path in html_paths}
     for path, page in pages.items():
         for link in page.links:
             url = urlsplit(link)
@@ -73,7 +74,8 @@ def main():
     if not shutil.which("node"):
         errors.append("Node.js is required for JavaScript syntax checks")
     else:
-        for path in ROOT.rglob("*.js"):
+        js_paths = [*(ROOT / "assets/js").glob("*.js"), *(ROOT / "cn").glob("*.js"), *(ROOT / "en").glob("*.js")]
+        for path in js_paths:
             check = subprocess.run(["node", "--check", str(path)], capture_output=True, text=True)
             if check.returncode:
                 errors.append(check.stderr.strip())

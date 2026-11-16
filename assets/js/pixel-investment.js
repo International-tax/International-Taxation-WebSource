@@ -25,7 +25,7 @@
       ? words("纽约办公室 · 服务全部在美国履行", "New York office · all services performed in the US")
       : words("美国居民乔丹 · 当前来源比例假设", "Jordan, US resident · selected source-share assumption");
     const drawing =
-      R(18, 12, 190, 148, "#e6ecea") + R(28, 22, 78, 43, C.blueLight) + R(65, 22, 4, 43, C.paper) + R(28, 43, 78, 4, C.paper) +
+      R(18, 12, 190, 148, "#f4ebe5") + R(28, 22, 78, 43, C.blueLight) + R(65, 22, 4, 43, C.paper) + R(28, 43, 78, 4, C.paper) +
       person(30, 84, 0.94, { shirt: "blue", hair: "bob", hairColor: "ink" }) + desk(75, 100, 1.05) +
       paper(128, 31, 55, 58, C.blue) +
       building(374, 57, 96, 95, C.green) +
@@ -69,7 +69,7 @@
 
   function cenDrawing() {
     const body =
-      R(7, 8, 142, 228, "#e7ece8") + R(327, 8, 142, 105, "#e3eaed") + R(327, 131, 142, 105, "#ede5db") +
+      R(7, 8, 142, 228, "#f4ebe5") + R(327, 8, 142, 105, "#f4ebe5") + R(327, 131, 142, 105, "#ede5db") +
       person(57, 83, 1.25, { shirt: "blue", hair: "bob", hairColor: "ink" }) +
       hLine(126, 231, 122, C.blue) + vLine(231, 63, 183, C.blue) + hArrow(231, 325, 63, C.blue) + hArrow(231, 325, 183, C.rust) +
       building(359, 37, 75, 60, C.blue) + building(359, 160, 75, 60, C.rust) +
@@ -79,7 +79,7 @@
 
   function cinDrawing() {
     const body =
-      R(7, 8, 142, 105, "#e3eaed") + R(7, 131, 142, 105, "#ede5db") + R(327, 8, 142, 228, "#e7ece8") +
+      R(7, 8, 142, 105, "#f4ebe5") + R(7, 131, 142, 105, "#ede5db") + R(327, 8, 142, 228, "#f4ebe5") +
       person(47, 31, 1.02, { shirt: "blue", hair: "bob", hairColor: "ink" }) + person(47, 154, 1.02, { shirt: "rust", hair: "short", hairColor: "brown" }) +
       hLine(119, 236, 63, C.blue) + vLine(236, 63, 122, C.blue) + hLine(119, 236, 183, C.rust) + vLine(236, 122, 183, C.rust) + hArrow(236, 325, 122, C.greenDark) +
       factory(345, 86, 0.91) +
@@ -116,11 +116,21 @@
     const local = { taxA: 0, taxB: localTax, total: localTax, after: s.income - localTax };
     document.getElementById("neutrality-pixels").innerHTML =
       `<section class="neutrality-scene" aria-labelledby="pixel-cen-heading"><header><h3 id="pixel-cen-heading">${esc(words("CEN · 资本输出中性", "CEN · Capital export neutrality"))}</h3><p>${esc(words("同一个人，选择投资地点", "Same investor, different investment locations"))}</p></header>
+        <dl class="neutrality-guide">
+          <div><dt>${esc(words("含义", "Meaning"))}</dt><dd>${esc(words("本国居民在境内、境外投资取得相同收益时，承担相同的总税负。", "A resident investor bears the same total tax on equal returns from domestic and foreign investments."))}</dd></div>
+          <div><dt>${esc(words("关注的问题", "Concern"))}</dt><dd>${esc(words("税负差异是否改变投资者选择境内或境外投资的决定，影响资本配置效率。", "Whether tax differences distort the choice between investing at home and abroad, affecting the efficient allocation of capital."))}</dd></div>
+          <div><dt>${esc(words("解决方法", "Tax approach"))}</dt><dd>${esc(words("居民国对境内外所得统一征税，并抵免境外税款。本例中，境外税率不高于本国时，普通抵免可实现 CEN；境外税款超过抵免限额时，仍会存在税负差异。", "The residence country taxes domestic and foreign income alike and credits foreign tax. In this example, ordinary credit achieves CEN when the foreign rate does not exceed the home rate; tax differences remain when foreign tax exceeds the credit limit."))}</dd></div>
+        </dl>
         <div class="neutrality-composition"><figure>${cenDrawing()}<figcaption>${esc(words("投资者始终为 A 国居民；两条箭头代表可替代的投资选择。", "The investor remains resident in A; the arrows show alternative investment choices."))}</figcaption></figure>
         ${returnsTable(words("投资 A 国", "Invest in A"), words("投资 B 国", "Invest in B"), domestic, abroad)}</div>
         ${neutralityResult(s.income, chosen.total, homeTax, "cen")}
       </section>
       <section class="neutrality-scene" aria-labelledby="pixel-cin-heading"><header><h3 id="pixel-cin-heading">${esc(words("CIN · 资本输入中性", "CIN · Capital import neutrality"))}</h3><p>${esc(words("同一个市场，投资者来自不同国家", "Same market, investors from different countries"))}</p></header>
+        <dl class="neutrality-guide">
+          <div><dt>${esc(words("含义", "Meaning"))}</dt><dd>${esc(words("在同一投资国市场，来自不同国家的投资者取得相同收益时，承担相同的总税负。", "Investors from different countries bear the same total tax on equal returns earned in the same host market."))}</dd></div>
+          <div><dt>${esc(words("关注的问题", "Concern"))}</dt><dd>${esc(words("本国投资者赴境外投资时，能否与投资国当地企业在相同的税收条件下竞争。", "Whether investors expanding abroad can compete with local businesses in the host country on equal tax terms."))}</dd></div>
+          <div><dt>${esc(words("解决方法", "Tax approach"))}</dt><dd>${esc(words("居民国对境外所得实行全额免税，使本国投资者与投资国当地企业同样只承担投资国税负，在本例条件下实现 CIN。", "The residence country fully exempts foreign income, so its investors and local businesses bear only the host-country tax, achieving CIN under this example’s assumptions."))}</dd></div>
+        </dl>
         <div class="neutrality-composition"><figure>${cinDrawing()}<figcaption>${esc(words("A 国居民与 B 国居民都投资 B 国，分别取得同样的税前收益。", "Residents of A and B both invest in B, each earning the same pre-tax return."))}</figcaption></figure>
         ${returnsTable(words("A 国投资者", "Investor from A"), words("B 国投资者", "Investor from B"), abroad, local)}</div>
         ${neutralityResult(s.income, chosen.total, localTax, "cin")}

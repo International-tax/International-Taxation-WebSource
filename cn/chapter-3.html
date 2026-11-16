@@ -19,6 +19,7 @@
     <script defer src="../assets/js/pixel-investment.js"></script>
     <script defer src="../assets/js/catalog.js"></script>
     <script defer src="../assets/js/catalog-view.js"></script>
+    <script defer src="../assets/js/chapter-3-tabs.js"></script>
     <script defer src="chapter-3.js"></script>
     <script defer src="../assets/js/learning.js"></script>
     <link rel="icon" type="image/svg+xml" href="../assets/images/coin.svg" />
@@ -40,23 +41,17 @@
       </nav>
     </header>
     <main class="page-wrap">
-      <section class="chapter-hero">
+      <section class="chapter-hero pixel-heading">
         <div>
           <p class="eyebrow">基础计算 / 教材第三章</p>
           <h1>境外所得税收减除</h1>
         </div>
-        <div
-          class="pixel-scene"
-          data-pixel-scene="relief"
-          data-label-place-a="来源国"
-          data-label-place-b="居民国"
-          data-label-person="投资者"
-          data-amount="¥1,000,000"
-          role="img"
-          aria-label="所得从来源国流向居民国，两国分别征税"
-        ></div>
       </section>
       <nav class="tool-context" data-tool-context aria-label="相关基础"></nav>
+      <div class="lesson-tabs" role="tablist" aria-label="学习内容">
+        <button id="methods-tab" type="button" role="tab" aria-selected="true" aria-controls="relief-methods" tabindex="0">四种减除方法</button>
+        <button id="neutrality-tab" type="button" role="tab" aria-selected="false" aria-controls="neutrality" tabindex="-1">两种资本中性</button>
+      </div>
       <button
         class="parameter-toggle button"
         type="button"
@@ -99,6 +94,7 @@
           <p class="sim-note">采用单一比例税率和当期抵免口径，不考虑亏损、间接抵免及超限额结转。</p>
         </form>
         <div class="results-column">
+          <div class="lesson-panel" id="relief-methods" role="tabpanel" aria-labelledby="methods-tab" tabindex="0">
           <section class="panel" aria-labelledby="comparison-heading">
             <div class="section-heading">
               <h2 id="comparison-heading">四种方法的税额构成</h2>
@@ -127,6 +123,7 @@
             <p class="sim-formula">扣除法：居民国税 =（境外所得 − 来源国税）× 居民国税率</p>
             <p class="sim-formula">普通抵免：居民国税 = 境外所得 × 居民国税率 − 实际抵免</p>
           </section>
+          <div class="pixel-scene" data-pixel-scene="relief"></div>
           <section class="panel" aria-labelledby="credit-heading">
             <div class="section-heading">
               <h2 id="credit-heading">普通抵免的三个关口</h2>
@@ -140,7 +137,8 @@
             </div>
             <p class="sim-formula" id="credit-formula">实际抵免 = min（来源国税，抵免限额）</p>
           </section>
-          <section class="panel" id="neutrality" aria-labelledby="neutrality-heading">
+          </div>
+          <section class="panel lesson-panel" id="neutrality" role="tabpanel" aria-labelledby="neutrality-tab" tabindex="0" hidden>
             <div class="section-heading">
               <h2 id="neutrality-heading">两种资本中性</h2>
             </div>

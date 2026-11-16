@@ -1,6 +1,6 @@
 /* Learning workspace: restrained controls, prominent evidence and calculation. */
 .learning {
-  background: #f1ede5;
+  background: var(--bg);
 }
 .learning .site-header {
   max-width: 1440px;
@@ -50,7 +50,7 @@
   box-shadow: none;
 }
 .learning .parameter-panel {
-  background: #eae4da;
+  background: var(--primary-soft);
   padding: 18px !important;
 }
 .learning .parameter-panel h2 {
@@ -189,9 +189,9 @@
   cursor: pointer;
 }
 .method-tabs button[aria-pressed="true"] {
-  background: #3c3025;
+  background: var(--primary);
   color: white;
-  border-color: #3c3025;
+  border-color: var(--primary);
 }
 .calculation-steps {
   display: grid;
@@ -319,7 +319,7 @@
   display: flex;
 }
 .allocation-bar span {
-  background: #718a7a;
+  background: var(--primary-muted);
   height: 100%;
   display: block;
   transition: width 0.2s;
@@ -349,7 +349,7 @@
   margin-bottom: 5px;
 }
 .condition.pass {
-  border-top: 3px solid #718a7a;
+  border-top: 3px solid var(--primary-muted);
 }
 .condition.fail {
   border-top: 3px solid #ba845e;

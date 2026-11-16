@@ -1,0 +1,26 @@
+{
+  "name": "international-tax-comments",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "cf build",
+    "deploy": "cf deploy",
+    "test": "node --test test/api.test.mjs",
+    "test:browser": "node test/browser.mjs",
+    "check:remote": "node --use-env-proxy scripts/check-remote.mjs"
+  },
+  "dependencies": {
+    "hono": "4.13.18",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "2.0.0-beta.v.17",
+    "cf": "1.0.0-beta.32",
+    "esbuild": "0.28.2",
+    "miniflare": "5.20261113.0-beta",
+    "node": "24.22.0",
+    "playwright": "1.65.1",
+    "vite": "8.3.8"
+  }
+}

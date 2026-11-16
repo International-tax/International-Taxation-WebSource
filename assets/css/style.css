@@ -1,13 +1,19 @@
 @import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css");
 @import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css");
 :root {
-  --bg: #eae4da;
-  --ink: #2e241b;
-  --muted: #786f65;
-  --paper: #f7f4ee;
-  --line: #d4ccc0;
-  --white: #fffdf9;
-  --accent: #a65a3b;
+  --bg: #f7f5f2;
+  --ink: #30343b;
+  --muted: #626d79;
+  --paper: #ffffff;
+  --line: #e1d3c9;
+  --white: #ffffff;
+  --primary: #a65d3d;
+  --primary-soft: #f4ebe5;
+  --primary-muted: #c28d71;
+  --primary-light: #e6d0c2;
+  --secondary: #cba28a;
+  --secondary-dark: #a77c63;
+  --accent: #88715f;
   --shadow: 0 22px 55px rgba(70, 54, 40, 0.12);
   --font-cn: "LXGW WenKai", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-ui: system-ui, sans-serif;
@@ -44,7 +50,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid #a65a3b;
+  outline: 3px solid var(--primary);
 }
 .site-header {
   max-width: 1180px;
@@ -215,7 +221,7 @@ select:focus-visible {
   background: #d8b879;
 }
 .dots i:nth-child(3) {
-  background: #9ab795;
+  background: var(--primary-muted);
 }
 .preview-content {
   display: grid;
@@ -412,7 +418,7 @@ select:focus-visible {
 }
 .panel {
   background: var(--paper);
-  border: 1px solid #d9d0c4;
+  border: 1px solid var(--line);
   border-radius: 22px;
   padding: 28px;
   box-shadow: 0 10px 30px #7d6d5d0c;
@@ -448,11 +454,11 @@ select {
 }
 input[type="range"] {
   width: 100%;
-  accent-color: #9e6d50;
+  accent-color: var(--primary);
 }
 input[type="checkbox"],
 input[type="radio"] {
-  accent-color: #8f6047;
+  accent-color: var(--primary);
 }
 fieldset {
   border: 0;

@@ -3,9 +3,9 @@
 .investment-location-labels > strong { max-width: 48%; }
 .investment-location-labels > strong:last-child { text-align: right; }
 .investment-key { display: inline-block; width: 13px; height: 5px; margin-right: 6px; vertical-align: middle; }
-.investment-key.blue { background: #648998; }
+.investment-key.blue { background: var(--secondary); }
 .investment-key.gold { background: #c4a365; }
-.investment-key.green { background: #708a70; }
+.investment-key.green { background: var(--primary-muted); }
 .investment-key.sand { background: #d9c3ae; }
 .investment-explanation { font-size: 14px; line-height: 1.7; margin: 15px 0 0; }
 .investment-formula { font-size: 13px; line-height: 1.7; padding-top: 10px; border-top: 1px solid #ddd2c4; overflow-wrap: anywhere; }
@@ -21,14 +21,18 @@
 .consulting-receipt { min-width: 0; padding: 17px; border: 1px solid #d8cdbc; border-top: 5px solid #b5a48e; background: #fffdf9; }
 .receipt-total { margin-top: 13px; padding-top: 8px; border-top: 2px dashed #b5a48e; }
 .credit-conduit { height: 22px; background: #d9c3ae; position: relative; margin: 22px 6px 20px 0; }
-.credit-admitted { display: block; height: 100%; background: #708a70; }
-.credit-conduit > i { position: absolute; width: 6px; height: 38px; top: -8px; transform: translateX(-3px); background: #48634f; }
+.credit-admitted { display: block; height: 100%; background: var(--primary-muted); }
+.credit-conduit > i { position: absolute; width: 6px; height: 38px; top: -8px; transform: translateX(-3px); background: var(--primary); }
 .credit-conduit.is-empty { background: transparent; outline: 1px dashed #b5a48e; }
 .credit-conduit.is-empty > i { display: none; }
 .consulting-credit-key { display: flex; flex-wrap: wrap; gap: 8px 15px; font-size: 12px; }
 .neutrality-scene { margin: 20px 0 0; padding: 18px 0 22px; border-top: 1px solid #d8cdbc; }
 .neutrality-scene h3 { margin: 0; font-size: 19px; }
-.neutrality-scene header p { margin: 6px 0 14px; font-size: 15px; color: #48634f; }
+.neutrality-scene header p { margin: 6px 0 14px; font-size: 15px; color: var(--primary); }
+.neutrality-guide { display: grid; gap: 10px; margin: 0 0 20px; padding: 16px; border-radius: 10px; background: var(--primary-soft); font-size: 14px; line-height: 1.7; }
+.neutrality-guide > div { display: grid; grid-template-columns: 6em minmax(0, 1fr); gap: 12px; }
+.neutrality-guide dt { font-weight: 700; color: var(--primary); }
+.neutrality-guide dd { margin: 0; overflow-wrap: anywhere; }
 .neutrality-composition { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); align-items: center; gap: 22px; }
 .neutrality-composition figure { margin: 0; min-width: 0; }
 .neutrality-composition figcaption { font-size: 13px; line-height: 1.7; margin-top: 7px; }
@@ -37,9 +41,9 @@
 .neutral-return-table thead th { text-align: left; vertical-align: bottom; font-weight: 600; }
 .neutral-return-table th[scope="row"] { text-align: left; font-weight: 400; width: 35%; }
 .neutral-return-table td { text-align: right; font-family: var(--font-ui, sans-serif); font-variant-numeric: tabular-nums; }
-.neutral-return-table tbody tr:last-child { background: #e7ece0; font-weight: 700; }
-.neutrality-verdict { border-left: 5px solid #708a70; background: #e7ece0; padding: 10px 12px; font-size: 14px; line-height: 1.7; margin: 15px 0 0; }
-.neutrality-verdict.different { border-color: #a66d50; background: #f1e6dd; }
+.neutral-return-table tbody tr:last-child { background: var(--primary-soft); font-weight: 700; }
+.neutrality-verdict { border-left: 5px solid var(--primary-muted); background: var(--primary-soft); padding: 10px 12px; font-size: 14px; line-height: 1.7; margin: 15px 0 0; }
+.neutrality-verdict.different { border-color: var(--accent); background: #f5e9e1; }
 .neutrality-verdict.empty { border-color: #b5a48e; background: #eee8de; }
 .relief-calculation-stations { display: grid; gap: 20px; }
 .relief-calculation-stations section { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 19px; align-items: start; }
@@ -56,7 +60,7 @@
 .profit-tax-ruler { padding-top: 18px; border-top: 1px solid #d8cdbc; }
 .profit-tax-ruler h3 { font-size: 16px; margin: 0 0 23px; }
 .jurisdiction-rate-ruler { height: 25px; background: #ded3c2; position: relative; margin-inline: 4px; }
-.jurisdiction-rate-ruler .jurisdiction-rate { position: absolute; inset: 0 auto 0 0; background: #648998; }
+.jurisdiction-rate-ruler .jurisdiction-rate { position: absolute; inset: 0 auto 0 0; background: var(--secondary); }
 .jurisdiction-rate-ruler .jurisdiction-gap { position: absolute; top: 0; bottom: 0; background: repeating-linear-gradient(90deg, #c4a365 0, #c4a365 6px, #f2e5c9 6px, #f2e5c9 9px); }
 .jurisdiction-rate-ruler > i { width: 4px; height: 39px; position: absolute; top: -7px; transform: translateX(-2px); background: #784b38; }
 .jurisdiction-ruler-labels { display: flex; justify-content: space-between; position: relative; font-size: 12px; margin: 10px 4px 18px; }
@@ -66,6 +70,7 @@
   .neutrality-composition .investment-drawing { max-width: 480px; }
 }
 @media (max-width: 620px) {
+  .neutrality-guide > div { grid-template-columns: minmax(0, 1fr); gap: 3px; }
   .consulting-accounting { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .investment-ledger-row { font-size: 13px; }
   .neutral-return-table { font-size: 12px; }

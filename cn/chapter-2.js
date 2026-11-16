@@ -87,7 +87,7 @@
     byId("allocation-bar").innerHTML =
       `<span class="allocation-local" style="width:${share * 100}%" title="B 国 ${money(localSalary)}"></span><span class="allocation-other" style="width:${100 - share * 100}%" title="其余 ${money(salary - localSalary)}"></span>`;
     byId("allocation-labels").innerHTML =
-      `<span><i style="--c:#6f896f"></i>B 国 ${money(localSalary)}</span><span><i style="--c:#c7b9a7"></i>其余工作日 ${money(salary - localSalary)}</span>`;
+      `<span><i style="--c:var(--employee)"></i>B 国 ${money(localSalary)}</span><span><i style="--c:#c7b9a7"></i>其余工作日 ${money(salary - localSalary)}</span>`;
     text(
       "allocation-formula",
       `${money(salary)} × (${workdays} ÷ ${totalwork}) = ${money(localSalary)}`,

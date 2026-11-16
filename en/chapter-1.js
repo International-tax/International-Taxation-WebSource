@@ -19,7 +19,7 @@
   const money = (amount) => currency.format(amount);
   const axisMoney = (amount) =>
     Math.abs(amount) >= 10000 ? compactCurrency.format(amount) : money(amount);
-  const methodColors = ["#a96f50", "#53788a", "#708a70"];
+  const methodColors = ["--method-no-relief", "--method-deduction", "--method-credit"].map((name) => getComputedStyle(document.body).getPropertyValue(name).trim());
   let selectedMethod = 2;
 
   function calculate(amount, usRate, aoRate, foreignShare) {

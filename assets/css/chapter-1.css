@@ -1,10 +1,10 @@
 .chapter-1 {
-  --method-no-relief: #a96f50;
-  --method-deduction: #53788a;
-  --method-credit: #708a70;
-  --flow-after: #789174;
-  --flow-ao: #b77c5b;
-  --flow-us: #5d7d8d;
+  --method-no-relief: var(--accent);
+  --method-deduction: var(--secondary);
+  --method-credit: var(--primary);
+  --flow-after: var(--primary-muted);
+  --flow-ao: var(--accent);
+  --flow-us: var(--primary);
 }
 .chapter-1 .chapter-hero {
   margin-bottom: 20px;
@@ -382,7 +382,7 @@
   opacity: 0.75;
 }
 .chapter-1 .method-tabs button[aria-pressed="true"] {
-  background: #3c3025;
+  background: var(--primary);
 }
 .chapter-1 .money-flow {
   display: grid;
@@ -399,7 +399,7 @@
   z-index: 1;
   padding: 20px 16px;
   border-radius: 12px;
-  background: #3c3229;
+  background: var(--primary);
   box-shadow: 0 5px 0 #d2c5b5;
   color: #fffaf2;
   text-align: center;
@@ -699,9 +699,9 @@
   align-items: start;
   margin: -6px 0 18px;
   padding: 10px 12px;
-  border-left: 3px solid #708a70;
+  border-left: 3px solid var(--primary-muted);
   border-radius: 8px;
-  background: #edf0e8;
+  background: var(--primary-soft);
 }
 .chapter-1 .assumption-panel.jordan {
   border-left-color: #a96f50;
@@ -713,9 +713,9 @@
   width: 20px;
   height: 20px;
   margin-top: 1px;
-  border: 1px solid #8fa08a;
+  border: 1px solid var(--primary-light);
   border-radius: 50%;
-  color: #5d735c;
+  color: var(--primary);
   font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 750;
@@ -735,10 +735,10 @@
 }
 .chapter-1 .assumption-chips span {
   padding: 3px 7px;
-  border: 1px solid #c8d1c2;
+  border: 1px solid var(--line);
   border-radius: 5px;
-  background: #f7f9f3;
-  color: #53634f;
+  background: var(--primary-soft);
+  color: var(--primary);
   font-size: 10px;
   line-height: 1.45;
 }
@@ -749,7 +749,7 @@
 }
 .chapter-1 .assumption-formula {
   margin: 6px 0 0;
-  color: #5f6d58;
+  color: var(--primary);
   font-size: 11px;
   line-height: 1.55;
 }
@@ -757,7 +757,7 @@
   color: #765a46;
 }
 .chapter-1 .assumption-formula b {
-  color: #3f5f43;
+  color: var(--primary);
   font-family: var(--font-ui);
 }
 .chapter-1 .assumption-panel.jordan .assumption-formula b {
